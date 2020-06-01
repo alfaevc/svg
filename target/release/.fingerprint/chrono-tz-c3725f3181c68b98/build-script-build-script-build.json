@@ -1,0 +1,1 @@
+{"rustc":14420027189279859095,"features":"[]","target":10088282520713642473,"profile":8269569389443984988,"path":7378234271561631769,"deps":[[12712115566020221488,"parse_zoneinfo",false,9014205436448674128]],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/chrono-tz-c3725f3181c68b98/dep-build-script-build-script-build"}}],"rustflags":[],"metadata":16407748289332317460}
