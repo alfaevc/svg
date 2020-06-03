@@ -53,5 +53,4 @@
   {% endif %}  
   {% endfor %}  
   <path stroke="{{colour}}" stroke-linejoin="round" d="{{path}}" stroke-width="2.0" fill="none" />
-  <path stroke="#74838f" stroke-width="2.0" fill="none"  d="M {{padding}} {{offset_y}} L {{width + padding}} {{offset_y}}" />
 </svg>
