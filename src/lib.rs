@@ -10,7 +10,9 @@ use tera::{Context, Tera};
 pub struct Graph {
     pub name: String,
     pub points: Vec<Point>,
-    pub colour: String
+    pub colour: String,
+    pub max_x: f64,
+    pub max_y: f64
 }
 
 #[derive(Clone, Debug, Copy)]
@@ -25,6 +27,8 @@ impl Graph {
           name,
           points: Vec::new(),
           colour,
+          max_x : 0.,
+          max_y : 0.,
       }
   }
 
@@ -36,9 +40,21 @@ impl Graph {
 
     let mut context = Context::new();
 
-  
-    //hardset the padding around the graph
+    //let min_x = graph.points.get(0).map(|val| val.x).unwrap_or(0.0);
+    /*let max_x = self
+      .points
+      .iter()
+      .map(|point| point.x)
+      .fold(0. / 0., f64::max);
 
+    //let min_y = graph.points.iter().map(|val| val.y).fold(0. / 0., f64::min);
+    let max_y = self
+      .points
+      .iter()
+      .map(|point| point.y)
+      .fold(0. / 0., f64::max);
+      //hardset the padding around the graph
+    */
     // let c_str = CString::new(file).unwrap();
     // let filename: *const c_char = c_str.as_ptr() as *const c_char;
     // const filename: &str = file.clone();
@@ -50,6 +66,8 @@ impl Graph {
     context.insert("height", &height);
     context.insert("padding", &padding);
     context.insert("path", &path);
+    context.insert("max_x", &self.max_x);
+    context.insert("max_y", &self.max_y);
     context.insert("colour", &self.colour);
     context.insert("lines", &5);
   
@@ -78,18 +96,18 @@ pub fn generate_graph(xs: Vec<f64>, ys: Vec<f64>) -> Graph {
 pub fn get_svg(xstr: &str, ystr: &str, width: usize, height: usize, padding: usize, file: &str) -> String {
   let xs: Vec<f64> = serde_json::from_str(&xstr).unwrap();
   let ys: Vec<f64> = serde_json::from_str(&ystr).unwrap();
-  let graph = generate_graph(xs, ys);
+  let mut graph = generate_graph(xs, ys);
   let width = width - padding * 2;
   let height = height - padding * 2;
   //let min_x = graph.points.get(0).map(|val| val.x).unwrap_or(0.0);
-  let max_x = graph
+  graph.max_x = graph
     .points
     .iter()
     .map(|point| point.x)
     .fold(0. / 0., f64::max);
   
   //let min_y = graph.points.iter().map(|val| val.y).fold(0. / 0., f64::min);
-  let max_y = graph
+  graph.max_y = graph
     .points
     .iter()
     .map(|point| point.y)
@@ -99,8 +117,8 @@ pub fn get_svg(xstr: &str, ystr: &str, width: usize, height: usize, padding: usi
               .points
               .iter()
               .map(|val| Point {
-                  x: (val.x / max_x * width as f64) + padding as f64,
-                  y: (val.y / max_y * (height as f64 * -1.0)) + (padding + height) as f64,
+                  x: (val.x / graph.max_x * width as f64) + padding as f64,
+                  y: (val.y / graph.max_y * (height as f64 * -1.0)) + (padding + height) as f64,
               })
               .enumerate()
               .map(|(i, point)| {
