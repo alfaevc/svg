@@ -52,7 +52,7 @@ The [Cargo.toml](Cargo.toml) file shows the dependencies.
 
 ## Write Rust code
 
-The [src/lib.rs](src/lib.rs) file contains Rust functions to read the attributes and hyperparameters of the graph and the json array of x coordinates and the json array of y coordinates from the Node.js, and return a string, which is written to a new svg file given the svg template [src/graph.svg].
+The [src/lib.rs](src/lib.rs) file contains Rust functions to read the attributes and hyperparameters of the graph and the json array of x coordinates and the json array of y coordinates from the Node.js, and return a string of a xml file of the svg graph where the adjacent data points are connected by a linear line. The string is written to a new svg file given the svg template [src/graph.svg].
 
 ## Build the WASM bytecode
 
@@ -65,4 +65,10 @@ $ ssvmup build --nowasi
 The [node/app.js](node/app.js) app shows how to call the Rust functions from JavaScript. The json arrays of coordinates of data points are manually created in the app.js.
 
 
+## Test
 
+```
+$ node app.js
+```
+
+You can modify the app.js to read data points from a file and convert it to 2 json arrays(x and y coordinates) instead of hardcoding the 2 arrays and try different dimensions for the svg graph. 
