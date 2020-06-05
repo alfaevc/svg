@@ -8,19 +8,28 @@ JavaScript and runs in Node.js.
 ## Set up
 
 ```
+# Prerequisite
 $ sudo apt-get update
 $ sudo apt-get -y upgrade
 $ sudo apt install build-essential curl wget git vim libboost-all-dev
 
+# Install rust
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 $ source $HOME/.cargo/env
 
+# Install nvm
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-$ [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-$ [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# Follow the on-screen instructions to logout and then log in
 
+# Install node
 $ nvm install v10.19.0
 $ nvm use v10.19.0
+
+# Install ssvmup toolchain
+$ npm install -g ssvmup # Append --unsafe-perm if permission denied
+
+# Install the nodejs addon for SSVM
+$ npm install ssvm
 
 $ npm install -g wasm-pack
 ```
