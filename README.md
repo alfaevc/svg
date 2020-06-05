@@ -44,3 +44,8 @@ $ cd svg
 ## Change the cargo config file
 
 The [Cargo.toml](Cargo.toml) file shows the dependencies.
+
+* The `wasm-bindgen` crate is required for invoking Rust functions from JavaScript. 
+* The `serde` and `serde_json` crates allow us to work with JSON strings to represent complex data types. 
+* The `nodejs-helper` crate allows the Rust function to access console, file system, database, and network.
+* The `tera` crate is used to load and parse the svg template.
