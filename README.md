@@ -33,3 +33,14 @@ $ npm install ssvm
 
 $ npm install -g wasm-pack
 ```
+
+## Create new project
+
+```
+$ cargo new --lib svg
+$ cd svg
+```
+
+## Change the cargo config file
+
+The [Cargo.toml](Cargo.toml) file shows the dependencies.
