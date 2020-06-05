@@ -49,3 +49,20 @@ The [Cargo.toml](Cargo.toml) file shows the dependencies.
 * The `serde` and `serde_json` crates allow us to work with JSON strings to represent complex data types. 
 * The `nodejs-helper` crate allows the Rust function to access console, file system, database, and network.
 * The `tera` crate is used to load and parse the svg template.
+
+## Write Rust code
+
+The [src/lib.rs](src/lib.rs) file contains Rust functions to read the attributes and hyperparameters of the graph and the json array of x coordinates and the json array of y coordinates from the Node.js, and return a string, which is written to a new svg file given the svg template [src/graph.svg].
+
+## Build the WASM bytecode
+
+```
+$ ssvmup build --nowasi
+```
+
+## Create a node app
+
+The [node/app.js](node/app.js) app shows how to call the Rust functions from JavaScript. The json arrays of coordinates of data points are manually created in the app.js.
+
+
+
