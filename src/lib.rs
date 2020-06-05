@@ -8,10 +8,6 @@ use tera::{Context, Tera};
 // use std::clone;
 // use std::os::raw::{c_char};
 // use std::ffi::{CString};
-use std::{
-  fs::File,
-  io::{BufWriter, Write},
-};
 
 #[derive(Clone, Debug)]
 pub struct Graph {
@@ -142,9 +138,5 @@ pub fn get_svg(xstr: &str, ystr: &str, width: usize, height: usize, padding: usi
 
   let out = graph.draw_svg(width, height, padding, path);
   println!("{}", out);
-  let file = File::open("out.svg").unwrap();
-  let mut writer = BufWriter::new(&file);
-  write!(&mut writer, "{}", out);
-  // Ok(());
   return out;
 }
