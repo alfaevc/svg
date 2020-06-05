@@ -1,0 +1,220 @@
+<?xml version="1.0" standalone="no"?>
+<svg
+  width="100%"
+  height="100%"
+  viewBox="0 0 800 400"
+  preserveAspectRatio="xMidYMid meet"
+  xmlns="http://www.w3.org/2000/svg"
+  >
+  <text 
+    x="400"
+    y="25"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    font-size="18"
+    fill="#74838f"
+    font-weight="700"
+    >
+    SVG
+  </text>
+  
+  
+  
+  <text
+    x="45"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="50"
+    dominant-baseline="middle"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+    >
+    41
+  </text>
+  <text
+    x="50"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="360"
+    dominant-baseline="hanging"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+  >
+  0
+  </text>
+
+  <path stroke="#74838f" stroke-width="2.0" d="M 50 350 L 50 360" />
+  
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 50 L 750 50" />
+  
+    
+  
+  
+  
+  <text
+    x="45"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="110"
+    dominant-baseline="middle"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+    >
+    33
+  </text>
+  <text
+    x="190"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="360"
+    dominant-baseline="hanging"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+  >
+  2
+  </text>
+
+  <path stroke="#74838f" stroke-width="2.0" d="M 190 350 L 190 360" />
+  
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 110 L 750 110" />
+  
+    
+  
+  
+  
+  <text
+    x="45"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="170"
+    dominant-baseline="middle"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+    >
+    24
+  </text>
+  <text
+    x="330"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="360"
+    dominant-baseline="hanging"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+  >
+  5
+  </text>
+
+  <path stroke="#74838f" stroke-width="2.0" d="M 330 350 L 330 360" />
+  
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 170 L 750 170" />
+  
+    
+  
+  
+  
+  <text
+    x="45"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="230"
+    dominant-baseline="middle"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+    >
+    16
+  </text>
+  <text
+    x="470"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="360"
+    dominant-baseline="hanging"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+  >
+  7
+  </text>
+
+  <path stroke="#74838f" stroke-width="2.0" d="M 470 350 L 470 360" />
+  
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 230 L 750 230" />
+  
+    
+  
+  
+  
+  <text
+    x="45"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="290"
+    dominant-baseline="middle"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+    >
+    8
+  </text>
+  <text
+    x="610"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="360"
+    dominant-baseline="hanging"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+  >
+  10
+  </text>
+
+  <path stroke="#74838f" stroke-width="2.0" d="M 610 350 L 610 360" />
+  
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 290 L 750 290" />
+  
+    
+  
+  
+  
+  <text
+    x="45"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="350"
+    dominant-baseline="middle"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+    >
+    0
+  </text>
+  <text
+    x="750"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="360"
+    dominant-baseline="hanging"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+  >
+  12
+  </text>
+
+  <path stroke="#74838f" stroke-width="2.0" d="M 750 350 L 750 360" />
+  
+  <path stroke="#74838f" stroke-width="2" fill="none"  d="M 50 350 L 750 350" />
+    
+    
+  <path stroke="#8ff0a4" stroke-linejoin="round" d="M 108.33333333333333 276.47058823529414 L 166.66666666666666 327.94117647058823 L 225 225 L 283.3333333333333 202.94117647058823 L 341.6666666666667 166.17647058823528 L 400 180.88235294117646 L 458.33333333333337 129.41176470588235 L 516.6666666666666 69.11764705882348 L 575 111.02941176470586 L 633.3333333333334 50 L 691.6666666666666 87.49999999999994 L 750 190.44117647058823" stroke-width="2.0" fill="none" />
+</svg>
