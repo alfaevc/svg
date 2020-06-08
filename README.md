@@ -68,7 +68,7 @@ The [node/app.js](node/app.js) app shows how to call the Rust functions from Jav
 ## Test
 
 ```
-$ node app.js
+$ node node/app.js
 ```
 
 You can modify the app.js to read data points from a file and convert it to 2 json arrays(x and y coordinates) instead of hardcoding the 2 arrays and try different dimensions for the svg graph. 
