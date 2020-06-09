@@ -57,7 +57,7 @@ The [src/lib.rs](src/lib.rs) file contains Rust functions to read the attributes
 ## Build the WASM bytecode
 
 ```
-$ ssvmup build --nowasi
+$ ssvmup build
 ```
 
 ## Create a node app
