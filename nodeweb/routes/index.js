@@ -47,7 +47,7 @@ function onRequest(req, res) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'SVG', success: req.session.success, errors: req.session.errors });
+  res.render('index', { title: 'SVG', success: req.session.success, errors: req.session.errors, graph: req.session.graph});
 });
 
 router.post('/submit', function(req, res, next) {
@@ -62,6 +62,7 @@ router.post('/submit', function(req, res, next) {
   if (errors) {
     req.session.errors = errors;
     req.session.success = false;
+    req.session.success = "";
   } else {
     req.session.success = true;
     var out = get_svg(JSON.stringify(x), JSON.stringify(y), width, height, p, req.body.svgtitle);
@@ -69,6 +70,7 @@ router.post('/submit', function(req, res, next) {
       if (err) throw err;
       console.log('The file has been saved!');
     });
+    req.session.graph = out;
   }
   res.redirect('/');
 });
