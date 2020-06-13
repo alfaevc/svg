@@ -1,1 +1,0 @@
-{"rustc":14420027189279859095,"features":"[\"default\", \"std\"]","target":15213603539184018556,"profile":8269569389443984988,"path":2442497832035263429,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"wasm32-wasi/release/.fingerprint/ucd-trie-bcb42dd2cffb6d4d/dep-lib-ucd-trie"}}],"rustflags":[],"metadata":14294133660085481805}
