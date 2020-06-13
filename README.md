@@ -1,6 +1,6 @@
 # svg graph by wasm example
 
-In this example, we show that how to create a svg graph file using Node.js. The code that produces the 
+In this example, we show that how to output a svg graph file in the web app using Node.js. The code that produces the 
 svg graph given the attributes of the graph, the data points and a svg template is written in rust and 
 executed in WebAssembly. The hyperparameters of the graph and the data points are read and loaded in 
 JavaScript and runs in Node.js. 
@@ -57,18 +57,45 @@ The [src/lib.rs](src/lib.rs) file contains Rust functions to read the attributes
 ## Build the WASM bytecode
 
 ```
-$ ssvmup build --nowasi
+$ ssvmup build
 ```
 
 ## Create a node app
 
-The [node/app.js](node/app.js) app shows how to call the Rust functions from JavaScript. The json arrays of coordinates of data points are manually created in the app.js.
+### setup express
+```
+$ npm install -g express-generator
+$ express nodeweb
+$ npm install
+```
+
+### (Optional) change Jade to handlebars
+```
+$ npm uninstall jade --save
+$ npm install express-handlebars --save
+```
+Adjust implementations in app.js after installing handlebars and layouts.hbs
+
+### Setup express-validator and express-session
+
+```
+$ npm install --save express-validator
+$ npm uninstall express-validator
+$ npm install express-validator@5.3.1
+$ npm install --save express-session
+```
+Again adjust implementations in app.js.
+
+### Make the web app
+
+The [nodeweb/routes/index.js](nodeweb/routes/index.js) app shows how to call the Rust functions from JavaScript, and together with the hbs files in [nodeweb/views], it's meant to take 3 inputs on the web server, which are x coordinates, y coordinates and title of the graph respectively by clicking the submit button, it's expected to redirect to a page that demonstrates the resultant svg graph.
 
 
 ## Test
 
+Go to node directory and compile
 ```
-$ node node/app.js
+$ npm start
 ```
 
-You can modify the app.js to read data points from a file and convert it to 2 json arrays(x and y coordinates) instead of hardcoding the 2 arrays and try different dimensions for the svg graph. 
+

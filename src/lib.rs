@@ -137,6 +137,6 @@ pub fn get_svg(xstr: &str, ystr: &str, width: usize, height: usize, padding: usi
               .collect::<Vec<String>>().join(" ");
 
   let out = graph.draw_svg(width, height, padding, path);
-  println!("{}", out);
+  // println!("{}", out);
   return out;
 }
