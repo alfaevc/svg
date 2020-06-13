@@ -18,6 +18,9 @@ package-lock.json
 # ssvm
 pkg
 
+# app
+out.svg
+
 # local computer
 .env
 .DS_Store
