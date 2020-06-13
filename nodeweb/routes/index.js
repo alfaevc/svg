@@ -30,7 +30,7 @@ function checknull(arr) {
   return false;
 }
 
-function onRequest(req, res) {
+/* function onRequest(req, res) {
   res.writeHead(200, {'Content-Type': 'text/xml'});
   // res.write(out);
   fs.readFile("../../src/out.svg", null, function(error, data) {
@@ -43,7 +43,7 @@ function onRequest(req, res) {
       res.end();
   })
   // res.end();
-}
+}*/ 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -55,17 +55,18 @@ router.post('/submit', function(req, res, next) {
   var xs = req.body.xcords.split(re).map(Number);
   var ys = req.body.ycords.split(re).map(Number);
 
-  req.check("xcords");
-  req.check("ycords");
-  req.check("svgtitle");
-  var errors = checknull(xs) || checknull(ys) || (xs.length != ys.length);
+  req.check("xcords", "Valid x coordinates").custom((value, { req }) => !checknull(xs));
+  req.check("ycords", "Valid y coordinates").custom((value, { req }) => !checknull(ys) && (xs.length === ys.length));
+  req.check("svgtitle", "Title can't be empty").notEmpty();
+  errors = req.validationErrors();
+  // var errors = checknull(xs) || checknull(ys) || (xs.length != ys.length);
   if (errors) {
     req.session.errors = errors;
     req.session.success = false;
-    req.session.success = "";
+    req.session.graph = "";
   } else {
     req.session.success = true;
-    var out = get_svg(JSON.stringify(x), JSON.stringify(y), width, height, p, req.body.svgtitle);
+    var out = get_svg(JSON.stringify(xs), JSON.stringify(ys), width, height, p, req.body.svgtitle);
     fs.writeFile('../../src/out.svg', out, (err) => {
       if (err) throw err;
       console.log('The file has been saved!');
