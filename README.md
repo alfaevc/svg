@@ -64,9 +64,15 @@ $ ssvmup build
 
 ### setup express
 ```
-$ npm install -g express-generator
+$ sudo npm install -g express-generator
 $ express nodeweb
+$ cd nodeweb
 $ npm install
+```
+
+If vulnernabilities present, do:
+```
+$ npm audit fix
 ```
 
 ### (Optional) change Jade to handlebars
