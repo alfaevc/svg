@@ -95,7 +95,7 @@ Again adjust implementations in app.js.
 
 ### Make the web app
 
-The [nodeweb/routes/index.js](nodeweb/routes/index.js) app shows how to call the Rust functions from JavaScript, and together with the hbs files in [nodeweb/views], it's meant to take 3 inputs on the web server, which are x coordinates, y coordinates and title of the graph respectively by clicking the submit button, it's expected to redirect to a page that demonstrates the resultant svg graph. The views folder contains all required handlebars codes to format the web server.
+The [nodeweb/routes/index.js](nodeweb/routes/index.js) app shows how to call the Rust functions from JavaScript, and together with the hbs files in [nodeweb/views], it's meant to take 3 inputs on the web server, which are x coordinates, y coordinates and title of the graph respectively by clicking the submit button, it's expected to redirect to a page that demonstrates the resultant svg graph. The [nodeweb/views](nodeweb/views) folder contains all required handlebars codes to format the web server.
 
 
 ## Test
