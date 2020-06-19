@@ -17,7 +17,7 @@ var p = 50;
     console.log('The file has been saved!');
 });*/
 
-function checknull(arr) {
+function checknull(arr, axis) {
   var i;
   if(arr.length < 1 || arr == undefined){
     return true;
@@ -25,6 +25,11 @@ function checknull(arr) {
   for (i = 0; i < arr.length; i++) {
     if (isNaN(arr[i])) {
       return true;
+    }
+    if (axis == 1) { // if x axis then check sorted
+      if (i > 0 && arr[i] <= arr[i-1]) {
+        return true;
+      }
     }
   }
   return false;
@@ -58,9 +63,9 @@ router.post('/submit', function(req, res, next) {
   var ys = req.body.ycords.split(re).map(Number);
   console.log(xs);
   // console.log(xs[0]+xs[1]);
-  req.check("xcords", "Invalid x coordinates").notEmpty().custom(value => !checknull(xs));
+  req.check("xcords", "Invalid x coordinates").notEmpty().custom(value => !checknull(xs, 1));
   // req.check("xcords", "Invalid x coordinates").isEmail();
-  req.check("ycords", "Invalid y coordinates").notEmpty().custom(value => !checknull(ys) && (xs.length === ys.length));
+  req.check("ycords", "Invalid y coordinates").notEmpty().custom(value => !checknull(ys, 2) && (xs.length === ys.length));
   // console.log(2);
   req.check("svgtitle", "Title can't be empty").notEmpty();
   // console.log(3);

@@ -31,7 +31,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    4
+    2
   </text>
   <text
     x="50"
@@ -64,7 +64,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    3
+    2
   </text>
   <text
     x="190"
@@ -97,7 +97,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    2
+    1
   </text>
   <text
     x="330"
@@ -109,7 +109,7 @@
     fill="#74838f"
     font-weight="bold"
   >
-  2
+  1
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 330 350 L 330 360" />
@@ -130,7 +130,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    2
+    1
   </text>
   <text
     x="470"
@@ -142,7 +142,7 @@
     fill="#74838f"
     font-weight="bold"
   >
-  3
+  2
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 470 350 L 470 360" />
@@ -163,7 +163,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    1
+    0
   </text>
   <text
     x="610"
@@ -175,7 +175,7 @@
     fill="#74838f"
     font-weight="bold"
   >
-  4
+  2
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 610 350 L 610 360" />
@@ -208,7 +208,7 @@
     fill="#74838f"
     font-weight="bold"
   >
-  5
+  3
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 750 350 L 750 360" />
@@ -216,5 +216,5 @@
   <path stroke="#74838f" stroke-width="2" fill="none"  d="M 50 350 L 750 350" />
     
     
-  <path stroke="#8ff0a4" stroke-linejoin="round" d="M 330 200 L 470 125 L 750 50" stroke-width="2.0" fill="none" />
+  <path stroke="#8ff0a4" stroke-linejoin="round" d="M 516.6666666666666 50 L 750 200" stroke-width="2.0" fill="none" />
 </svg>
