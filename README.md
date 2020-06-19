@@ -52,7 +52,7 @@ The [Cargo.toml](Cargo.toml) file shows the dependencies.
 
 ## Write Rust code
 
-The [src/lib.rs](src/lib.rs) file contains Rust functions to read the attributes and hyperparameters of the graph and the json array of x coordinates and the json array of y coordinates from the Node.js, and return a string of a xml file of the svg graph where the adjacent data points are connected by a linear line. The string is written to a new svg file given the svg template [src/graph.svg].
+The [src/lib.rs](src/lib.rs) file contains Rust functions to read the attributes and hyperparameters of the graph and the json array of x coordinates and the json array of y coordinates from the Node.js, and return a string of a xml file of the svg graph where the adjacent data points are connected by a linear line. The string is written to a new svg file [src/out.svg](src/out.svg) given the svg template [src/graph.svg](src/graph.svg).
 
 ## Build the WASM bytecode
 
@@ -81,7 +81,7 @@ You can choose your own port in [nodeweb/bin/www](nodeweb/bin/www).
 $ npm uninstall jade --save
 $ npm install express-handlebars --save
 ```
-Adjust implementations in app.js after installing handlebars and layouts.hbs
+Adjust implementations in [nodeweb/app.js](nodeweb/app.js) after installing handlebars and layouts.hbs
 
 ### Setup express-validator and express-session
 
@@ -91,7 +91,7 @@ $ npm uninstall express-validator
 $ npm install express-validator@5.3.1
 $ npm install --save express-session
 ```
-Again adjust implementations in app.js.
+Again adjust implementations in [nodeweb/app.js](nodeweb/app.js).
 
 ### Make the web app
 
