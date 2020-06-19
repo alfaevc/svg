@@ -23,7 +23,7 @@ function checknull(arr) {
     return true;
   }
   for (i = 0; i < arr.length; i++) {
-    if (arr[i] == NaN) {
+    if (isNaN(arr[i])) {
       return true;
     }
   }

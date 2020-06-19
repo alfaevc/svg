@@ -16,7 +16,7 @@
     fill="#74838f"
     font-weight="700"
     >
-    a
+    ss
   </text>
   
   
@@ -31,7 +31,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    5
+    4
   </text>
   <text
     x="50"
@@ -64,7 +64,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    4
+    3
   </text>
   <text
     x="190"
@@ -97,7 +97,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    3
+    2
   </text>
   <text
     x="330"
@@ -142,7 +142,7 @@
     fill="#74838f"
     font-weight="bold"
   >
-  2
+  3
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 470 350 L 470 360" />
@@ -175,7 +175,7 @@
     fill="#74838f"
     font-weight="bold"
   >
-  3
+  4
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 610 350 L 610 360" />
@@ -208,7 +208,7 @@
     fill="#74838f"
     font-weight="bold"
   >
-  4
+  5
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 750 350 L 750 360" />
@@ -216,5 +216,5 @@
   <path stroke="#74838f" stroke-width="2" fill="none"  d="M 50 350 L 750 350" />
     
     
-  <path stroke="#8ff0a4" stroke-linejoin="round" d="M 225 236.79245283018867 L 400 180.18867924528303 L 575 123.58490566037733 L 750 50" stroke-width="2.0" fill="none" />
+  <path stroke="#8ff0a4" stroke-linejoin="round" d="M 330 200 L 470 125 L 750 50" stroke-width="2.0" fill="none" />
 </svg>
