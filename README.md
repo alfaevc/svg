@@ -74,7 +74,7 @@ If vulnernabilities present, do:
 ```
 $ npm audit fix
 ```
-You can choose your own port in [nodeweb/bin/www.js].
+You can choose your own port in [nodeweb/bin/www](nodeweb/bin/www).
 
 ### (Optional) change Jade to handlebars
 ```
