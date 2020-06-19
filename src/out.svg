@@ -16,7 +16,7 @@
     fill="#74838f"
     font-weight="700"
     >
-    SVG
+    a
   </text>
   
   
@@ -31,7 +31,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    41
+    5
   </text>
   <text
     x="50"
@@ -64,7 +64,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    33
+    4
   </text>
   <text
     x="190"
@@ -76,7 +76,7 @@
     fill="#74838f"
     font-weight="bold"
   >
-  2
+  1
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 190 350 L 190 360" />
@@ -97,7 +97,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    24
+    3
   </text>
   <text
     x="330"
@@ -109,7 +109,7 @@
     fill="#74838f"
     font-weight="bold"
   >
-  5
+  2
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 330 350 L 330 360" />
@@ -130,7 +130,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    16
+    2
   </text>
   <text
     x="470"
@@ -142,7 +142,7 @@
     fill="#74838f"
     font-weight="bold"
   >
-  7
+  2
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 470 350 L 470 360" />
@@ -163,7 +163,7 @@
     fill="#74838f"
     font-weight="bold"
     >
-    8
+    1
   </text>
   <text
     x="610"
@@ -175,7 +175,7 @@
     fill="#74838f"
     font-weight="bold"
   >
-  10
+  3
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 610 350 L 610 360" />
@@ -208,7 +208,7 @@
     fill="#74838f"
     font-weight="bold"
   >
-  12
+  4
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 750 350 L 750 360" />
@@ -216,5 +216,5 @@
   <path stroke="#74838f" stroke-width="2" fill="none"  d="M 50 350 L 750 350" />
     
     
-  <path stroke="#8ff0a4" stroke-linejoin="round" d="M 108.33333333333333 276.47058823529414 L 166.66666666666666 327.94117647058823 L 225 225 L 283.3333333333333 202.94117647058823 L 341.6666666666667 166.17647058823528 L 400 180.88235294117646 L 458.33333333333337 129.41176470588235 L 516.6666666666666 69.11764705882348 L 575 111.02941176470586 L 633.3333333333334 50 L 691.6666666666666 87.49999999999994 L 750 190.44117647058823" stroke-width="2.0" fill="none" />
+  <path stroke="#8ff0a4" stroke-linejoin="round" d="M 225 236.79245283018867 L 400 180.18867924528303 L 575 123.58490566037733 L 750 50" stroke-width="2.0" fill="none" />
 </svg>

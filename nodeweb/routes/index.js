@@ -1,6 +1,6 @@
 const { get_svg } = require('../../pkg/svg_lib.js');
 const fs = require('fs');
-var http = require('http')
+var http = require('http');
 var express = require('express');
 var router = express.Router();
 
@@ -23,14 +23,14 @@ function checknull(arr) {
     return true;
   }
   for (i = 0; i < arr.length; i++) {
-    if (arr[i] == null) {
+    if (arr[i] == NaN) {
       return true;
     }
   }
   return false;
 }
 
-/* function onRequest(req, res) {
+function onRequest(req, res) {
   res.writeHead(200, {'Content-Type': 'text/xml'});
   // res.write(out);
   fs.readFile("../../src/out.svg", null, function(error, data) {
@@ -43,22 +43,29 @@ function checknull(arr) {
       res.end();
   })
   // res.end();
-}*/ 
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'SVG', success: req.session.success, errors: req.session.errors, graph: req.session.graph});
+  req.session.errors = null;
+  // req.session.graph = null;
 });
 
 router.post('/submit', function(req, res, next) {
   var re = ",";
   var xs = req.body.xcords.split(re).map(Number);
   var ys = req.body.ycords.split(re).map(Number);
-
-  req.check("xcords", "Valid x coordinates").custom((value, { req }) => !checknull(xs));
-  req.check("ycords", "Valid y coordinates").custom((value, { req }) => !checknull(ys) && (xs.length === ys.length));
+  console.log(xs);
+  // console.log(xs[0]+xs[1]);
+  req.check("xcords", "Invalid x coordinates").notEmpty().custom(value => !checknull(xs));
+  // req.check("xcords", "Invalid x coordinates").isEmail();
+  req.check("ycords", "Invalid y coordinates").notEmpty().custom(value => !checknull(ys) && (xs.length === ys.length));
+  // console.log(2);
   req.check("svgtitle", "Title can't be empty").notEmpty();
+  // console.log(3);
   errors = req.validationErrors();
+  // console.log(4);
   // var errors = checknull(xs) || checknull(ys) || (xs.length != ys.length);
   if (errors) {
     req.session.errors = errors;
@@ -67,14 +74,20 @@ router.post('/submit', function(req, res, next) {
   } else {
     req.session.success = true;
     var out = get_svg(JSON.stringify(xs), JSON.stringify(ys), width, height, p, req.body.svgtitle);
-    fs.writeFile('../../src/out.svg', out, (err) => {
+    // var svg = out.replace("/\<\?xml(.+?)\?\>/g", "");
+
+    fs.writeFile('../src/out.svg', out, (err) => {
       if (err) throw err;
       console.log('The file has been saved!');
     });
+    out = out.replace(/\<\?xml.+\?\>/g, '');
+    console.log(out);
     req.session.graph = out;
+    // http.createServer(onRequest).listen(3000);
   }
   res.redirect('/');
 });
+
 
 // http.createServer(onRequest).listen(8080)
 
