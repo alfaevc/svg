@@ -70,7 +70,7 @@ $ cd nodeweb
 $ npm install
 ```
 
-If vulnernabilities present, do:
+If there are vulnernabilities present, do:
 ```
 $ npm audit fix
 ```
