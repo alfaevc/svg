@@ -104,5 +104,5 @@ Go to node directory and compile
 ```
 $ npm start
 ```
-Then type http://localhost:8080 in a browser (if you are using you local machine) and try typing in all kinds of inputs and check the results by submitting.
+Then type http://localhost:8080 in a browser (if you are using your local machine) and try typing in all kinds of inputs and check the results by submitting.
 
