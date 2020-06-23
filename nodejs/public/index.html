@@ -14,11 +14,11 @@
     <script>
 $(function() {
     var options = {
-      target: '#roots',
-      url: "/submit",
+      target: '#svg_img',
+      url: "/draw",
       type: "post"
     };
-    $('#submit').ajaxForm(options);
+    $('#draw').ajaxForm(options);
 });
     </script>
   </head>
@@ -27,51 +27,31 @@ $(function() {
     <div class="container">
 
       <h1>Calling a Rust function in Node.js</h1>
-      <p class="lead">Solve the Quadratic equation</p>
+      <p class="lead">Plot this!</p>
 
-      <form id="submit">
-        <div class="form-row align-items-center">
-          <div class="col-auto">
-            <div class="input-group mb-2">
-              <input type="text" class="form-control" name="xcords" placeholder="xcords">
-              <div class="input-group-append">
-                <div class="input-group-text">X^2</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-auto">
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">+</div>
-              </div>
-              <input type="text" class="form-control" name="ycords" placeholder="ycords">
-              <div class="input-group-append">
-                <div class="input-group-text">X</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-auto">
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">+</div>
-              </div>
-              <input type="text" class="form-control" name="c" placeholder="c">
-              <div class="input-group-append">
-                <div class="input-group-text">= 0</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-2">Solve</button>
-          </div>
+      <form id="draw">
+        <div class="form-group">
+          <label for="x">X</label>
+          <input type="text" class="form-control" id="x" name="x" value="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]">
+	  <small id="xHelp" class="form-text text-muted">X-values, must be a strictly incrementing array</small>
         </div>
+
+        <div class="form-group">
+          <label for="y">Y</label>
+          <input type="text" class="form-control" id="y" name="y" value="[10, 3, 17, 20, 25, 23, 30, 38.2, 32.5, 40.8, 35.7, 21.7]">
+	  <small id="yHelp" class="form-text text-muted">Y-values, must be an array of the same size as X</small>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" name="title" value="Demo">
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-2">Draw</button>
       </form>
 
       <div class="jumbotron">
-        <p class="lead">The roots are <span id="roots">not ready</span></p>
+        <p id="svg_img" class="lead">Press the Draw button above!</p>
       </div>
 
     </div> <!-- /container -->

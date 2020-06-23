@@ -79,15 +79,14 @@ router.post('/submit', function(req, res, next) {
   } else {
     req.session.success = true;
     var out = get_svg(JSON.stringify(xs), JSON.stringify(ys), width, height, p, req.body.svgtitle);
-    // var svg = out.replace("/\<\?xml(.+?)\?\>/g", "");
+    var svg = out.replace(/\<\?xml.+\?\>/g, '');
 
     fs.writeFile('../src/out.svg', out, (err) => {
       if (err) throw err;
       console.log('The file has been saved!');
     });
-    out = out.replace(/\<\?xml.+\?\>/g, '');
-    console.log(out);
-    req.session.graph = out;
+    console.log(svg);
+    req.session.graph = svg;
     // http.createServer(onRequest).listen(3000);
   }
   res.redirect('/');

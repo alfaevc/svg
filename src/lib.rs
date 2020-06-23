@@ -1,8 +1,12 @@
 use wasm_bindgen::prelude::*;
 // use std::io::prelude::*;
 //use serde::{Serialize, Deserialize};
-use serde_json;
+// use serde_json;
 use tera::{Context, Tera};
+use std::str::FromStr;
+use std::iter::Iterator;
+// use std::slice::sort_by;
+// use ndarray::{Array2};
 // use std::fs::File;
 // use std::io::Write;
 // use std::clone;
@@ -99,9 +103,31 @@ pub fn generate_graph(xs: Vec<f64>, ys: Vec<f64>, title : &str) -> Graph {
 }*/
 
 #[wasm_bindgen]
-pub fn get_svg(xstr: &str, ystr: &str, width: usize, height: usize, padding: usize, title: &str) -> String {
-  let xs: Vec<f64> = serde_json::from_str(&xstr).unwrap();
-  let ys: Vec<f64> = serde_json::from_str(&ystr).unwrap();
+pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, title: &str) -> String {
+  let data: Vec<f64> = read_data(csv_content);
+  let mut xs: Vec<f64> = Vec::new();
+  let mut ys: Vec<f64> = Vec::new();
+  let mut tuples: Vec<(f64, f64)> = Vec::new();
+
+  for i in 0..data.len() {
+    if (i % 2) == 1 {
+      tuples.push((data[i-1], data[i]));
+    }
+  }
+  // assert!(xs.len() == ys.len());
+  tuples.sort_by(|a, b| a.0.partial_cmp(&b.0).unwrap());
+
+  for i in 0..tuples.len() {
+    xs.push(tuples[i].0);
+    ys.push(tuples[i].1);
+  }
+
+
+
+  // let permutation = permutation::sort(&xs[..]);
+  // let ys = permutation.apply_slice(&ys[..]);
+  // let xs = permutation.apply_slice(&xs[..]);
+
   let mut graph = generate_graph(xs, ys, title);
   let width = width - padding * 2;
   let height = height - padding * 2;
@@ -139,4 +165,19 @@ pub fn get_svg(xstr: &str, ystr: &str, width: usize, height: usize, padding: usi
   let out = graph.draw_svg(width, height, padding, path);
   // println!("{}", out);
   return out;
+}
+
+fn read_data(csv_content: &[u8]) -> Vec<f64> {
+  let v : Vec<u8> = csv_content.to_vec();
+  println!("INPUT length is {}", v.len());
+
+  let mut data_reader = csv::Reader::from_reader(csv_content);
+  let mut data: Vec<f64> = Vec::new();
+  for record in data_reader.records() {
+      for field in record.unwrap().iter() {
+          let value = f64::from_str(field);
+          data.push(value.unwrap());
+      }
+  }
+  return data;
 }
