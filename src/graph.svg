@@ -19,8 +19,8 @@
     {{name}}
   </text>
   {% for i in range(end=(lines + 1)) %}
-  {% set offset_x = padding + loop.index0/lines * width%}
-  {% set offset_y = padding + loop.index0/lines * height%}
+  {% set offset_x = padding + loop.index0/lines * width %}
+  {% set offset_y = padding + loop.index0/lines * height %}
   <text
     x="{{padding - 5}}"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
@@ -31,19 +31,19 @@
     fill="#74838f"
     font-weight="bold"
     >
-    {{((lines - loop.index0)/lines * max_y) | round}}
+    {{(lines - loop.index0)/lines * max_y }}
   </text>
   <text
     x="{{offset_x}}"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
     y="{{height + padding + 10}}"
     dominant-baseline="hanging"
-    text-anchor="end"
+    text-anchor="middle"
     font-size="12"
     fill="#74838f"
     font-weight="bold"
   >
-  {{loop.index0/lines * max_x | round}}
+  {{loop.index0/lines * max_x }}
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M {{offset_x}} {{height + padding}} L {{offset_x}} {{height + padding + 10}}" />
