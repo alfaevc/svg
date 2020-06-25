@@ -59,10 +59,17 @@
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M {{padding}} {{offset_y}} L {{width + padding}} {{offset_y}}" />
   
   {% else %}
+  
   <path stroke="#74838f" stroke-width="2" fill="none"  d="M {{padding}} {{offset_y}} L {{width + padding}} {{offset_y}}" />
+
   {% endif %}  
   {% endfor %}
 
-
-  <path stroke="{{colour}}" d="{{path}}" stroke-width="2.0" fill="none" />
+  {% for point in path %}
+  {% set x = point.0 %}
+  {% set y = point.1 %}
+  <g stroke="{{colour}}" stroke-width="2" fill="{{colour}}">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+  {% endfor %}
 </svg>
