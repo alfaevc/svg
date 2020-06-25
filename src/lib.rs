@@ -179,7 +179,6 @@ pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, 
   return out;
 }
 
-
 fn read_data(csv_content: &[u8]) -> Vec<f64> {
   let v : Vec<u8> = csv_content.to_vec();
   println!("INPUT length is {}", v.len());
