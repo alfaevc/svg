@@ -52,6 +52,7 @@
 
   <path stroke="#74838f" stroke-width="2.0" d="M 50 350 L 50 360" />
   
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 50 L 50 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 50 L 750 50" />
   
     
@@ -89,6 +90,7 @@
 
   <path stroke="#74838f" stroke-width="2.0" d="M 120 350 L 120 360" />
   
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 120 50 L 120 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 80 L 750 80" />
   
     
@@ -126,6 +128,7 @@
 
   <path stroke="#74838f" stroke-width="2.0" d="M 190 350 L 190 360" />
   
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 190 50 L 190 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 110 L 750 110" />
   
     
@@ -163,6 +166,7 @@
 
   <path stroke="#74838f" stroke-width="2.0" d="M 260 350 L 260 360" />
   
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 260 50 L 260 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 140 L 750 140" />
   
     
@@ -200,6 +204,7 @@
 
   <path stroke="#74838f" stroke-width="2.0" d="M 330 350 L 330 360" />
   
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 330 50 L 330 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 170 L 750 170" />
   
     
@@ -237,7 +242,7 @@
 
   <path stroke="#74838f" stroke-width="2.0" d="M 400 350 L 400 360" />
   
-  
+  <path stroke="#74838f" stroke-width="2" fill="none"  d="M 400 50 L 400 350" />
   <path stroke="#74838f" stroke-width="2" fill="none"  d="M 50 200 L 750 200" />
 
     
@@ -275,6 +280,7 @@
 
   <path stroke="#74838f" stroke-width="2.0" d="M 470 350 L 470 360" />
   
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 470 50 L 470 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 230 L 750 230" />
   
     
@@ -312,6 +318,7 @@
 
   <path stroke="#74838f" stroke-width="2.0" d="M 540 350 L 540 360" />
   
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 540 50 L 540 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 260 L 750 260" />
   
     
@@ -349,6 +356,7 @@
 
   <path stroke="#74838f" stroke-width="2.0" d="M 610 350 L 610 360" />
   
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 610 50 L 610 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 290 L 750 290" />
   
     
@@ -386,6 +394,7 @@
 
   <path stroke="#74838f" stroke-width="2.0" d="M 680 350 L 680 360" />
   
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 680 50 L 680 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 320 L 750 320" />
   
     
@@ -423,6 +432,7 @@
 
   <path stroke="#74838f" stroke-width="2.0" d="M 750 350 L 750 360" />
   
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 750 50 L 750 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 350 L 750 350" />
   
     

@@ -56,10 +56,11 @@
 
   <path stroke="#74838f" stroke-width="2.0" d="M {{offset_x}} {{height + padding}} L {{offset_x}} {{height + padding + 10}}" />
   {% if loop.index0 != lines %}
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M {{offset_x}} {{padding}} L {{offset_x}} {{height + padding}}" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M {{padding}} {{offset_y}} L {{width + padding}} {{offset_y}}" />
   
   {% else %}
-  
+  <path stroke="#74838f" stroke-width="2" fill="none"  d="M {{offset_x}} {{padding}} L {{offset_x}} {{height + padding}}" />
   <path stroke="#74838f" stroke-width="2" fill="none"  d="M {{padding}} {{offset_y}} L {{width + padding}} {{offset_y}}" />
 
   {% endif %}  
