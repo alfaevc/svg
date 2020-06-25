@@ -158,15 +158,15 @@ pub fn get_svg(csv_content: &[u8], center_json: &str, width: usize, height: usiz
   let y_min_bound = graph.points.iter().map(|point| point.y).fold(0. / 0., f64::min);
 
   if x_max_bound < -x_min_bound {
-    graph.max_x = -x_min_bound;
+    graph.max_x = (-x_min_bound+1.0).round();
   } else {
-    graph.max_x = x_max_bound;
+    graph.max_x = (x_max_bound+1.0).round();
   }
 
   if y_max_bound < -y_min_bound {
-    graph.max_y = -y_min_bound;
+    graph.max_y = (-y_min_bound+1.0).round();
   } else {
-    graph.max_y = y_max_bound;
+    graph.max_y = (y_max_bound+1.0).round();
   }
    
   
