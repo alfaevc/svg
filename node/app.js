@@ -9,8 +9,9 @@ var height = 400;
 var p = 50;
 var title = "SVG";
 
+var centers = [3.44, 0.24, 3.04, 2.05, 2.71, 1.31];
 var iris_csv = fs.readFileSync("node/iris.data.csv");
-var out = get_svg(iris_csv, width, height, p, title)
+var out = get_svg(iris_csv, JSON.stringify(centers), width, height, p, title)
 
 fs.writeFile('src/out.svg', out, (err) => {
     if (err) throw err;

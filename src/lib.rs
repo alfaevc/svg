@@ -1,10 +1,12 @@
 use wasm_bindgen::prelude::*;
 // use std::io::prelude::*;
 //use serde::{Serialize, Deserialize};
-// use serde_json;
+use serde_json;
+
 use tera::{Context, Tera};
 use std::str::FromStr;
 use std::iter::Iterator;
+
 // use std::slice::sort_by;
 // use ndarray::{Array2};
 // use std::fs::File;
@@ -45,7 +47,7 @@ impl Graph {
       self.points.push(Point { x, y });
   }
 
-  pub fn draw_svg(&self, width: usize, height: usize, padding: usize, path: Vec<Point>) -> String {
+  pub fn draw_svg(&self, width: usize, height: usize, padding: usize, path: Vec<Point>, centers: Vec<(f64, f64)>) -> String {
 
     let mut context = Context::new();
     
@@ -80,6 +82,7 @@ impl Graph {
     context.insert("height", &height);
     context.insert("padding", &padding);
     context.insert("path", &p);
+    context.insert("centers", &centers);
     context.insert("max_x", &self.max_x);
     context.insert("max_y", &self.max_y);
     context.insert("colour", &self.colour);
@@ -108,11 +111,20 @@ pub fn generate_graph(xs: Vec<f64>, ys: Vec<f64>, title : &str) -> Graph {
 }*/
 
 #[wasm_bindgen]
-pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, title: &str) -> String {
+pub fn get_svg(csv_content: &[u8], center_json: &str, width: usize, height: usize, padding: usize, title: &str) -> String {
   let data: Vec<f64> = read_data(csv_content);
   let mut xs: Vec<f64> = Vec::new();
   let mut ys: Vec<f64> = Vec::new();
   let mut tuples: Vec<(f64, f64)> = Vec::new();
+  let mut centers: Vec<(f64, f64)> = Vec::new();
+
+  let center_arr: Vec<f64> = serde_json::from_str(&center_json).unwrap();
+
+  for i in 0..center_arr.len() {
+    if (i % 2) == 1 {
+      centers.push((center_arr[i-1], center_arr[i]));
+    } 
+  }
 
   for i in 0..data.len() {
     if (i % 2) == 1 {
@@ -120,7 +132,7 @@ pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, 
     }
   }
   // assert!(xs.len() == ys.len());
-  tuples.sort_by(|a, b| a.0.partial_cmp(&b.0).unwrap());
+  // tuples.sort_by(|a, b| a.0.partial_cmp(&b.0).unwrap());
 
   for i in 0..tuples.len() {
     xs.push(tuples[i].0);
@@ -160,6 +172,11 @@ pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, 
   
   //let min_y = graph.points.iter().map(|val| val.y).fold(0. / 0., f64::min);
 
+  let centers = centers
+                  .iter()
+                  .map(|val| (((val.0+graph.max_x) / (2.0*graph.max_x) * width as f64) + padding as f64, 
+                       (val.1+graph.max_y) / (2.0*graph.max_y) * (height as f64 * -1.0) + (padding + height) as f64)).collect();
+
   let path = graph
               .points
               .iter()
@@ -179,7 +196,7 @@ pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, 
             //  })
             //  .collect::<Vec<String>>().join(" ");
 
-  let out = graph.draw_svg(width, height, padding, path);
+  let out = graph.draw_svg(width, height, padding, path, centers);
   // println!("{}", out);
   return out;
 }
