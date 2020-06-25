@@ -52,7 +52,7 @@ The [Cargo.toml](Cargo.toml) file shows the dependencies.
 
 ## Write Rust code
 
-The [src/lib.rs](src/lib.rs) file contains Rust functions to read the attributes and hyperparameters of the graph and the json array of x coordinates and the json array of y coordinates from the Node.js, and return a string of a xml file of the svg graph where the adjacent data points are connected by a linear line. The string is written to a new svg file given the svg template [src/graph.svg].
+The [src/lib.rs](src/lib.rs) file contains Rust functions to read the attributes and hyperparameters of the graph and the json array of x coordinates and the json array of y coordinates from the Node.js, and return a string of a xml file of the svg graph where the adjacent data points are connected by a linear line. The string is written to a new svg file [src/out.svg](src/out.svg) given the svg template [src/graph.svg](src/graph.svg).
 
 ## Build the WASM bytecode
 
@@ -64,17 +64,24 @@ $ ssvmup build
 
 ### setup express
 ```
-$ npm install -g express-generator
+$ sudo npm install -g express-generator
 $ express nodeweb
+$ cd nodeweb
 $ npm install
 ```
+
+If there are vulnernabilities present, do:
+```
+$ npm audit fix
+```
+You can choose your own port in [nodeweb/bin/www](nodeweb/bin/www).
 
 ### (Optional) change Jade to handlebars
 ```
 $ npm uninstall jade --save
 $ npm install express-handlebars --save
 ```
-Adjust implementations in app.js after installing handlebars and layouts.hbs
+Adjust implementations in [nodeweb/app.js](nodeweb/app.js) after installing handlebars and layouts.hbs
 
 ### Setup express-validator and express-session
 
@@ -84,11 +91,11 @@ $ npm uninstall express-validator
 $ npm install express-validator@5.3.1
 $ npm install --save express-session
 ```
-Again adjust implementations in app.js.
+Again adjust implementations in [nodeweb/app.js](nodeweb/app.js).
 
 ### Make the web app
 
-The [nodeweb/routes/index.js](nodeweb/routes/index.js) app shows how to call the Rust functions from JavaScript, and together with the hbs files in [nodeweb/views], it's meant to take 3 inputs on the web server, which are x coordinates, y coordinates and title of the graph respectively by clicking the submit button, it's expected to redirect to a page that demonstrates the resultant svg graph.
+The [nodeweb/routes/index.js](nodeweb/routes/index.js) app shows how to call the Rust functions from JavaScript, and together with the hbs files in [nodeweb/views](nodeweb/views), it's meant to take 3 inputs on the web server, which are x coordinates, y coordinates and title of the graph respectively by clicking the submit button, it's expected to redirect to a page that demonstrates the resultant svg graph if the inputs are valid, otherwise it would show error message on the server instead. The [nodeweb/views](nodeweb/views) folder contains all required handlebars codes to format the web server.
 
 
 ## Test
@@ -97,5 +104,5 @@ Go to node directory and compile
 ```
 $ npm start
 ```
-
+Then type http://localhost:8080 in a browser (if you are using your local machine) and try typing in all kinds of inputs and check the results by submitting.
 

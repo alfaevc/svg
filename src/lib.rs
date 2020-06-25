@@ -129,28 +129,40 @@ pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, 
   // let xs = permutation.apply_slice(&xs[..]);
 
   let mut graph = generate_graph(xs, ys, title);
+
+
+
   let width = width - padding * 2;
   let height = height - padding * 2;
   //let min_x = graph.points.get(0).map(|val| val.x).unwrap_or(0.0);
-  graph.max_x = graph
-    .points
-    .iter()
-    .map(|point| point.x)
-    .fold(0. / 0., f64::max);
+  let x_max_bound = graph.points.iter().map(|point| point.x).fold(0. / 0., f64::max);
+  let x_min_bound = graph.points.iter().map(|point| point.x).fold(0. / 0., f64::min);
+  let y_max_bound = graph.points.iter().map(|point| point.y).fold(0. / 0., f64::max);
+  let y_min_bound = graph.points.iter().map(|point| point.y).fold(0. / 0., f64::min);
+
+  if x_max_bound < -x_min_bound {
+    graph.max_x = -x_min_bound;
+  } else {
+    graph.max_x = x_max_bound;
+  }
+
+  if y_max_bound < -y_min_bound {
+    graph.max_y = -y_min_bound;
+  } else {
+    graph.max_y = y_max_bound;
+  }
+   
   
   //let min_y = graph.points.iter().map(|val| val.y).fold(0. / 0., f64::min);
-  graph.max_y = graph
-    .points
-    .iter()
-    .map(|point| point.y)
-    .fold(0. / 0., f64::max);
 
   let path = graph
               .points
               .iter()
               .map(|val| Point {
-                  x: (val.x / graph.max_x * width as f64) + padding as f64,
-                  y: (val.y / graph.max_y * (height as f64 * -1.0)) + (padding + height) as f64,
+                  //x: (val.x / graph.max_x * width as f64) + padding as f64,
+                  //y: (val.y / graph.max_y * (height as f64 * -1.0)) + (padding + height) as f64,
+                  x: ((val.x+graph.max_x) / (2.0*graph.max_x) * width as f64) + padding as f64,
+                  y: ((val.y+graph.max_y) / (2.0*graph.max_y) * (height as f64 * -1.0)) + (padding + height) as f64,
               })
               .enumerate()
               .map(|(i, point)| {
@@ -166,6 +178,7 @@ pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, 
   // println!("{}", out);
   return out;
 }
+
 
 fn read_data(csv_content: &[u8]) -> Vec<f64> {
   let v : Vec<u8> = csv_content.to_vec();

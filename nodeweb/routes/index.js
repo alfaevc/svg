@@ -85,8 +85,14 @@ router.post('/submit', function(req, res, next) {
       if (err) throw err;
       console.log('The file has been saved!');
     });
+<<<<<<< HEAD
     console.log(svg);
     req.session.graph = svg;
+=======
+    svg = out.replace(/\<\?xml.+\?\>/g, '');
+    console.log(svg);
+    req.session.graph = out;
+>>>>>>> 306b6865563bf37ee5e20d57a990cd9e4309bbeb
     // http.createServer(onRequest).listen(3000);
   }
   res.redirect('/');

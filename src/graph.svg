@@ -18,9 +18,9 @@
     >
     {{name}}
   </text>
-  {% for i in range(end=(lines + 1)) %}
-  {% set offset_x = padding + loop.index0/lines * width %}
-  {% set offset_y = padding + loop.index0/lines * height %}
+  {% for i in range(end=(2*lines + 1)) %}
+  {% set offset_x = padding + loop.index0/lines/2 * width %}
+  {% set offset_y = padding + loop.index0/lines/2 * height %}
   <text
     x="{{padding - 5}}"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
@@ -31,7 +31,11 @@
     fill="#74838f"
     font-weight="bold"
     >
-    {{(lines - loop.index0)/lines * max_y }}
+    {% if loop.index0 > lines %}
+    {{ (lines - loop.index0)/lines * max_y | round(method="ceil", precision=2) }}
+    {% else %}
+    {{ (lines - loop.index0)/lines * max_y | round(method="floor", precision=2) }}
+    {% endif %} 
   </text>
   <text
     x="{{offset_x}}"
@@ -43,16 +47,22 @@
     fill="#74838f"
     font-weight="bold"
   >
-  {{loop.index0/lines * max_x }}
+  {% if loop.index0 > lines %}
+  {{ (loop.index0-lines)/lines * max_x | round(method="ceil", precision=2) }}
+  {% else %}
+  {{ (loop.index0-lines)/lines * max_x | round(method="floor", precision=2) }}
+  {% endif %} 
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M {{offset_x}} {{height + padding}} L {{offset_x}} {{height + padding + 10}}" />
-  {% if loop.last == false %}
+  {% if loop.index0 != lines %}
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M {{padding}} {{offset_y}} L {{width + padding}} {{offset_y}}" />
   
   {% else %}
   <path stroke="#74838f" stroke-width="2" fill="none"  d="M {{padding}} {{offset_y}} L {{width + padding}} {{offset_y}}" />
   {% endif %}  
-  {% endfor %}  
-  <path stroke="{{colour}}" stroke-linejoin="round" d="{{path}}" stroke-width="2.0" fill="none" />
+  {% endfor %}
+
+
+  <path stroke="{{colour}}" d="{{path}}" stroke-width="2.0" fill="none" />
 </svg>
