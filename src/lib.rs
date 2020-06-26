@@ -21,8 +21,10 @@ pub struct Graph {
     pub size: usize,
     pub points: Vec<Point>,
     pub colour: String,
-    pub max_x: f64,
-    pub max_y: f64
+    pub x_range: f64,
+    pub y_range: f64,
+    pub x_min: f64,
+    pub y_min: f64,
 }
 
 #[derive(Clone, Debug, Copy)]
@@ -38,8 +40,10 @@ impl Graph {
           size: 0,
           points: Vec::new(),
           colour,
-          max_x : 0.,
-          max_y : 0.,
+          x_range : 0.,
+          y_range : 0.,
+          x_min : 0.,
+          y_min : 0.,
       }
   }
 
@@ -83,10 +87,12 @@ impl Graph {
     context.insert("padding", &padding);
     context.insert("path", &p);
     context.insert("centers", &centers);
-    context.insert("max_x", &self.max_x);
-    context.insert("max_y", &self.max_y);
+    context.insert("x_range", &self.x_range);
+    context.insert("y_range", &self.y_range);
+    context.insert("x_min", &self.x_min);
+    context.insert("y_min", &self.y_min);
     context.insert("colour", &self.colour);
-    context.insert("lines", &5);
+    context.insert("lines", &10);
   
     Tera::one_off(include_str!("graph.svg"), &context, true).expect("Could not draw graph")
     
@@ -152,30 +158,26 @@ pub fn get_svg(csv_content: &[u8], center_json: &str, width: usize, height: usiz
   let width = width - padding * 2;
   let height = height - padding * 2;
   //let min_x = graph.points.get(0).map(|val| val.x).unwrap_or(0.0);
-  let x_max_bound = graph.points.iter().map(|point| point.x).fold(0. / 0., f64::max);
-  let x_min_bound = graph.points.iter().map(|point| point.x).fold(0. / 0., f64::min);
-  let y_max_bound = graph.points.iter().map(|point| point.y).fold(0. / 0., f64::max);
-  let y_min_bound = graph.points.iter().map(|point| point.y).fold(0. / 0., f64::min);
+  let x_max = graph.points.iter().map(|point| point.x).fold(0. / 0., f64::max);
+  let x_min = graph.points.iter().map(|point| point.x).fold(0. / 0., f64::min);
+  let y_max = graph.points.iter().map(|point| point.y).fold(0. / 0., f64::max);
+  let y_min = graph.points.iter().map(|point| point.y).fold(0. / 0., f64::min);
 
-  if x_max_bound < -x_min_bound {
-    graph.max_x = (-x_min_bound+1.0).round();
-  } else {
-    graph.max_x = (x_max_bound+1.0).round();
-  }
+  graph.x_min = (x_min-1.0).round();
+  graph.y_min = (y_min-1.0).round();
 
-  if y_max_bound < -y_min_bound {
-    graph.max_y = (-y_min_bound+1.0).round();
-  } else {
-    graph.max_y = (y_max_bound+1.0).round();
-  }
+  graph.x_range = (x_max+1.0).round() - graph.x_min;
+  graph.y_range = (y_max+1.0).round() - graph.y_min;
+
+
    
   
   //let min_y = graph.points.iter().map(|val| val.y).fold(0. / 0., f64::min);
 
   let centers = centers
                   .iter()
-                  .map(|val| (((val.0+graph.max_x) / (2.0*graph.max_x) * width as f64) + padding as f64, 
-                       (val.1+graph.max_y) / (2.0*graph.max_y) * (height as f64 * -1.0) + (padding + height) as f64)).collect();
+                  .map(|val| ((val.0-graph.x_min) / graph.x_range * width as f64 + padding as f64, 
+                       (val.1-graph.y_min) / graph.y_range * (height as f64 * -1.0) + (padding + height) as f64)).collect();
 
   let path = graph
               .points
@@ -183,8 +185,8 @@ pub fn get_svg(csv_content: &[u8], center_json: &str, width: usize, height: usiz
               .map(|val| Point {
                   //x: (val.x / graph.max_x * width as f64) + padding as f64,
                   //y: (val.y / graph.max_y * (height as f64 * -1.0)) + (padding + height) as f64,
-                  x: ((val.x+graph.max_x) / (2.0*graph.max_x) * width as f64) + padding as f64,
-                  y: ((val.y+graph.max_y) / (2.0*graph.max_y) * (height as f64 * -1.0)) + (padding + height) as f64,
+                  x: ((val.x-graph.x_min) / graph.x_range * width as f64) + padding as f64,
+                  y: ((val.y-graph.y_min) / graph.y_range * (height as f64 * -1.0)) + (padding + height) as f64,
               }).collect();
             //  .enumerate()
             //  .map(|(i, point)| {
