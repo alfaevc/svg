@@ -8,8 +8,10 @@ var width = 800;
 var height = 400;
 var p = 50;
 var title = "SVG";
-// var model = "K-Means Clustering";
-var model = "Linear Regression";
+// var model = "Linear Regression";
+// var model = "Logistic Regression";
+var model = "K-Means Clustering";
+// var model = "Naive Bayes Classifiers";
 
 // var centers = [3.44, 0.24, 3.04, 2.05, 2.71, 1.31];
 var iris_csv = fs.readFileSync("nodealgo/iris.data.csv");

@@ -48,11 +48,15 @@
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 50 350 L 50 360" />
-  
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 50 L 50 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 50 L 750 50" />
   
     
+
+  
+  <path stroke="#74838f" stroke-width="2" fill="none"  d="M 50 50 L 50 350" />
+   
+
   
   
   
@@ -83,11 +87,13 @@
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 120 350 L 120 360" />
-  
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 120 50 L 120 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 80 L 750 80" />
   
     
+
+   
+
   
   
   
@@ -118,11 +124,13 @@
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 190 350 L 190 360" />
-  
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 190 50 L 190 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 110 L 750 110" />
   
     
+
+   
+
   
   
   
@@ -153,11 +161,13 @@
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 260 350 L 260 360" />
-  
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 260 50 L 260 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 140 L 750 140" />
   
     
+
+   
+
   
   
   
@@ -188,11 +198,13 @@
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 330 350 L 330 360" />
-  
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 330 50 L 330 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 170 L 750 170" />
   
     
+
+   
+
   
   
   
@@ -223,11 +235,13 @@
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 400 350 L 400 360" />
-  
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 400 50 L 400 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 200 L 750 200" />
   
     
+
+   
+
   
   
   
@@ -258,11 +272,13 @@
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 470 350 L 470 360" />
-  
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 470 50 L 470 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 230 L 750 230" />
   
     
+
+   
+
   
   
   
@@ -293,11 +309,13 @@
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 540 350 L 540 360" />
-  
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 540 50 L 540 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 260 L 750 260" />
   
     
+
+   
+
   
   
   
@@ -328,11 +346,13 @@
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 610 350 L 610 360" />
-  
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 610 50 L 610 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 290 L 750 290" />
   
     
+
+   
+
   
   
   
@@ -363,11 +383,13 @@
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 680 350 L 680 360" />
-  
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 680 50 L 680 350" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 320 L 750 320" />
   
     
+
+   
+
   
   
   
@@ -398,13 +420,22 @@
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M 750 350 L 750 360" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 750 50 L 750 350" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 350 L 750 350" />
   
-  <path stroke="#74838f" stroke-width="2" fill="none"  d="M 750 50 L 750 350" />
+  
   <path stroke="#74838f" stroke-width="2" fill="none"  d="M 50 350 L 750 350" />
-
     
+
+   
+
   
 
+
+  
+  
+  
+  
   
   
   
@@ -414,9 +445,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="435.00000000000006" cy="278" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -426,15 +465,27 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="505" cy="278" r="2" />
   </g>
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="557.5" cy="266" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -444,9 +495,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="470" cy="278" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -456,9 +515,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="417.5" cy="284" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -468,21 +535,37 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="470" cy="278" r="2" />
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="284" r="2" />
-  </g>
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="400" cy="284" r="2" />
   </g>
+  
+  
+  
+  
+  
+  
+  
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="284" r="2" />
+  </g>
+  
+  
+  
+  
   
   
   
@@ -492,9 +575,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="645.0000000000001" cy="266" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -504,27 +595,47 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="487.5" cy="272" r="2" />
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="540" cy="272" r="2" />
-  </g>
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="540" cy="272" r="2" />
   </g>
+  
+  
+  
+  
+  
+  
+  
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="540" cy="272" r="2" />
+  </g>
+  
+  
+  
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="470" cy="278" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -534,9 +645,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="505" cy="278" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -546,9 +665,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="470" cy="278" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -558,9 +685,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="470" cy="266" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -570,15 +705,27 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="470" cy="278" r="2" />
   </g>
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="435.00000000000006" cy="278" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -588,9 +735,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="470" cy="266" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -600,9 +755,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="610" cy="278" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -612,9 +775,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="435.00000000000006" cy="278" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -624,9 +795,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="417.5" cy="284" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -636,9 +815,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="470" cy="278" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -648,15 +835,27 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="277.5" cy="272" r="2" />
   </g>
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="435.00000000000006" cy="278" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -666,9 +865,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="540" cy="266" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -678,9 +885,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="540" cy="278" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -690,9 +905,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="522.5" cy="278" r="2" />
   </g>
+  
+  
+  
+  
   
   
   
@@ -702,45 +925,77 @@
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="435.00000000000006" cy="206" r="2" />
-  </g>
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="435.00000000000006" cy="200" r="2" />
+    <polygon points="434.00000000000006, 207 436.00000000000006, 207, 435.00000000000006, 205"/>
   </g>
+  
+  
+  
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="417.5" cy="200" r="2" />
+    <polygon points="434.00000000000006, 201 436.00000000000006, 201, 435.00000000000006, 199"/>
   </g>
+  
+  
+  
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="277.5" cy="212" r="2" />
+    <polygon points="416.5, 201 418.5, 201, 417.5, 199"/>
   </g>
+  
+  
+  
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="200" r="2" />
+    <polygon points="276.5, 213 278.5, 213, 277.5, 211"/>
   </g>
+  
+  
+  
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="212" r="2" />
+    <polygon points="363.99999999999994, 201 365.99999999999994, 201, 364.99999999999994, 199"/>
   </g>
+  
+  
+  
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="452.49999999999994" cy="194" r="2" />
+    <polygon points="363.99999999999994, 213 365.99999999999994, 213, 364.99999999999994, 211"/>
   </g>
+  
+  
+  
+  
+  
+  
+  
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <polygon points="451.49999999999994, 195 453.49999999999994, 195, 452.49999999999994, 193"/>
+  </g>
+  
+  
+  
+  
   
   
   
@@ -750,15 +1005,27 @@
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="382.5" cy="212" r="2" />
-  </g>
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="347.50000000000006" cy="206" r="2" />
+    <polygon points="381.5, 213 383.5, 213, 382.5, 211"/>
   </g>
+  
+  
+  
+  
+  
+  
+  
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <polygon points="346.50000000000006, 207 348.50000000000006, 207, 347.50000000000006, 205"/>
+  </g>
+  
+  
+  
+  
   
   
   
@@ -768,9 +1035,17 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="200" r="2" />
+    <polygon points="399, 201 401, 201, 400, 199"/>
   </g>
+  
+  
+  
+  
   
   
   
@@ -780,27 +1055,47 @@
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="382.5" cy="206" r="2" />
-  </g>
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="382.5" cy="212" r="2" />
+    <polygon points="381.5, 207 383.5, 207, 382.5, 205"/>
   </g>
+  
+  
+  
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="417.5" cy="206" r="2" />
+    <polygon points="381.5, 213 383.5, 213, 382.5, 211"/>
   </g>
+  
+  
+  
+  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="200" r="2" />
+    <polygon points="416.5, 207 418.5, 207, 417.5, 205"/>
   </g>
+  
+  
+  
+  
+  
+  
+  
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <polygon points="399, 201 401, 201, 400, 199"/>
+  </g>
+  
+  
+  
+  
   
   
   
@@ -810,503 +1105,825 @@
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="260" cy="200" r="2" />
+    <polygon points="259, 201 261, 201, 260, 199"/>
   </g>
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="312.5" cy="224" r="2" />
+    <polygon points="311.5, 225 313.5, 225, 312.5, 223"/>
   </g>
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="435.00000000000006" cy="182.00000000000003" r="2" />
+    <polygon points="434.00000000000006, 183.00000000000003 436.00000000000006, 183.00000000000003, 435.00000000000006, 181.00000000000003"/>
   </g>
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="212" r="2" />
+    <polygon points="363.99999999999994, 213 365.99999999999994, 213, 364.99999999999994, 211"/>
   </g>
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="312.5" cy="200" r="2" />
+    <polygon points="311.5, 201 313.5, 201, 312.5, 199"/>
   </g>
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="217.99999999999997" r="2" />
+    <polygon points="363.99999999999994, 218.99999999999997 365.99999999999994, 218.99999999999997, 364.99999999999994, 216.99999999999997"/>
   </g>
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="382.5" cy="212" r="2" />
+    <polygon points="381.5, 213 383.5, 213, 382.5, 211"/>
   </g>
   
   
   
+  
+  
+  
+  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="206" r="2" />
+    <polygon points="399, 207 401, 207, 400, 205"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="206" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="363.99999999999994, 207 365.99999999999994, 207, 364.99999999999994, 205"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="188" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 189 401, 189, 400, 187"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="382.5" cy="200" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="381.5, 201 383.5, 201, 382.5, 199"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="330" cy="230" r="2" />
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="295" cy="224" r="2" />
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="295" cy="230" r="2" />
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="347.50000000000006" cy="217.99999999999997" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="346.50000000000006, 218.99999999999997 348.50000000000006, 218.99999999999997, 347.50000000000006, 216.99999999999997"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="347.50000000000006" cy="194" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="346.50000000000006, 195 348.50000000000006, 195, 347.50000000000006, 193"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="200" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 201 401, 201, 400, 199"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="470" cy="194" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="469, 195 471, 195, 470, 193"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="417.5" cy="200" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="416.5, 201 418.5, 201, 417.5, 199"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="277.5" cy="212" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="276.5, 213 278.5, 213, 277.5, 211"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="212" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 213 401, 213, 400, 211"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="312.5" cy="212" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="311.5, 213 313.5, 213, 312.5, 211"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="330" cy="217.99999999999997" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="329, 218.99999999999997 331, 218.99999999999997, 330, 216.99999999999997"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="206" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 207 401, 207, 400, 205"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="330" cy="217.99999999999997" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="329, 218.99999999999997 331, 218.99999999999997, 330, 216.99999999999997"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="277.5" cy="230" r="2" />
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="347.50000000000006" cy="212" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="346.50000000000006, 213 348.50000000000006, 213, 347.50000000000006, 211"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="217.99999999999997" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 218.99999999999997 401, 218.99999999999997, 400, 216.99999999999997"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="382.5" cy="212" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="381.5, 213 383.5, 213, 382.5, 211"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="382.5" cy="212" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="381.5, 213 383.5, 213, 382.5, 211"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="312.5" cy="224" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="311.5, 225 313.5, 225, 312.5, 223"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="212" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="363.99999999999994, 213 365.99999999999994, 213, 364.99999999999994, 211"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="452.49999999999994" cy="140" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="451.49999999999994, 141 453.49999999999994, 141, 452.49999999999994, 139"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="347.50000000000006" cy="176" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="346.50000000000006, 177 348.50000000000006, 177, 347.50000000000006, 175"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="164" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 165 401, 165, 400, 163"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="382.5" cy="182.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="381.5, 183.00000000000003 383.5, 183.00000000000003, 382.5, 181.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="158" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 159 401, 159, 400, 157"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="164" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 165 401, 165, 400, 163"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="312.5" cy="188" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="311.5, 189 313.5, 189, 312.5, 187"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="382.5" cy="182.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="381.5, 183.00000000000003 383.5, 183.00000000000003, 382.5, 181.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="312.5" cy="182.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="311.5, 183.00000000000003 313.5, 183.00000000000003, 312.5, 181.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="505" cy="140" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="504, 141 506, 141, 505, 139"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="435.00000000000006" cy="170" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="434.00000000000006, 171 436.00000000000006, 171, 435.00000000000006, 169"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="347.50000000000006" cy="176" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="346.50000000000006, 177 348.50000000000006, 177, 347.50000000000006, 175"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="164" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 165 401, 165, 400, 163"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="312.5" cy="170" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="311.5, 171 313.5, 171, 312.5, 169"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="146.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="363.99999999999994, 147.00000000000003 365.99999999999994, 147.00000000000003, 364.99999999999994, 145.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="435.00000000000006" cy="152.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="434.00000000000006, 153.00000000000003 436.00000000000006, 153.00000000000003, 435.00000000000006, 151.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="182.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 183.00000000000003 401, 183.00000000000003, 400, 181.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="540" cy="158" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="539, 159 541, 159, 540, 157"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="330" cy="152.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="329, 153.00000000000003 331, 153.00000000000003, 330, 151.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="260" cy="200" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="259, 201 261, 201, 260, 199"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="435.00000000000006" cy="152.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="434.00000000000006, 153.00000000000003 436.00000000000006, 153.00000000000003, 435.00000000000006, 151.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="170" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="363.99999999999994, 171 365.99999999999994, 171, 364.99999999999994, 169"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="170" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="363.99999999999994, 171 365.99999999999994, 171, 364.99999999999994, 169"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="347.50000000000006" cy="182.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="346.50000000000006, 183.00000000000003 348.50000000000006, 183.00000000000003, 347.50000000000006, 181.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="452.49999999999994" cy="164" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="451.49999999999994, 165 453.49999999999994, 165, 452.49999999999994, 163"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="435.00000000000006" cy="182.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="434.00000000000006, 183.00000000000003 436.00000000000006, 183.00000000000003, 435.00000000000006, 181.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="182.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="363.99999999999994, 183.00000000000003 365.99999999999994, 183.00000000000003, 364.99999999999994, 181.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="182.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 183.00000000000003 401, 183.00000000000003, 400, 181.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="164" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="363.99999999999994, 165 365.99999999999994, 165, 364.99999999999994, 163"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="194" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 195 401, 195, 400, 193"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="176" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="363.99999999999994, 177 365.99999999999994, 177, 364.99999999999994, 175"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="540" cy="170" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="539, 171 541, 171, 540, 169"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="158" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="363.99999999999994, 159 365.99999999999994, 159, 364.99999999999994, 157"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="364.99999999999994" cy="200" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="363.99999999999994, 201 365.99999999999994, 201, 364.99999999999994, 199"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="330" cy="206" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="329, 207 331, 207, 330, 205"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="152.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 153.00000000000003 401, 153.00000000000003, 400, 151.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="470" cy="146.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="469, 147.00000000000003 471, 147.00000000000003, 470, 145.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="417.5" cy="182.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="416.5, 183.00000000000003 418.5, 183.00000000000003, 417.5, 181.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="182.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 183.00000000000003 401, 183.00000000000003, 400, 181.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="417.5" cy="164" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="416.5, 165 418.5, 165, 417.5, 163"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="417.5" cy="146.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="416.5, 147.00000000000003 418.5, 147.00000000000003, 417.5, 145.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="417.5" cy="152.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="416.5, 153.00000000000003 418.5, 153.00000000000003, 417.5, 151.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="347.50000000000006" cy="176" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="346.50000000000006, 177 348.50000000000006, 177, 347.50000000000006, 175"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="435.00000000000006" cy="152.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="434.00000000000006, 153.00000000000003 436.00000000000006, 153.00000000000003, 435.00000000000006, 151.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="452.49999999999994" cy="140" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="451.49999999999994, 141 453.49999999999994, 141, 452.49999999999994, 139"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="152.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 153.00000000000003 401, 153.00000000000003, 400, 151.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="312.5" cy="176" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="311.5, 177 313.5, 177, 312.5, 175"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="170" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 171 401, 171, 400, 169"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="470" cy="152.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="469, 153.00000000000003 471, 153.00000000000003, 470, 151.00000000000003"/>
   </g>
   
   
   
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="182.00000000000003" r="2" />
+  
+  
+  
+  
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="399, 183.00000000000003 401, 183.00000000000003, 400, 181.00000000000003"/>
   </g>
   
-
   
   
-  
-  
-  
-  
-  <path stroke="blue" stroke-width="2" fill="none"  d="M 50 141.87973089062197 L 750 289.7059101746183" />
     
 </svg>

@@ -48,17 +48,22 @@
   </text>
 
   <path stroke="#74838f" stroke-width="2.0" d="M {{offset_x}} {{height + padding}} L {{offset_x}} {{height + padding + 10}}" />
-  {% if loop.index0 != lines %}
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M {{offset_x}} {{padding}} L {{offset_x}} {{height + padding}}" />
   <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M {{padding}} {{offset_y}} L {{width + padding}} {{offset_y}}" />
   
-  {% else %}
-  <path stroke="#74838f" stroke-width="2" fill="none"  d="M {{offset_x}} {{padding}} L {{offset_x}} {{height + padding}}" />
+  {% if loop.index0 == lines %}
   <path stroke="#74838f" stroke-width="2" fill="none"  d="M {{padding}} {{offset_y}} L {{width + padding}} {{offset_y}}" />
-
   {% endif %}  
+
+  {% if loop.index0 == 0 %}
+  <path stroke="#74838f" stroke-width="2" fill="none"  d="M {{offset_x}} {{padding}} L {{offset_x}} {{height + padding}}" />
+  {% endif %} 
+
   {% endfor %}
 
+
+  
+  {% if model == "Linear Regression" %}
   {% for point in path %}
   {% set x = point.0 %}
   {% set y = point.1 %}
@@ -66,21 +71,84 @@
     <circle cx="{{x}}" cy="{{y}}" r="2" />
   </g>
   {% endfor %}
-
-  
-  {% if model == "Linear Regression" %}
   {% set x1 = point1.0 %}
   {% set y1 = point1.1 %}
   {% set x2 = point2.0 %}
   {% set y2 = point2.1 %}
   <path stroke="blue" stroke-width="2" fill="none"  d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" />
+  
+  {% elif model == "Logistic Regression" %}
+  {% for point in path %}
+  {% set x = point.0 %}
+  {% set y = point.1 %}
+  {% if loop.index0 < n/2 %}
+  {% if preds[loop.index0] <= 0.5 %}
+  <g stroke="{{colour}}" stroke-width="2" fill="{{colour}}">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+  {% else %}
+  <g stroke="{{colour}}" stroke-width="2" fill="{{colour}}">
+    <polygon points="{{x-1}}, {{y+1}} {{x+1}}, {{y+1}}, {{x}}, {{y-1}}"/>
+  </g>
+  {% endif %}
+  {% else %}
+  {% if preds[loop.index0] <= 0.5 %}
+  <g stroke="red" stroke-width="2" fill="red">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+  {% else %}
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="{{x-1}}, {{y+1}} {{x+1}}, {{y+1}}, {{x}}, {{y-1}}"/>
+  </g>
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+  {% set x1 = point1.0 %}
+  {% set y1 = point1.1 %}
+  {% set x2 = point2.0 %}
+  {% set y2 = point2.1 %}
+  <path stroke="blue" stroke-width="2" fill="none"  d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" />
+  
   {% elif model == "K-Means Clustering" %}
+  {% for point in path %}
+  {% set x = point.0 %}
+  {% set y = point.1 %}
+  <g stroke="{{colour}}" stroke-width="2" fill="{{colour}}">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+  {% endfor %}
   {% for c in centers %}
   {% set x = c.0 %}
   {% set y = c.1 %}
   <g stroke="red" stroke-width="2" fill="red">
     <polygon points="{{x-1}}, {{y-1}} {{x+1}}, {{y-1}}, {{x}}, {{y+1}}"/>
   </g>
+  {% endfor %}
+  {% elif model == "Naive Bayes Classifiers" %}
+  {% for point in path %}
+  {% set x = point.0 %}
+  {% set y = point.1 %}
+  {% if loop.index0 < n/2 %}
+  {% if preds[loop.index0] == 0.0 %}
+  <g stroke="{{colour}}" stroke-width="2" fill="{{colour}}">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+  {% else %}
+  <g stroke="{{colour}}" stroke-width="2" fill="{{colour}}">
+    <polygon points="{{x-1}}, {{y+1}} {{x+1}}, {{y+1}}, {{x}}, {{y-1}}"/>
+  </g>
+  {% endif %}
+  {% else %}
+  {% if preds[loop.index0] == 0.0 %}
+  <g stroke="red" stroke-width="2" fill="red">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+  {% else %}
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="{{x-1}}, {{y+1}} {{x+1}}, {{y+1}}, {{x}}, {{y-1}}"/>
+  </g>
+  {% endif %}
+  {% endif %}
   {% endfor %}
   {% endif %}  
 </svg>

@@ -13,7 +13,10 @@ extern crate rusty_machine as rm;
 // use rm::prelude::*;
 use rm::linalg::Matrix;
 use rm::linalg::Vector;
+// use rulinalg::vector::Vector;
 use rm::learning::lin_reg::LinRegressor;
+use rm::learning::logistic_reg::LogisticRegressor;
+use rm::learning::naive_bayes::{NaiveBayes, Gaussian};
 use rm::learning::SupModel;
 use rm::learning::k_means::KMeansClassifier;
 use rm::learning::UnSupModel;
@@ -65,14 +68,18 @@ impl Graph {
       self.points.push(Point { x, y });
   }
 
-  pub fn draw_svg(&self, width: usize, height: usize, padding: usize) -> String {
+
+
+  pub fn draw_svg(&self, width: usize, height: usize, padding: usize, ) -> String {
 
     let mut context = Context::new();
     
     // let mut p: Vec<(f64, f64)> = Vec::new();
+    let target_vec: Vec<f64> = get_label(self.size);
     let mut xs: Vec<f64> = Vec::new();
     let mut ys: Vec<f64> = Vec::new();
     let mut p_vec: Vec<f64> = Vec::new();
+    
 
     for point in &self.points {
       xs.push(point.x);
@@ -130,7 +137,7 @@ impl Graph {
     // println!("graph inputs done!");
 
     if self.model == "Linear Regression".to_string() {
-      let inputs = Matrix::new(xs.len(), 1, xs);
+      let inputs = Matrix::new(self.size, 1, xs);
       let targets = Vector::new(ys);
       let mut lin_mod = LinRegressor::default();
       lin_mod.train(&inputs, &targets).unwrap();
@@ -162,19 +169,53 @@ impl Graph {
 
 
     } else if self.model == "Logistic Regression".to_string() {
+      let inputs = Matrix::new(self.size, 2, p_vec);
+      let targets = Vector::new(target_vec);
+      let mut log_mod = LogisticRegressor::default();
+      log_mod.train(&inputs, &targets).unwrap();
+      
+      let params : Option<&Vector<f64>> = log_mod.parameters();
+      let mut coefs : Vec<f64> = Vec::new();
+      let mut p1 : (f64, f64) = (0.0, 0.0);
+      let mut p2 : (f64, f64) = (0.0, 0.0);
+      if params.is_some() {
+        // println!("{:?}", params.unwrap());
+        coefs.push(-params.unwrap()[0]/params.unwrap()[2]);
+        coefs.push(-params.unwrap()[1]/params.unwrap()[2]);
+      }
+
+      if coefs.len() > 0 {
+        p1 = (self.x_min, coefs[0] + coefs[1] * self.x_min);
+        p2 = (self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range));
+        p1 = ((p1.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
+                  (p1.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
+        p2 = ((p2.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
+                  (p2.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
+
+      }
+      let preds: Vec<f64> = log_mod.predict(&inputs).unwrap().into_vec();
+
+      // println!("{:?}", type_of(p1));
+      // println!("{:?}", p2);
+      context.insert("point1", &p1);
+      context.insert("point2", &p2);
+      context.insert("n", &self.size);
+
+      context.insert("preds", &preds);
+
 
     } else if self.model == "Generalized Linear Models".to_string() {
 
     } else if self.model == "K-Means Clustering".to_string() {
       // println!("We are doing kmeans!");
-      let center_num : usize = 3;
-      let inputs = Matrix::new(xs.len(), 2, p_vec);
+      let center_num : usize = 2;
+      let inputs = Matrix::new(self.size, 2, p_vec);
       // println!("{:?}", inputs);
       let mut km = KMeansClassifier::new(center_num);
       println!("We are doing kmeans!");
       km.train(&inputs).unwrap();
       println!("Kmean model trained!");
-      let center_mat : &Option<Matrix<f64>> = km.centroids();
+      let center_mat: &Option<Matrix<f64>> = km.centroids();
       // println!("We are doing kmeans!");
       if center_mat.as_ref().is_some() {
         println!("{:?}", center_mat.as_ref().unwrap());
@@ -200,6 +241,35 @@ impl Graph {
     } else if self.model == "Gaussian Mixture Models".to_string() {
 
     } else if self.model == "Naive Bayes Classifiers".to_string() {
+      let inputs = Matrix::new(self.size, 2, p_vec);
+      let mut target_class: Vec<f64> = Vec::new();
+      for i in 0..self.size {
+        if target_vec[i] == 0. {
+          target_class.push(1.);
+          target_class.push(0.);
+        } else {
+          target_class.push(0.);
+          target_class.push(1.);
+        }
+      }
+      let targets = Matrix::new(self.size, 2, target_class);
+      let mut nb = NaiveBayes::<Gaussian>::new();
+      nb.train(&inputs, &targets).unwrap();
+      // println!("{:?}", nb.predict(&inputs));
+      let pred_class: Vec<f64> = nb.predict(&inputs).unwrap().into_vec();
+      let mut preds: Vec<f64> = Vec::new();
+      for i in 0..self.size {
+        if pred_class[2*i] == 0. {
+          preds.push(1.);
+        } else {
+          preds.push(0.)
+        }
+      }
+
+      // println!("{:?}", type_of(p1));
+      // println!("{:?}", preds);
+      context.insert("n", &self.size);
+      context.insert("preds", &preds);
 
     } else if self.model == "DBSCAN".to_string() {
 
@@ -337,3 +407,17 @@ fn read_data(csv_content: &[u8]) -> (Vec<f64>, (usize, usize)) {
 fn type_of<T>(_: T) -> &'static str {
   type_name::<T>()
 }
+
+fn get_label(n : usize) -> Vec<f64> {
+  let mut target_vec: Vec<f64> = Vec::new();
+  for i in 0..n {
+    if i < n/2 {
+      target_vec.push(0.);
+    } else {
+      target_vec.push(1.);
+    }
+  }
+  target_vec
+}
+
+
