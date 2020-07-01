@@ -12,6 +12,9 @@ use core::option::Option;
 extern crate rusty_machine as rm;
 // use rm::prelude::*;
 use rm::linalg::Matrix;
+use rm::linalg::Vector;
+use rm::learning::lin_reg::LinRegressor;
+use rm::learning::SupModel;
 use rm::learning::k_means::KMeansClassifier;
 use rm::learning::UnSupModel;
 
@@ -62,31 +65,61 @@ impl Graph {
       self.points.push(Point { x, y });
   }
 
-  pub fn draw_svg(&self, width: usize, height: usize, padding: usize, path: Vec<Point>) -> String {
+  pub fn draw_svg(&self, width: usize, height: usize, padding: usize) -> String {
 
     let mut context = Context::new();
     
-    let mut p: Vec<(f64, f64)> = Vec::new();
+    // let mut p: Vec<(f64, f64)> = Vec::new();
     let mut xs: Vec<f64> = Vec::new();
     let mut ys: Vec<f64> = Vec::new();
     let mut p_vec: Vec<f64> = Vec::new();
 
-    for point in path {
-      p.push((point.x, point.y));
+    for point in &self.points {
       xs.push(point.x);
       ys.push(point.y);
       p_vec.push(point.x);
       p_vec.push(point.y);
     }
+    
+    let path: Vec<(f64, f64)> = self
+                              .points
+                              .iter()
+                              .map(|val|
+                                  //x: (val.x / graph.max_x * width as f64) + padding as f64,
+                                  //y: (val.y / graph.max_y * (height as f64 * -1.0)) + (padding + height) as f64,
+                                  (((val.x-self.x_min) / self.x_range * width as f64) + padding as f64,
+                                   ((val.y-self.y_min) / self.y_range * (height as f64 * -1.0)) + (padding + height) as f64)
+                                    ).collect();
+    /* let path : Vec<Point> = self
+              .points
+              .iter()
+              .map(|val| Point {
+                  //x: (val.x / graph.max_x * width as f64) + padding as f64,
+                  //y: (val.y / graph.max_y * (height as f64 * -1.0)) + (padding + height) as f64,
+                  x: ((val.x-self.x_min) / self.x_range * width as f64) + padding as f64,
+                  y: ((val.y-self.y_min) / self.y_range * (height as f64 * -1.0)) + (padding + height) as f64,
+              }).collect(); */
+            //  .enumerate()
+            //  .map(|(i, point)| {
+            //      if i == 0 {
+            //          format!("M {} {}", point.x, point.y)
+            //      } else {
+            //          format!("L {} {}", point.x, point.y)
+            //      }
+            //  })
+            //  .collect::<Vec<String>>().join(" ");
 
     //ensure the viewbox is as per input
-  
+    /*for point in path {
+      p.push((point.x, point.y));
+    }*/
+
     context.insert("name", &self.name);
     context.insert("model", &self.model);
     context.insert("width", &width);
     context.insert("height", &height);
     context.insert("padding", &padding);
-    context.insert("path", &p);
+    context.insert("path", &path);
     context.insert("x_range", &self.x_range);
     context.insert("y_range", &self.y_range);
     context.insert("x_min", &self.x_min);
@@ -97,7 +130,37 @@ impl Graph {
     // println!("graph inputs done!");
 
     if self.model == "Linear Regression".to_string() {
-      
+      let inputs = Matrix::new(xs.len(), 1, xs);
+      let targets = Vector::new(ys);
+      let mut lin_mod = LinRegressor::default();
+      lin_mod.train(&inputs, &targets).unwrap();
+      let params : Option<&Vector<f64>> = lin_mod.parameters();
+      let mut coefs : Vec<f64> = Vec::new();
+      let mut p1 : (f64, f64) = (0.0, 0.0);
+      let mut p2 : (f64, f64) = (0.0, 0.0);
+
+
+      if params.is_some() {
+        // println!("{}", params.unwrap().size());
+        for i in 0..params.unwrap().size() {
+          coefs.push(params.unwrap()[i]);
+        }
+      }
+      if coefs.len() > 0 {
+        p1 = (self.x_min, coefs[0] + coefs[1] * self.x_min);
+        p2 = (self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range));
+        p1 = ((p1.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
+                  (p1.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
+        p2 = ((p2.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
+                  (p2.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
+
+      }
+      // println!("{:?}", type_of(p1));
+      // println!("{:?}", p2);
+      context.insert("point1", &p1);
+      context.insert("point2", &p2);
+
+
     } else if self.model == "Logistic Regression".to_string() {
 
     } else if self.model == "Generalized Linear Models".to_string() {
@@ -231,26 +294,8 @@ pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, 
                        (val.1-graph.y_min) / graph.y_range * (height as f64 * -1.0) + (padding + height) as f64)).collect();
   */
 
-  let path = graph
-              .points
-              .iter()
-              .map(|val| Point {
-                  //x: (val.x / graph.max_x * width as f64) + padding as f64,
-                  //y: (val.y / graph.max_y * (height as f64 * -1.0)) + (padding + height) as f64,
-                  x: ((val.x-graph.x_min) / graph.x_range * width as f64) + padding as f64,
-                  y: ((val.y-graph.y_min) / graph.y_range * (height as f64 * -1.0)) + (padding + height) as f64,
-              }).collect();
-            //  .enumerate()
-            //  .map(|(i, point)| {
-            //      if i == 0 {
-            //          format!("M {} {}", point.x, point.y)
-            //      } else {
-            //          format!("L {} {}", point.x, point.y)
-            //      }
-            //  })
-            //  .collect::<Vec<String>>().join(" ");
 
-  let out = graph.draw_svg(width, height, padding, path);
+  let out = graph.draw_svg(width, height, padding);
   // println!("{}", out);
   return out;
 }
@@ -289,6 +334,6 @@ fn read_data(csv_content: &[u8]) -> (Vec<f64>, (usize, usize)) {
   return Matrix::new(2,3, vec![1.5,1.5,1.5,2.5,2.5,2.5]);
 }*/
 
-/* fn type_of<T>(_: T) -> &'static str {
+fn type_of<T>(_: T) -> &'static str {
   type_name::<T>()
-}*/
+}

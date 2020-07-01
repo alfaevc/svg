@@ -69,6 +69,11 @@
 
   
   {% if model == "Linear Regression" %}
+  {% set x1 = point1.0 %}
+  {% set y1 = point1.1 %}
+  {% set x2 = point2.0 %}
+  {% set y2 = point2.1 %}
+  <path stroke="blue" stroke-width="2" fill="none"  d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" />
   {% elif model == "K-Means Clustering" %}
   {% for c in centers %}
   {% set x = c.0 %}
