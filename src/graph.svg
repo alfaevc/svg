@@ -67,6 +67,9 @@
   </g>
   {% endfor %}
 
+  
+  {% if model == "Linear Regression" %}
+  {% elif model == "K-Means Clustering" %}
   {% for c in centers %}
   {% set x = c.0 %}
   {% set y = c.1 %}
@@ -74,4 +77,5 @@
     <polygon points="{{x-1}}, {{y-1}} {{x+1}}, {{y-1}}, {{x}}, {{y+1}}"/>
   </g>
   {% endfor %}
+  {% endif %}  
 </svg>
