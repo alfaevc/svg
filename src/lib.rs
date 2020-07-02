@@ -18,6 +18,8 @@ use rm::learning::lin_reg::LinRegressor;
 use rm::learning::logistic_reg::LogisticRegressor;
 use rm::learning::naive_bayes::{NaiveBayes, Gaussian};
 use rm::learning::k_means::KMeansClassifier;
+use rm::learning::svm::SVM;
+use rm::learning::toolkit::kernel::SquaredExp;
 use rm::learning::nnet::{NeuralNet, BCECriterion};
 use rm::learning::toolkit::regularization::Regularization;
 use rm::learning::optim::grad_desc::StochasticGD;
@@ -249,7 +251,46 @@ impl Graph {
       // println!("{:?}", preds);
 
     } else if self.model == "Support Vector Machines".to_string() {
+      let svm_target_vec: Vec<f64> = target_vec.iter().map(|val| if *val == 1.0 as f64 {1. as f64} else {-1. as f64} ).collect();
+      // println!("{:?}", svm_target_vec);            
+      let inputs = Matrix::new(self.size, 2, p_vec);
+      let targets = Vector::new(svm_target_vec);
+      // println!("Nothing yet!");
+      let mut svm_mod = SVM::new(SquaredExp::default(), 0.3);
+      println!("Model created!");
+      svm_mod.train(&inputs, &targets).unwrap();
+      println!("Model trained!");
+      
+      /*let params : Option<&Vector<f64>> = log_mod.parameters();
+      let mut coefs : Vec<f64> = Vec::new();
+      let mut p1 : (f64, f64) = (0.0, 0.0);
+      let mut p2 : (f64, f64) = (0.0, 0.0);
+      if params.is_some() {
+        // println!("{:?}", params.unwrap());
+        coefs.push(-params.unwrap()[0]/params.unwrap()[2]);
+        coefs.push(-params.unwrap()[1]/params.unwrap()[2]);
+      }
 
+      if coefs.len() > 0 {
+        p1 = (self.x_min, coefs[0] + coefs[1] * self.x_min);
+        p2 = (self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range));
+        p1 = ((p1.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
+                  (p1.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
+        p2 = ((p2.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
+                  (p2.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
+
+      }*/
+      // println!("{:?}", svm_mod.predict(&inputs).unwrap());
+      let preds: Vec<f64> = svm_mod.predict(&inputs).unwrap().into_vec();
+
+      // preds = preds.iter().map(|val| if *val == 1.0 as f64 {1.} else {0.}).collect();
+      // println!("{:?}", type_of(p1));
+      // println!("{:?}", p2);
+      //context.insert("point1", &p1);
+      //context.insert("point2", &p2);
+      context.insert("n", &self.size);
+
+      context.insert("preds", &preds);
     } else if self.model == "Gaussian Mixture Models".to_string() {
 
     } else if self.model == "Naive Bayes Classifiers".to_string() {
@@ -431,5 +472,19 @@ fn get_label(n : usize) -> Vec<f64> {
   }
   target_vec
 }
+
+/*fn svm_label(val: f64) -> f64 {
+  if val == 1.0 {
+    return 1.0;
+  }
+  return -1.0;
+}
+
+fn normal_label(val: f64) -> f64 {
+  if val == 1.0 {
+    return 1.0;
+  }
+  return 0.0;
+}*/
 
 

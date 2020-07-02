@@ -10,7 +10,8 @@ var p = 50;
 var title = "SVG";
 // var model = "Linear Regression";
 // var model = "Logistic Regression";
-var model = "Neural Networks";
+// var model = "Neural Networks";
+var model = "Support Vector Machines";
 // var model = "K-Means Clustering";
 // var model = "Naive Bayes Classifiers";
 
