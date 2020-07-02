@@ -17,8 +17,11 @@ use rm::linalg::Vector;
 use rm::learning::lin_reg::LinRegressor;
 use rm::learning::logistic_reg::LogisticRegressor;
 use rm::learning::naive_bayes::{NaiveBayes, Gaussian};
-use rm::learning::SupModel;
 use rm::learning::k_means::KMeansClassifier;
+use rm::learning::nnet::{NeuralNet, BCECriterion};
+use rm::learning::toolkit::regularization::Regularization;
+use rm::learning::optim::grad_desc::StochasticGD;
+use rm::learning::SupModel;
 use rm::learning::UnSupModel;
 
 
@@ -97,29 +100,7 @@ impl Graph {
                                   (((val.x-self.x_min) / self.x_range * width as f64) + padding as f64,
                                    ((val.y-self.y_min) / self.y_range * (height as f64 * -1.0)) + (padding + height) as f64)
                                     ).collect();
-    /* let path : Vec<Point> = self
-              .points
-              .iter()
-              .map(|val| Point {
-                  //x: (val.x / graph.max_x * width as f64) + padding as f64,
-                  //y: (val.y / graph.max_y * (height as f64 * -1.0)) + (padding + height) as f64,
-                  x: ((val.x-self.x_min) / self.x_range * width as f64) + padding as f64,
-                  y: ((val.y-self.y_min) / self.y_range * (height as f64 * -1.0)) + (padding + height) as f64,
-              }).collect(); */
-            //  .enumerate()
-            //  .map(|(i, point)| {
-            //      if i == 0 {
-            //          format!("M {} {}", point.x, point.y)
-            //      } else {
-            //          format!("L {} {}", point.x, point.y)
-            //      }
-            //  })
-            //  .collect::<Vec<String>>().join(" ");
-
-    //ensure the viewbox is as per input
-    /*for point in path {
-      p.push((point.x, point.y));
-    }*/
+    
 
     context.insert("name", &self.name);
     context.insert("model", &self.model);
@@ -235,7 +216,38 @@ impl Graph {
       */
       context.insert("centers", &centers);
     } else if self.model == "Neural Networks".to_string() {
-      
+      let inputs = Matrix::new(self.size, 2, p_vec);
+      let mut target_class: Vec<f64> = Vec::new();
+      for i in 0..self.size {
+        if target_vec[i] == 0. {
+          target_class.push(1.);
+          target_class.push(0.);
+        } else {
+          target_class.push(0.);
+          target_class.push(1.);
+        }
+      }
+      // println!("Nothing done yet!");
+      let targets = Matrix::new(self.size, 2, target_class);
+      let layers = &[2,5,11,7,2];
+      let criterion = BCECriterion::new(Regularization::L2(0.2));
+      println!("Criterion created!");
+      let mut nn = NeuralNet::new(layers, criterion, StochasticGD::default());
+      println!("Net not trained");
+      nn.train(&inputs, &targets).unwrap();
+      let pred_class: Vec<f64> = nn.predict(&inputs).unwrap().into_vec();
+      let mut preds: Vec<f64> = Vec::new();
+      for i in 0..self.size {
+        if pred_class[2*i] <= 0.5 {
+          preds.push(1.);
+        } else {
+          preds.push(0.)
+        }
+      }
+      context.insert("n", &self.size);
+      context.insert("preds", &preds);
+      // println!("{:?}", preds);
+
     } else if self.model == "Support Vector Machines".to_string() {
 
     } else if self.model == "Gaussian Mixture Models".to_string() {
@@ -395,7 +407,7 @@ fn read_data(csv_content: &[u8]) -> (Vec<f64>, (usize, usize)) {
       }
     }
   }
-  // println!("{:?}", Matrix::new(2,3, vec![1.5,1.5,1.5,2.5,2.5,2.5]));
+  
   return (data, dim);
 }
 
@@ -404,9 +416,9 @@ fn read_data(csv_content: &[u8]) -> (Vec<f64>, (usize, usize)) {
   return Matrix::new(2,3, vec![1.5,1.5,1.5,2.5,2.5,2.5]);
 }*/
 
-fn type_of<T>(_: T) -> &'static str {
+/*fn type_of<T>(_: T) -> &'static str {
   type_name::<T>()
-}
+}*/
 
 fn get_label(n : usize) -> Vec<f64> {
   let mut target_vec: Vec<f64> = Vec::new();
