@@ -16,6 +16,8 @@ use rm::linalg::Vector;
 // use rulinalg::vector::Vector;
 use rm::learning::lin_reg::LinRegressor;
 use rm::learning::logistic_reg::LogisticRegressor;
+use rm::learning::glm::{GenLinearModel, Bernoulli};
+use rm::learning::gmm::{CovOption, GaussianMixtureModel};
 use rm::learning::naive_bayes::{NaiveBayes, Gaussian};
 use rm::learning::k_means::KMeansClassifier;
 use rm::learning::svm::SVM;
@@ -23,6 +25,7 @@ use rm::learning::toolkit::kernel::SquaredExp;
 use rm::learning::nnet::{NeuralNet, BCECriterion};
 use rm::learning::toolkit::regularization::Regularization;
 use rm::learning::optim::grad_desc::StochasticGD;
+use rm::learning::dbscan::DBSCAN;
 use rm::learning::SupModel;
 use rm::learning::UnSupModel;
 
@@ -188,6 +191,39 @@ impl Graph {
 
 
     } else if self.model == "Generalized Linear Models".to_string() {
+      let inputs = Matrix::new(self.size, 2, p_vec);
+      let targets = Vector::new(target_vec);
+      let mut log_mod = GenLinearModel::new(Bernoulli);
+      log_mod.train(&inputs, &targets).unwrap();
+      
+      /*let params : Option<&Vector<f64>> = log_mod.parameters();
+      let mut coefs : Vec<f64> = Vec::new();
+      let mut p1 : (f64, f64) = (0.0, 0.0);
+      let mut p2 : (f64, f64) = (0.0, 0.0);
+      if params.is_some() {
+        // println!("{:?}", params.unwrap());
+        coefs.push(-params.unwrap()[0]/params.unwrap()[2]);
+        coefs.push(-params.unwrap()[1]/params.unwrap()[2]);
+      }
+
+      if coefs.len() > 0 {
+        p1 = (self.x_min, coefs[0] + coefs[1] * self.x_min);
+        p2 = (self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range));
+        p1 = ((p1.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
+                  (p1.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
+        p2 = ((p2.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
+                  (p2.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
+
+      }*/
+      let preds: Vec<f64> = log_mod.predict(&inputs).unwrap().into_vec();
+
+      // println!("{:?}", type_of(p1));
+      // println!("{:?}", p2);
+      // context.insert("point1", &p1);
+      // context.insert("point2", &p2);
+      context.insert("n", &self.size);
+
+      context.insert("preds", &preds);
 
     } else if self.model == "K-Means Clustering".to_string() {
       // println!("We are doing kmeans!");
@@ -217,6 +253,8 @@ impl Graph {
                        (val.1-self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64)).collect();
       */
       context.insert("centers", &centers);
+
+
     } else if self.model == "Neural Networks".to_string() {
       let inputs = Matrix::new(self.size, 2, p_vec);
       let mut target_class: Vec<f64> = Vec::new();
@@ -291,7 +329,36 @@ impl Graph {
       context.insert("n", &self.size);
 
       context.insert("preds", &preds);
+
     } else if self.model == "Gaussian Mixture Models".to_string() {
+      let class_num: usize = 2;
+      let inputs = Matrix::new(self.size, 2, p_vec);
+      // println!("{:?}", inputs);
+      let mut gm = GaussianMixtureModel::new(class_num);
+      gm.set_max_iters(10);
+      gm.cov_option = CovOption::Diagonal;
+      println!("Not trained yet!");
+      gm.train(&inputs).unwrap();
+      println!("Just trained!");
+
+      let mean_mat: Option<&Matrix<f64>> = gm.means();
+      if mean_mat.is_some() {
+        println!("{:?}", mean_mat.unwrap());
+      }
+
+      let mean_vec: Vec<f64> = mean_mat.unwrap().data().to_vec();
+      let mut mus: Vec<(f64, f64)> = Vec::new();
+
+      for i in 0..mean_vec.len() {
+        if (i % 2) == 1 {
+          mus.push((mean_vec[i-1], mean_vec[i]));
+        } 
+      }
+      mus = mus.iter()
+                  .map(|val| ((val.0-self.x_min) / self.x_range * width as f64 + padding as f64, 
+                       (val.1-self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64)).collect();
+      
+      context.insert("means", &mus);
 
     } else if self.model == "Naive Bayes Classifiers".to_string() {
       let inputs = Matrix::new(self.size, 2, p_vec);
@@ -325,7 +392,35 @@ impl Graph {
       context.insert("preds", &preds);
 
     } else if self.model == "DBSCAN".to_string() {
+      let inputs = Matrix::new(self.size, 2, p_vec);
+      let mut db = DBSCAN::new(0.5, 2);
+      db.train(&inputs).unwrap();
 
+      let clustering = db.clusters().unwrap();
+      // println!("{:?}", clustering);
+      let labels: Vec<f64> = clustering.data().to_vec().iter().map(|&val| match val {Some(x) => {x as f64}, _ => {-1.0}}).collect();
+      let mut clusters: Vec<(f64, f64, usize)> = Vec::new(); 
+      
+      for i in 0..self.size {
+        if labels[i] >= 0.0 {
+          if labels[i] >= clusters.len() as f64 {
+            for j in 0..(labels[i] as usize - clusters.len()+1) {
+              clusters.push((0.0, 0.0, 0));
+            }
+          }
+          let c_index : usize = labels[i] as usize;
+          clusters[c_index] = (clusters[c_index].0+xs[i], clusters[c_index].1+ys[i], clusters[c_index].2+1);
+        }
+      }
+      let mut centers: Vec<(f64, f64)> = clusters.iter().map(|val| (val.0/(val.2 as f64) , val.1/(val.2 as f64)) ).collect(); 
+      centers = centers
+                .iter()
+                .map(|val| ((val.0-self.x_min) / self.x_range * width as f64 + padding as f64, 
+                      (val.1-self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64)).collect();
+
+      context.insert("n", &self.size);
+      context.insert("labels", &labels);
+      context.insert("centers", &centers);
     }
   
     Tera::one_off(include_str!("graph.svg"), &context, true).expect("Could not draw graph")

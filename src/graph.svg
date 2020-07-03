@@ -109,6 +109,33 @@
   {% set y2 = point2.1 %}
   <path stroke="blue" stroke-width="2" fill="none"  d="M {{ x1 }} {{ y1 }} L {{ x2 }} {{ y2 }}" />
   
+  {% elif model == "Generalized Linear Models" %}
+  {% for point in path %}
+  {% set x = point.0 %}
+  {% set y = point.1 %}
+  {% if loop.index0 < n/2 %}
+  {% if preds[loop.index0] <= 0.5 %}
+  <g stroke="{{colour}}" stroke-width="2" fill="{{colour}}">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+  {% else %}
+  <g stroke="{{colour}}" stroke-width="2" fill="{{colour}}">
+    <polygon points="{{x-1}}, {{y+1}} {{x+1}}, {{y+1}}, {{x}}, {{y-1}}"/>
+  </g>
+  {% endif %}
+  {% else %}
+  {% if preds[loop.index0] <= 0.5 %}
+  <g stroke="red" stroke-width="2" fill="red">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+  {% else %}
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="{{x-1}}, {{y+1}} {{x+1}}, {{y+1}}, {{x}}, {{y-1}}"/>
+  </g>
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+
   {% elif model == "K-Means Clustering" %}
   {% for point in path %}
   {% set x = point.0 %}
@@ -124,6 +151,7 @@
     <polygon points="{{x-1}}, {{y-1}} {{x+1}}, {{y-1}}, {{x}}, {{y+1}}"/>
   </g>
   {% endfor %}
+
   {% elif model == "Naive Bayes Classifiers" %}
   {% for point in path %}
   {% set x = point.0 %}
@@ -203,6 +231,45 @@
   </g>
   {% endif %}
   {% endif %}
+  {% endfor %}
+
+  {% elif model == "Gaussian Mixture Models" %}
+  {% for point in path %}
+  {% set x = point.0 %}
+  {% set y = point.1 %}
+  <g stroke="{{colour}}" stroke-width="2" fill="{{colour}}">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+  {% endfor %}
+  {% for mu in means %}
+  {% set x = mu.0 %}
+  {% set y = mu.1 %}
+  <g stroke="red" stroke-width="2" fill="red">
+    <polygon points="{{x-1}}, {{y-1}} {{x+1}}, {{y-1}}, {{x}}, {{y+1}}"/>
+  </g>
+  {% endfor %}
+
+  {% elif model == "DBSCAN" %}
+  {% for point in path %}
+  {% set x = point.0 %}
+  {% set y = point.1 %}
+  {% if labels[loop.index0] == 0.0 %}
+  <g stroke="{{colour}}" stroke-width="2" fill="{{colour}}">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+  {% else %}
+  <g stroke="red" stroke-width="2" fill="red">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+  {% endif %}
+  {% endfor %}
+
+  {% for c in centers %}
+  {% set x = c.0 %}
+  {% set y = c.1 %}
+  <g stroke="blue" stroke-width="2" fill="blue">
+    <polygon points="{{x-2}}, {{y-2}} {{x+2}}, {{y-2}}, {{x}}, {{y+2}}"/>
+  </g>
   {% endfor %}
 
   {% endif %}  
