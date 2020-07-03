@@ -75,6 +75,12 @@ impl Graph {
   pub fn add_point(&mut self, x: f64, y: f64) {
       self.points.push(Point { x, y });
   }
+  pub fn graph_map(&self, points: Vec<(f64, f64)>, width: usize, height: usize, padding: usize) -> Vec<(f64, f64)> {
+    points 
+      .iter()
+      .map(|val| ((val.0-self.x_min) / self.x_range * width as f64 + padding as f64, 
+           (val.1-self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64)).collect()
+  }
 
 
 
@@ -247,10 +253,7 @@ impl Graph {
           centers.push((center_vec[i-1], center_vec[i]));
         } 
       }
-      let centers = centers
-                  .iter()
-                  .map(|val| ((val.0-self.x_min) / self.x_range * width as f64 + padding as f64, 
-                       (val.1-self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64)).collect();
+      let centers = self.graph_map(centers, width, height, padding);
       */
       context.insert("centers", &centers);
 
@@ -413,10 +416,7 @@ impl Graph {
         }
       }
       let mut centers: Vec<(f64, f64)> = clusters.iter().map(|val| (val.0/(val.2 as f64) , val.1/(val.2 as f64)) ).collect(); 
-      centers = centers
-                .iter()
-                .map(|val| ((val.0-self.x_min) / self.x_range * width as f64 + padding as f64, 
-                      (val.1-self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64)).collect();
+      centers = self.graph_map(centers, width, height, padding);
 
       context.insert("n", &self.size);
       context.insert("labels", &labels);
@@ -444,6 +444,7 @@ pub fn generate_graph(xs: Vec<f64>, ys: Vec<f64>, title : &str, model : &str) ->
 /*pub fn vec2str(s: Vec<f64>) {
   return serde_json::to_string(&s).unwrap();
 }*/
+
 
 #[wasm_bindgen]
 pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, title: &str, model: &str) -> String {
@@ -567,6 +568,8 @@ fn get_label(n : usize) -> Vec<f64> {
   }
   target_vec
 }
+
+
 
 /*fn svm_label(val: f64) -> f64 {
   if val == 1.0 {

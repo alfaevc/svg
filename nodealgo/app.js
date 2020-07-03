@@ -8,6 +8,7 @@ var width = 800;
 var height = 400;
 var p = 50;
 var title = "SVG";
+// Not working: SVM, K-means, NB, GMM
 // var model = "Linear Regression";
 // var model = "Logistic Regression";
 // var model = "Generalized Linear Models";
