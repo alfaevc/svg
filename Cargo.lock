@@ -100,16 +100,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "console_error_panic_hook"
-version = "0.1.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b8d976903543e0c48546a91908f21588a680a8c8f984df9a5d69feccb2b2a211"
-dependencies = [
- "cfg-if",
- "wasm-bindgen",
-]
-
-[[package]]
 name = "crossbeam-utils"
 version = "0.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -642,9 +632,9 @@ dependencies = [
 name = "svg"
 version = "0.1.0"
 dependencies = [
- "console_error_panic_hook",
  "csv",
  "nodejs-helper",
+ "rand 0.7.3",
  "rusty-machine",
  "serde",
  "serde_json",

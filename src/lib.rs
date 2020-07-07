@@ -29,14 +29,14 @@ use rm::learning::dbscan::DBSCAN;
 use rm::learning::SupModel;
 use rm::learning::UnSupModel;
 
-extern crate console_error_panic_hook;
+/*extern crate console_error_panic_hook;
 use std::panic;
 
 fn my_init_function() {
   panic::set_hook(Box::new(console_error_panic_hook::hook));
 
   // ...
-}
+}*/
 
 
 // use std::slice::sort_by;
@@ -58,6 +58,9 @@ pub struct Graph {
     pub y_range: f64,
     pub x_min: f64,
     pub y_min: f64,
+    pub width: usize,
+    pub height: usize,
+    pub padding: usize,
 }
 
 #[derive(Clone, Debug, Copy)]
@@ -78,22 +81,311 @@ impl Graph {
           y_range : 0.,
           x_min : 0.,
           y_min : 0.,
+          width: 0,
+          height: 0,
+          padding: 0,
+          
       }
   }
 
   pub fn add_point(&mut self, x: f64, y: f64) {
       self.points.push(Point { x, y });
   }
-  pub fn graph_map(&self, points: Vec<(f64, f64)>, width: usize, height: usize, padding: usize) -> Vec<(f64, f64)> {
+  pub fn graph_map(&self, points: Vec<(f64, f64)>) -> Vec<(f64, f64)> {
     points 
       .iter()
-      .map(|val| ((val.0-self.x_min) / self.x_range * width as f64 + padding as f64, 
-           (val.1-self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64)).collect()
+      .map(|val| ((val.0-self.x_min) / self.x_range * self.width as f64 + self.padding as f64, 
+           (val.1-self.y_min) / self.y_range * (self.height as f64 * -1.0) + (self.padding + self.height) as f64)).collect()
+  }
+
+  pub fn lin_reg_svg(&self, xs: Vec<f64>, ys: Vec<f64>, context: &mut Context) {
+    let inputs = Matrix::new(self.size, 1, xs);
+    let targets = Vector::new(ys);
+    let mut lin_mod = LinRegressor::default();
+    lin_mod.train(&inputs, &targets).unwrap();
+    let params : Option<&Vector<f64>> = lin_mod.parameters();
+    let mut coefs : Vec<f64> = Vec::new();
+    let mut ps : Vec<(f64, f64)> = Vec::new();
+
+
+    if params.is_some() {
+      // println!("{}", params.unwrap().size());
+      for i in 0..params.unwrap().size() {
+        coefs.push(params.unwrap()[i]);
+      }
+    }
+    if coefs.len() > 0 {
+      ps.push((self.x_min, coefs[0] + coefs[1] * self.x_min));
+      ps.push((self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range)));
+      ps = self.graph_map(ps);
+    }
+    // println!("{:?}", type_of(p1));
+    // println!("{:?}", p2);
+    context.insert("point1", &(ps[0]));
+    context.insert("point2", &(ps[1])); 
+  }
+
+  pub fn log_reg_svg(&self, p_vec: Vec<f64>, target_vec: Vec<f64>, context: &mut Context) {
+    let inputs = Matrix::new(self.size, 2, p_vec);
+    let targets = Vector::new(target_vec);
+    let mut log_mod = LogisticRegressor::default();
+    log_mod.train(&inputs, &targets).unwrap();
+    
+    let params : Option<&Vector<f64>> = log_mod.parameters();
+    let mut coefs : Vec<f64> = Vec::new();
+    let mut ps : Vec<(f64, f64)> = Vec::new();
+    if params.is_some() {
+      // println!("{:?}", params.unwrap());
+      coefs.push(-params.unwrap()[0]/params.unwrap()[2]);
+      coefs.push(-params.unwrap()[1]/params.unwrap()[2]);
+    }
+
+    if coefs.len() > 0 {
+      ps.push((self.x_min, coefs[0] + coefs[1] * self.x_min));
+      ps.push((self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range)));
+      ps = self.graph_map(ps);
+    }
+
+    let preds: Vec<f64> = log_mod.predict(&inputs).unwrap().into_vec();
+
+    // println!("{:?}", type_of(p1));
+    // println!("{:?}", p2);
+    context.insert("point1", &(ps[0]));
+    context.insert("point2", &(ps[1]));
+    context.insert("n", &self.size);
+    context.insert("preds", &preds);
+  }
+
+  pub fn glm_svg(&self, p_vec: Vec<f64>, target_vec: Vec<f64>, context: &mut Context) {
+    let inputs = Matrix::new(self.size, 2, p_vec);
+    let targets = Vector::new(target_vec);
+    let mut gl_mod = GenLinearModel::new(Bernoulli);
+    gl_mod.train(&inputs, &targets).unwrap();
+    
+    /*let params : Option<&Vector<f64>> = log_mod.parameters();
+    let mut coefs : Vec<f64> = Vec::new();
+    let mut p1 : (f64, f64) = (0.0, 0.0);
+    let mut p2 : (f64, f64) = (0.0, 0.0);
+    if params.is_some() {
+      // println!("{:?}", params.unwrap());
+      coefs.push(-params.unwrap()[0]/params.unwrap()[2]);
+      coefs.push(-params.unwrap()[1]/params.unwrap()[2]);
+    }
+
+    if coefs.len() > 0 {
+      p1 = (self.x_min, coefs[0] + coefs[1] * self.x_min);
+      p2 = (self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range));
+      p1 = ((p1.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
+                (p1.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
+      p2 = ((p2.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
+                (p2.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
+
+    }*/
+    let preds: Vec<f64> = gl_mod.predict(&inputs).unwrap().into_vec();
+
+    // println!("{:?}", type_of(p1));
+    // println!("{:?}", p2);
+    // context.insert("point1", &p1);
+    // context.insert("point2", &p2);
+    context.insert("n", &self.size);
+    context.insert("preds", &preds);
+  }
+
+  pub fn kmeans_svg(&self, p_vec: Vec<f64>, context: &mut Context) {
+    // println!("We are doing kmeans!");
+    let center_num : usize = 2;
+    let inputs = Matrix::new(self.size, 2, p_vec);
+    // println!("{:?}", inputs);
+    let mut km = KMeansClassifier::new(center_num);
+    println!("We are doing kmeans!");
+    km.train(&inputs).unwrap();
+    println!("Kmean model trained!");
+    let center_mat: &Option<Matrix<f64>> = km.centroids();
+    // println!("We are doing kmeans!");
+    if center_mat.as_ref().is_some() {
+      println!("{:?}", center_mat.as_ref().unwrap());
+    }
+
+    let mut centers: Vec<(f64, f64)> = Vec::new();
+
+    /*for i in 0..center_vec.len() {
+      if (i % 2) == 1 {
+        centers.push((center_vec[i-1], center_vec[i]));
+      } 
+    }
+    let centers = self.graph_map(centers);
+    */
+    context.insert("centers", &centers);
+  }
+
+  pub fn nnet_svg(&self, p_vec: Vec<f64>, target_vec: Vec<f64>, context: &mut Context) {
+    let inputs = Matrix::new(self.size, 2, p_vec);
+    let mut target_class: Vec<f64> = Vec::new();
+    for i in 0..self.size {
+      if target_vec[i] == 0. {
+        target_class.push(1.);
+        target_class.push(0.);
+      } else {
+        target_class.push(0.);
+        target_class.push(1.);
+      }
+    }
+    // println!("Nothing done yet!");
+    let targets = Matrix::new(self.size, 2, target_class);
+    let layers = &[2,5,11,7,2];
+    let criterion = BCECriterion::new(Regularization::L2(0.2));
+    println!("Criterion created!");
+    let mut nn = NeuralNet::new(layers, criterion, StochasticGD::default());
+    println!("Net not trained");
+    nn.train(&inputs, &targets).unwrap();
+    let pred_class: Vec<f64> = nn.predict(&inputs).unwrap().into_vec();
+    let mut preds: Vec<f64> = Vec::new();
+    for i in 0..self.size {
+      if pred_class[2*i] <= 0.5 {
+        preds.push(1.);
+      } else {
+        preds.push(0.)
+      }
+    }
+    context.insert("n", &self.size);
+    context.insert("preds", &preds);
+    // println!("{:?}", preds);
+  }
+
+  pub fn svm_svg(&self, p_vec: Vec<f64>, target_vec: Vec<f64>, context: &mut Context) {
+    let svm_target_vec: Vec<f64> = target_vec.iter().map(|val| if *val == 1.0 as f64 {1. as f64} else {-1. as f64} ).collect();
+    // println!("{:?}", svm_target_vec);            
+    let inputs = Matrix::new(self.size, 2, p_vec);
+    let targets = Vector::new(svm_target_vec);
+    // println!("Nothing yet!");
+    let mut svm_mod = SVM::new(SquaredExp::default(), 0.3);
+    println!("Model created!");
+    svm_mod.train(&inputs, &targets).unwrap();
+    println!("Model trained!");
+    
+    /*let params : Option<&Vector<f64>> = log_mod.parameters();
+    let mut coefs : Vec<f64> = Vec::new();
+    let mut p1 : (f64, f64) = (0.0, 0.0);
+    let mut p2 : (f64, f64) = (0.0, 0.0);
+    if params.is_some() {
+      // println!("{:?}", params.unwrap());
+      coefs.push(-params.unwrap()[0]/params.unwrap()[2]);
+      coefs.push(-params.unwrap()[1]/params.unwrap()[2]);
+    }
+
+    if coefs.len() > 0 {
+      p1 = (self.x_min, coefs[0] + coefs[1] * self.x_min);
+      p2 = (self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range));
+      p1 = ((p1.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
+                (p1.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
+      p2 = ((p2.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
+                (p2.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
+
+    }*/
+    // println!("{:?}", svm_mod.predict(&inputs).unwrap());
+    let preds: Vec<f64> = svm_mod.predict(&inputs).unwrap().into_vec();
+
+    // preds = preds.iter().map(|val| if *val == 1.0 as f64 {1.} else {0.}).collect();
+    // println!("{:?}", type_of(p1));
+    // println!("{:?}", p2);
+    //context.insert("point1", &p1);
+    //context.insert("point2", &p2);
+    context.insert("n", &self.size);
+    context.insert("preds", &preds);
+  }
+
+  pub fn gmm_svg(&self, p_vec: Vec<f64>, context: &mut Context) {
+    let class_num: usize = 2;
+    let inputs = Matrix::new(self.size, 2, p_vec);
+    // println!("{:?}", inputs);
+    let mut gm = GaussianMixtureModel::new(class_num);
+    gm.set_max_iters(10);
+    gm.cov_option = CovOption::Diagonal;
+    println!("Not trained yet!");
+    gm.train(&inputs).unwrap();
+    println!("Just trained!");
+
+    let mean_mat: Option<&Matrix<f64>> = gm.means();
+    if mean_mat.is_some() {
+      println!("{:?}", mean_mat.unwrap());
+    }
+
+    let mean_vec: Vec<f64> = mean_mat.unwrap().data().to_vec();
+    let mut mus: Vec<(f64, f64)> = Vec::new();
+
+    for i in 0..mean_vec.len() {
+      if (i % 2) == 1 {
+        mus.push((mean_vec[i-1], mean_vec[i]));
+      } 
+    }
+    mus = self.graph_map(mus);
+    
+    context.insert("means", &mus);
+  }
+
+  pub fn nb_svg(&self, p_vec: Vec<f64>, target_vec: Vec<f64>, context: &mut Context) {
+    let inputs = Matrix::new(self.size, 2, p_vec);
+    let mut target_class: Vec<f64> = Vec::new();
+    for i in 0..self.size {
+      if target_vec[i] == 0. {
+        target_class.push(1.);
+        target_class.push(0.);
+      } else {
+        target_class.push(0.);
+        target_class.push(1.);
+      }
+    }
+    let targets = Matrix::new(self.size, 2, target_class);
+    let mut nb = NaiveBayes::<Gaussian>::new();
+    nb.train(&inputs, &targets).unwrap();
+    // println!("{:?}", nb.predict(&inputs));
+    let pred_class: Vec<f64> = nb.predict(&inputs).unwrap().into_vec();
+    let mut preds: Vec<f64> = Vec::new();
+    for i in 0..self.size {
+      if pred_class[2*i] == 0. {
+        preds.push(1.);
+      } else {
+        preds.push(0.)
+      }
+    }
+
+    // println!("{:?}", type_of(p1));
+    // println!("{:?}", preds);
+    context.insert("n", &self.size);
+    context.insert("preds", &preds);
+  }
+
+  pub fn dbscan_svg(&self, xs: Vec<f64>, ys:Vec<f64>, p_vec: Vec<f64>, context: &mut Context) {
+    let inputs = Matrix::new(self.size, 2, p_vec);
+    let mut db = DBSCAN::new(0.5, 2);
+    db.train(&inputs).unwrap();
+
+    let clustering = db.clusters().unwrap();
+    // println!("{:?}", clustering);
+    let labels: Vec<f64> = clustering.data().to_vec().iter().map(|&val| match val {Some(x) => {x as f64}, _ => {-1.0}}).collect();
+    let mut clusters: Vec<(f64, f64, usize)> = Vec::new(); 
+    
+    for i in 0..self.size {
+      if labels[i] >= 0.0 {
+        if labels[i] >= clusters.len() as f64 {
+          for _ in 0..(labels[i] as usize - clusters.len()+1) {
+            clusters.push((0.0, 0.0, 0));
+          }
+        }
+        let c_index : usize = labels[i] as usize;
+        clusters[c_index] = (clusters[c_index].0+xs[i], clusters[c_index].1+ys[i], clusters[c_index].2+1);
+      }
+    }
+    let mut centers: Vec<(f64, f64)> = clusters.iter().map(|val| (val.0/(val.2 as f64) , val.1/(val.2 as f64)) ).collect(); 
+    centers = self.graph_map(centers);
+
+    context.insert("n", &self.size);
+    context.insert("labels", &labels);
+    context.insert("centers", &centers);
   }
 
 
-
-  pub fn draw_svg(&self, width: usize, height: usize, padding: usize, ) -> String {
+  pub fn draw_svg(&self) -> String {
 
     let mut context = Context::new();
     
@@ -117,16 +409,16 @@ impl Graph {
                               .map(|val|
                                   //x: (val.x / graph.max_x * width as f64) + padding as f64,
                                   //y: (val.y / graph.max_y * (height as f64 * -1.0)) + (padding + height) as f64,
-                                  (((val.x-self.x_min) / self.x_range * width as f64) + padding as f64,
-                                   ((val.y-self.y_min) / self.y_range * (height as f64 * -1.0)) + (padding + height) as f64)
+                                  (((val.x-self.x_min) / self.x_range * self.width as f64) + self.padding as f64,
+                                   ((val.y-self.y_min) / self.y_range * (self.height as f64 * -1.0)) + (self.padding + self.height) as f64)
                                     ).collect();
     
 
     context.insert("name", &self.name);
     context.insert("model", &self.model);
-    context.insert("width", &width);
-    context.insert("height", &height);
-    context.insert("padding", &padding);
+    context.insert("width", &self.width);
+    context.insert("height", &self.height);
+    context.insert("padding", &self.padding);
     context.insert("path", &path);
     context.insert("x_range", &self.x_range);
     context.insert("y_range", &self.y_range);
@@ -138,309 +430,49 @@ impl Graph {
     // println!("graph inputs done!");
 
     if self.model == "Linear Regression".to_string() {
-      let inputs = Matrix::new(self.size, 1, xs);
-      let targets = Vector::new(ys);
-      let mut lin_mod = LinRegressor::default();
-      lin_mod.train(&inputs, &targets).unwrap();
-      let params : Option<&Vector<f64>> = lin_mod.parameters();
-      let mut coefs : Vec<f64> = Vec::new();
-      let mut p1 : (f64, f64) = (0.0, 0.0);
-      let mut p2 : (f64, f64) = (0.0, 0.0);
-
-
-      if params.is_some() {
-        // println!("{}", params.unwrap().size());
-        for i in 0..params.unwrap().size() {
-          coefs.push(params.unwrap()[i]);
-        }
-      }
-      if coefs.len() > 0 {
-        p1 = (self.x_min, coefs[0] + coefs[1] * self.x_min);
-        p2 = (self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range));
-        p1 = ((p1.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
-                  (p1.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
-        p2 = ((p2.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
-                  (p2.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
-
-      }
-      // println!("{:?}", type_of(p1));
-      // println!("{:?}", p2);
-      context.insert("point1", &p1);
-      context.insert("point2", &p2);
+      self.lin_reg_svg(xs, ys, &mut context);
 
 
     } else if self.model == "Logistic Regression".to_string() {
-      let inputs = Matrix::new(self.size, 2, p_vec);
-      let targets = Vector::new(target_vec);
-      let mut log_mod = LogisticRegressor::default();
-      log_mod.train(&inputs, &targets).unwrap();
-      
-      let params : Option<&Vector<f64>> = log_mod.parameters();
-      let mut coefs : Vec<f64> = Vec::new();
-      let mut p1 : (f64, f64) = (0.0, 0.0);
-      let mut p2 : (f64, f64) = (0.0, 0.0);
-      if params.is_some() {
-        // println!("{:?}", params.unwrap());
-        coefs.push(-params.unwrap()[0]/params.unwrap()[2]);
-        coefs.push(-params.unwrap()[1]/params.unwrap()[2]);
-      }
-
-      if coefs.len() > 0 {
-        p1 = (self.x_min, coefs[0] + coefs[1] * self.x_min);
-        p2 = (self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range));
-        p1 = ((p1.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
-                  (p1.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
-        p2 = ((p2.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
-                  (p2.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
-
-      }
-      let preds: Vec<f64> = log_mod.predict(&inputs).unwrap().into_vec();
-
-      // println!("{:?}", type_of(p1));
-      // println!("{:?}", p2);
-      context.insert("point1", &p1);
-      context.insert("point2", &p2);
-      context.insert("n", &self.size);
-
-      context.insert("preds", &preds);
+      self.log_reg_svg(p_vec, target_vec, &mut context);
 
 
     } else if self.model == "Generalized Linear Models".to_string() {
-      let inputs = Matrix::new(self.size, 2, p_vec);
-      let targets = Vector::new(target_vec);
-      let mut log_mod = GenLinearModel::new(Bernoulli);
-      log_mod.train(&inputs, &targets).unwrap();
-      
-      /*let params : Option<&Vector<f64>> = log_mod.parameters();
-      let mut coefs : Vec<f64> = Vec::new();
-      let mut p1 : (f64, f64) = (0.0, 0.0);
-      let mut p2 : (f64, f64) = (0.0, 0.0);
-      if params.is_some() {
-        // println!("{:?}", params.unwrap());
-        coefs.push(-params.unwrap()[0]/params.unwrap()[2]);
-        coefs.push(-params.unwrap()[1]/params.unwrap()[2]);
-      }
-
-      if coefs.len() > 0 {
-        p1 = (self.x_min, coefs[0] + coefs[1] * self.x_min);
-        p2 = (self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range));
-        p1 = ((p1.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
-                  (p1.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
-        p2 = ((p2.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
-                  (p2.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
-
-      }*/
-      let preds: Vec<f64> = log_mod.predict(&inputs).unwrap().into_vec();
-
-      // println!("{:?}", type_of(p1));
-      // println!("{:?}", p2);
-      // context.insert("point1", &p1);
-      // context.insert("point2", &p2);
-      context.insert("n", &self.size);
-
-      context.insert("preds", &preds);
+      self.glm_svg(p_vec, target_vec, &mut context);
 
     } else if self.model == "K-Means Clustering".to_string() {
-      // println!("We are doing kmeans!");
-      let center_num : usize = 2;
-      let inputs = Matrix::new(self.size, 2, p_vec);
-      // println!("{:?}", inputs);
-      let mut km = KMeansClassifier::new(center_num);
-      println!("We are doing kmeans!");
-      km.train(&inputs).unwrap();
-      println!("Kmean model trained!");
-      let center_mat: &Option<Matrix<f64>> = km.centroids();
-      // println!("We are doing kmeans!");
-      if center_mat.as_ref().is_some() {
-        println!("{:?}", center_mat.as_ref().unwrap());
-      }
-
-      let mut centers: Vec<(f64, f64)> = Vec::new();
-
-      /*for i in 0..center_vec.len() {
-        if (i % 2) == 1 {
-          centers.push((center_vec[i-1], center_vec[i]));
-        } 
-      }
-      let centers = self.graph_map(centers, width, height, padding);
-      */
-      context.insert("centers", &centers);
+      self.kmeans_svg(p_vec, &mut context);
 
 
     } else if self.model == "Neural Networks".to_string() {
-      let inputs = Matrix::new(self.size, 2, p_vec);
-      let mut target_class: Vec<f64> = Vec::new();
-      for i in 0..self.size {
-        if target_vec[i] == 0. {
-          target_class.push(1.);
-          target_class.push(0.);
-        } else {
-          target_class.push(0.);
-          target_class.push(1.);
-        }
-      }
-      // println!("Nothing done yet!");
-      let targets = Matrix::new(self.size, 2, target_class);
-      let layers = &[2,5,11,7,2];
-      let criterion = BCECriterion::new(Regularization::L2(0.2));
-      println!("Criterion created!");
-      let mut nn = NeuralNet::new(layers, criterion, StochasticGD::default());
-      println!("Net not trained");
-      nn.train(&inputs, &targets).unwrap();
-      let pred_class: Vec<f64> = nn.predict(&inputs).unwrap().into_vec();
-      let mut preds: Vec<f64> = Vec::new();
-      for i in 0..self.size {
-        if pred_class[2*i] <= 0.5 {
-          preds.push(1.);
-        } else {
-          preds.push(0.)
-        }
-      }
-      context.insert("n", &self.size);
-      context.insert("preds", &preds);
-      // println!("{:?}", preds);
+      self.nnet_svg(p_vec, target_vec, &mut context);
 
     } else if self.model == "Support Vector Machines".to_string() {
-      let svm_target_vec: Vec<f64> = target_vec.iter().map(|val| if *val == 1.0 as f64 {1. as f64} else {-1. as f64} ).collect();
-      // println!("{:?}", svm_target_vec);            
-      let inputs = Matrix::new(self.size, 2, p_vec);
-      let targets = Vector::new(svm_target_vec);
-      // println!("Nothing yet!");
-      let mut svm_mod = SVM::new(SquaredExp::default(), 0.3);
-      println!("Model created!");
-      svm_mod.train(&inputs, &targets).unwrap();
-      println!("Model trained!");
-      
-      /*let params : Option<&Vector<f64>> = log_mod.parameters();
-      let mut coefs : Vec<f64> = Vec::new();
-      let mut p1 : (f64, f64) = (0.0, 0.0);
-      let mut p2 : (f64, f64) = (0.0, 0.0);
-      if params.is_some() {
-        // println!("{:?}", params.unwrap());
-        coefs.push(-params.unwrap()[0]/params.unwrap()[2]);
-        coefs.push(-params.unwrap()[1]/params.unwrap()[2]);
-      }
-
-      if coefs.len() > 0 {
-        p1 = (self.x_min, coefs[0] + coefs[1] * self.x_min);
-        p2 = (self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range));
-        p1 = ((p1.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
-                  (p1.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
-        p2 = ((p2.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
-                  (p2.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
-
-      }*/
-      // println!("{:?}", svm_mod.predict(&inputs).unwrap());
-      let preds: Vec<f64> = svm_mod.predict(&inputs).unwrap().into_vec();
-
-      // preds = preds.iter().map(|val| if *val == 1.0 as f64 {1.} else {0.}).collect();
-      // println!("{:?}", type_of(p1));
-      // println!("{:?}", p2);
-      //context.insert("point1", &p1);
-      //context.insert("point2", &p2);
-      context.insert("n", &self.size);
-
-      context.insert("preds", &preds);
+      self.svm_svg(p_vec, target_vec, &mut context);
 
     } else if self.model == "Gaussian Mixture Models".to_string() {
-      let class_num: usize = 2;
-      let inputs = Matrix::new(self.size, 2, p_vec);
-      // println!("{:?}", inputs);
-      let mut gm = GaussianMixtureModel::new(class_num);
-      gm.set_max_iters(10);
-      gm.cov_option = CovOption::Diagonal;
-      println!("Not trained yet!");
-      gm.train(&inputs).unwrap();
-      println!("Just trained!");
-
-      let mean_mat: Option<&Matrix<f64>> = gm.means();
-      if mean_mat.is_some() {
-        println!("{:?}", mean_mat.unwrap());
-      }
-
-      let mean_vec: Vec<f64> = mean_mat.unwrap().data().to_vec();
-      let mut mus: Vec<(f64, f64)> = Vec::new();
-
-      for i in 0..mean_vec.len() {
-        if (i % 2) == 1 {
-          mus.push((mean_vec[i-1], mean_vec[i]));
-        } 
-      }
-      mus = mus.iter()
-                  .map(|val| ((val.0-self.x_min) / self.x_range * width as f64 + padding as f64, 
-                       (val.1-self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64)).collect();
-      
-      context.insert("means", &mus);
+      self.gmm_svg(p_vec, &mut context);
 
     } else if self.model == "Naive Bayes Classifiers".to_string() {
-      let inputs = Matrix::new(self.size, 2, p_vec);
-      let mut target_class: Vec<f64> = Vec::new();
-      for i in 0..self.size {
-        if target_vec[i] == 0. {
-          target_class.push(1.);
-          target_class.push(0.);
-        } else {
-          target_class.push(0.);
-          target_class.push(1.);
-        }
-      }
-      let targets = Matrix::new(self.size, 2, target_class);
-      let mut nb = NaiveBayes::<Gaussian>::new();
-      nb.train(&inputs, &targets).unwrap();
-      // println!("{:?}", nb.predict(&inputs));
-      let pred_class: Vec<f64> = nb.predict(&inputs).unwrap().into_vec();
-      let mut preds: Vec<f64> = Vec::new();
-      for i in 0..self.size {
-        if pred_class[2*i] == 0. {
-          preds.push(1.);
-        } else {
-          preds.push(0.)
-        }
-      }
-
-      // println!("{:?}", type_of(p1));
-      // println!("{:?}", preds);
-      context.insert("n", &self.size);
-      context.insert("preds", &preds);
+      self.nb_svg(p_vec, target_vec, &mut context);
 
     } else if self.model == "DBSCAN".to_string() {
-      let inputs = Matrix::new(self.size, 2, p_vec);
-      let mut db = DBSCAN::new(0.5, 2);
-      db.train(&inputs).unwrap();
-
-      let clustering = db.clusters().unwrap();
-      // println!("{:?}", clustering);
-      let labels: Vec<f64> = clustering.data().to_vec().iter().map(|&val| match val {Some(x) => {x as f64}, _ => {-1.0}}).collect();
-      let mut clusters: Vec<(f64, f64, usize)> = Vec::new(); 
-      
-      for i in 0..self.size {
-        if labels[i] >= 0.0 {
-          if labels[i] >= clusters.len() as f64 {
-            for j in 0..(labels[i] as usize - clusters.len()+1) {
-              clusters.push((0.0, 0.0, 0));
-            }
-          }
-          let c_index : usize = labels[i] as usize;
-          clusters[c_index] = (clusters[c_index].0+xs[i], clusters[c_index].1+ys[i], clusters[c_index].2+1);
-        }
-      }
-      let mut centers: Vec<(f64, f64)> = clusters.iter().map(|val| (val.0/(val.2 as f64) , val.1/(val.2 as f64)) ).collect(); 
-      centers = self.graph_map(centers, width, height, padding);
-
-      context.insert("n", &self.size);
-      context.insert("labels", &labels);
-      context.insert("centers", &centers);
+      self.dbscan_svg(xs, ys, p_vec, &mut context);
     }
   
-    Tera::one_off(include_str!("graph.svg"), &context, true).expect("Could not draw graph")
+    Tera::one_off(include_str!("graph.svg"), &mut context, true).expect("Could not draw graph")
     
   }
 }
 
 
-pub fn generate_graph(xs: Vec<f64>, ys: Vec<f64>, title : &str, model : &str) -> Graph {
+pub fn generate_graph(xs: Vec<f64>, ys: Vec<f64>, title : &str, model : &str, 
+                      width: usize, height: usize, padding: usize) -> Graph {
   let mut graph = Graph::new(title.into(), model.into(), "#8ff0a4".into());
   graph.size = xs.len();
+  graph.width = width;
+  graph.height = height;
+  graph.padding = padding;
   for i in 0..graph.size {
     graph.add_point(xs[i], ys[i]);
   }
@@ -493,12 +525,15 @@ pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, 
   // let xs = permutation.apply_slice(&xs[..]);
   // println!("Graph is not done!");
 
-  let mut graph = generate_graph(xs, ys, title, model);
+  
 
   // println!("Graph is done!");
 
   let width = width - padding * 2;
   let height = height - padding * 2;
+
+  let mut graph = generate_graph(xs, ys, title, model, width, height, padding);
+
   //let min_x = graph.points.get(0).map(|val| val.x).unwrap_or(0.0);
   let x_max = graph.points.iter().map(|point| point.x).fold(0. / 0., f64::max);
   let x_min = graph.points.iter().map(|point| point.x).fold(0. / 0., f64::min);
@@ -523,10 +558,13 @@ pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, 
   */
 
 
-  let out = graph.draw_svg(width, height, padding);
+  let out = graph.draw_svg();
   // println!("{}", out);
   return out;
 }
+
+
+
 
 fn read_data(csv_content: &[u8]) -> (Vec<f64>, (usize, usize)) {
   let v : Vec<u8> = csv_content.to_vec();

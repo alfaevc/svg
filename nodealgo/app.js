@@ -14,16 +14,16 @@ var title = "SVG";
 // var model = "Generalized Linear Models";
 // var model = "Neural Networks";
 // var model = "Support Vector Machines";
-var model = "K-Means Clustering";
+// var model = "K-Means Clustering";
 // var model = "Naive Bayes Classifiers";
 // var model = "Gaussian Mixture Models";
-// var model = "DBSCAN";
+var model = "DBSCAN";
 
 
 // var centers = [3.44, 0.24, 3.04, 2.05, 2.71, 1.31];
 var iris_csv = fs.readFileSync("nodealgo/iris.data.csv");
 // var out = get_svg(iris_csv, JSON.stringify(centers), width, height, p, title, model);
-console.error(get_svg(iris_csv, width, height, p, title, model));
+// console.error(get_svg(iris_csv, width, height, p, title, model));
 var out = get_svg(iris_csv, width, height, p, title, model);
 
 fs.writeFile('src/out.svg', out, (err) => {
