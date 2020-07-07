@@ -29,6 +29,15 @@ use rm::learning::dbscan::DBSCAN;
 use rm::learning::SupModel;
 use rm::learning::UnSupModel;
 
+extern crate console_error_panic_hook;
+use std::panic;
+
+fn my_init_function() {
+  panic::set_hook(Box::new(console_error_panic_hook::hook));
+
+  // ...
+}
+
 
 // use std::slice::sort_by;
 // use ndarray::{Array2};
