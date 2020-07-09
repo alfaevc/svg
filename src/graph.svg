@@ -148,7 +148,7 @@
   {% set x = c.0 %}
   {% set y = c.1 %}
   <g stroke="red" stroke-width="2" fill="red">
-    <polygon points="{{x-1}}, {{y-1}} {{x+1}}, {{y-1}}, {{x}}, {{y+1}}"/>
+    <polygon points="{{x-2}}, {{y-2}} {{x+2}}, {{y-2}}, {{x}}, {{y+2}}"/>
   </g>
   {% endfor %}
 
@@ -245,7 +245,7 @@
   {% set x = mu.0 %}
   {% set y = mu.1 %}
   <g stroke="red" stroke-width="2" fill="red">
-    <polygon points="{{x-1}}, {{y-1}} {{x+1}}, {{y-1}}, {{x}}, {{y+1}}"/>
+    <polygon points="{{x-2}}, {{y-2}} {{x+2}}, {{y-2}}, {{x}}, {{y+2}}"/>
   </g>
   {% endfor %}
 

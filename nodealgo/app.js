@@ -8,13 +8,13 @@ var width = 800;
 var height = 400;
 var p = 50;
 var title = "SVG";
-// Not working: SVM, K-means, GMM. NN
+// Weird behavior for svm
 // var model = "Linear Regression";
 // var model = "Logistic Regression";
 // var model = "Generalized Linear Models";
 // var model = "Neural Networks";
-// var model = "Support Vector Machines";
-var model = "K-Means Clustering";
+var model = "Support Vector Machines";
+// var model = "K-Means Clustering";
 // var model = "Naive Bayes Classifiers";
 // var model = "Gaussian Mixture Models";
 // var model = "DBSCAN";

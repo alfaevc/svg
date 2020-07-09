@@ -15,18 +15,27 @@ use rm::linalg::Matrix;
 use rm::linalg::Vector;
 // use rulinalg::vector::Vector;
 use rm::learning::lin_reg::LinRegressor;
+
 use rm::learning::logistic_reg::LogisticRegressor;
+
 use rm::learning::glm::{GenLinearModel, Bernoulli};
+
 use rm::learning::gmm::{CovOption, GaussianMixtureModel};
+
 use rm::learning::naive_bayes::{NaiveBayes, Gaussian};
+
 use rm::learning::k_means::KMeansClassifier;
+
 use rm::learning::svm::SVM;
-use rm::learning::toolkit::kernel::SquaredExp;
+use rm::learning::toolkit::kernel::Polynomial;
+
 use rm::learning::nnet::{NeuralNet, BCECriterion};
 use rm::learning::toolkit::activ_fn::Sigmoid;
 use rm::learning::toolkit::regularization::Regularization;
 use rm::learning::optim::grad_desc::StochasticGD;
+
 use rm::learning::dbscan::DBSCAN;
+
 use rm::learning::SupModel;
 use rm::learning::UnSupModel;
 
@@ -244,7 +253,7 @@ impl Graph {
       if pred_class[2*i] <= 0.5 {
         preds.push(1.);
       } else {
-        preds.push(0.)
+        preds.push(0.);
       }
     }
     context.insert("n", &self.size);
@@ -254,11 +263,11 @@ impl Graph {
 
   pub fn svm_svg(&self, p_vec: Vec<f64>, target_vec: Vec<f64>, context: &mut Context) {
     let svm_target_vec: Vec<f64> = target_vec.iter().map(|val| if *val == 1.0 as f64 {1. as f64} else {-1. as f64} ).collect();
-    // println!("{:?}", svm_target_vec);            
+    println!("{:?}", svm_target_vec);            
     let inputs = Matrix::new(self.size, 2, p_vec);
     let targets = Vector::new(svm_target_vec);
     // println!("Nothing yet!");
-    let mut svm_mod = SVM::new(SquaredExp::default(), 0.3);
+    let mut svm_mod = SVM::new(Polynomial::default(), 0.3);
     println!("Model created!");
     svm_mod.train(&inputs, &targets).unwrap();
     println!("Model trained!");
@@ -284,7 +293,7 @@ impl Graph {
     }*/
     // println!("{:?}", svm_mod.predict(&inputs).unwrap());
     let preds: Vec<f64> = svm_mod.predict(&inputs).unwrap().into_vec();
-
+    println!("{:?}", preds);
     // preds = preds.iter().map(|val| if *val == 1.0 as f64 {1.} else {0.}).collect();
     // println!("{:?}", type_of(p1));
     // println!("{:?}", p2);
