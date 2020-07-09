@@ -23,6 +23,7 @@ use rm::learning::k_means::KMeansClassifier;
 use rm::learning::svm::SVM;
 use rm::learning::toolkit::kernel::SquaredExp;
 use rm::learning::nnet::{NeuralNet, BCECriterion};
+use rm::learning::toolkit::activ_fn::Sigmoid;
 use rm::learning::toolkit::regularization::Regularization;
 use rm::learning::optim::grad_desc::StochasticGD;
 use rm::learning::dbscan::DBSCAN;
@@ -200,21 +201,20 @@ impl Graph {
     println!("We are doing kmeans!");
     km.train(&inputs).unwrap();
     println!("Kmean model trained!");
-    let center_mat: &Option<Matrix<f64>> = km.centroids();
+    let center_mat = km.centroids().as_ref().unwrap();
     // println!("We are doing kmeans!");
-    if center_mat.as_ref().is_some() {
-      println!("{:?}", center_mat.as_ref().unwrap());
-    }
+    
+    let center_vec: Vec<f64> = center_mat.data().to_vec();
 
     let mut centers: Vec<(f64, f64)> = Vec::new();
 
-    /*for i in 0..center_vec.len() {
+    for i in 0..center_vec.len() {
       if (i % 2) == 1 {
         centers.push((center_vec[i-1], center_vec[i]));
       } 
     }
-    let centers = self.graph_map(centers);
-    */
+    centers = self.graph_map(centers);
+    
     context.insert("centers", &centers);
   }
 
@@ -233,9 +233,9 @@ impl Graph {
     // println!("Nothing done yet!");
     let targets = Matrix::new(self.size, 2, target_class);
     let layers = &[2,5,11,7,2];
-    let criterion = BCECriterion::new(Regularization::L2(0.2));
+    let criterion = BCECriterion::new(Regularization::L2(0.1));
     println!("Criterion created!");
-    let mut nn = NeuralNet::new(layers, criterion, StochasticGD::default());
+    let mut nn = NeuralNet::mlp(layers, criterion, StochasticGD::default(), Sigmoid);
     println!("Net not trained");
     nn.train(&inputs, &targets).unwrap();
     let pred_class: Vec<f64> = nn.predict(&inputs).unwrap().into_vec();
@@ -545,17 +545,6 @@ pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, 
 
   graph.x_range = (x_max+1.0).round() - graph.x_min;
   graph.y_range = (y_max+1.0).round() - graph.y_min;
-
-
-   
-  
-  //let min_y = graph.points.iter().map(|val| val.y).fold(0. / 0., f64::min);
-
-  /* let centers = centers
-                  .iter()
-                  .map(|val| ((val.0-graph.x_min) / graph.x_range * width as f64 + padding as f64, 
-                       (val.1-graph.y_min) / graph.y_range * (height as f64 * -1.0) + (padding + height) as f64)).collect();
-  */
 
 
   let out = graph.draw_svg();

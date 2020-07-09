@@ -2,12 +2,12 @@
 <svg
   width="100%"
   height="100%"
-  viewBox="0 0 900 500"
+  viewBox="0 0 800 400"
   preserveAspectRatio="xMidYMid meet"
   xmlns="http://www.w3.org/2000/svg"
   >
   <text 
-    x="450"
+    x="400"
     y="25"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
     dominant-baseline="middle"
@@ -37,7 +37,7 @@
   <text
     x="50"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="460"
+    y="360"
     dominant-baseline="hanging"
     text-anchor="middle"
     font-size="12"
@@ -47,14 +47,14 @@
   1
   </text>
 
-  <path stroke="#74838f" stroke-width="2.0" d="M 50 450 L 50 460" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 50 L 50 450" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 50 L 850 50" />
+  <path stroke="#74838f" stroke-width="2.0" d="M 50 350 L 50 360" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 50 L 50 350" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 50 L 750 50" />
   
     
 
   
-  <path stroke="#74838f" stroke-width="2" fill="none"  d="M 50 50 L 50 450" />
+  <path stroke="#74838f" stroke-width="2" fill="none"  d="M 50 50 L 50 350" />
    
 
   
@@ -63,7 +63,7 @@
   <text
     x="45"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="90"
+    y="80"
     dominant-baseline="middle"
     text-anchor="end"
     font-size="12"
@@ -74,9 +74,9 @@
     
   </text>
   <text
-    x="130"
+    x="120"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="460"
+    y="360"
     dominant-baseline="hanging"
     text-anchor="middle"
     font-size="12"
@@ -86,9 +86,9 @@
   1.4
   </text>
 
-  <path stroke="#74838f" stroke-width="2.0" d="M 130 450 L 130 460" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 130 50 L 130 450" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 90 L 850 90" />
+  <path stroke="#74838f" stroke-width="2.0" d="M 120 350 L 120 360" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 120 50 L 120 350" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 80 L 750 80" />
   
     
 
@@ -100,7 +100,7 @@
   <text
     x="45"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="130"
+    y="110"
     dominant-baseline="middle"
     text-anchor="end"
     font-size="12"
@@ -111,9 +111,9 @@
     
   </text>
   <text
-    x="210"
+    x="190"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="460"
+    y="360"
     dominant-baseline="hanging"
     text-anchor="middle"
     font-size="12"
@@ -123,9 +123,46 @@
   1.8
   </text>
 
-  <path stroke="#74838f" stroke-width="2.0" d="M 210 450 L 210 460" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 210 50 L 210 450" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 130 L 850 130" />
+  <path stroke="#74838f" stroke-width="2.0" d="M 190 350 L 190 360" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 190 50 L 190 350" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 110 L 750 110" />
+  
+    
+
+   
+
+  
+  
+  
+  <text
+    x="45"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="140"
+    dominant-baseline="middle"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+    >
+    2.5
+    
+  </text>
+  <text
+    x="260"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="360"
+    dominant-baseline="hanging"
+    text-anchor="middle"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+  >
+  2.21
+  </text>
+
+  <path stroke="#74838f" stroke-width="2.0" d="M 260 350 L 260 360" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 260 50 L 260 350" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 140 L 750 140" />
   
     
 
@@ -144,50 +181,13 @@
     fill="#74838f"
     font-weight="bold"
     >
-    2.5
-    
-  </text>
-  <text
-    x="290"
-    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="460"
-    dominant-baseline="hanging"
-    text-anchor="middle"
-    font-size="12"
-    fill="#74838f"
-    font-weight="bold"
-  >
-  2.21
-  </text>
-
-  <path stroke="#74838f" stroke-width="2.0" d="M 290 450 L 290 460" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 290 50 L 290 450" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 170 L 850 170" />
-  
-    
-
-   
-
-  
-  
-  
-  <text
-    x="45"
-    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="210"
-    dominant-baseline="middle"
-    text-anchor="end"
-    font-size="12"
-    fill="#74838f"
-    font-weight="bold"
-    >
     2
     
   </text>
   <text
-    x="370"
+    x="330"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="460"
+    y="360"
     dominant-baseline="hanging"
     text-anchor="middle"
     font-size="12"
@@ -197,9 +197,9 @@
   2.6
   </text>
 
-  <path stroke="#74838f" stroke-width="2.0" d="M 370 450 L 370 460" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 370 50 L 370 450" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 210 L 850 210" />
+  <path stroke="#74838f" stroke-width="2.0" d="M 330 350 L 330 360" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 330 50 L 330 350" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 170 L 750 170" />
   
     
 
@@ -211,7 +211,7 @@
   <text
     x="45"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="250"
+    y="200"
     dominant-baseline="middle"
     text-anchor="end"
     font-size="12"
@@ -222,9 +222,9 @@
     
   </text>
   <text
-    x="450"
+    x="400"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="460"
+    y="360"
     dominant-baseline="hanging"
     text-anchor="middle"
     font-size="12"
@@ -234,9 +234,83 @@
   3
   </text>
 
-  <path stroke="#74838f" stroke-width="2.0" d="M 450 450 L 450 460" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 450 50 L 450 450" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 250 L 850 250" />
+  <path stroke="#74838f" stroke-width="2.0" d="M 400 350 L 400 360" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 400 50 L 400 350" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 200 L 750 200" />
+  
+    
+
+   
+
+  
+  
+  
+  <text
+    x="45"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="230"
+    dominant-baseline="middle"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+    >
+    1
+    
+  </text>
+  <text
+    x="470"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="360"
+    dominant-baseline="hanging"
+    text-anchor="middle"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+  >
+  3.4
+  </text>
+
+  <path stroke="#74838f" stroke-width="2.0" d="M 470 350 L 470 360" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 470 50 L 470 350" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 230 L 750 230" />
+  
+    
+
+   
+
+  
+  
+  
+  <text
+    x="45"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="260"
+    dominant-baseline="middle"
+    text-anchor="end"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+    >
+    0.5
+    
+  </text>
+  <text
+    x="540"
+    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
+    y="360"
+    dominant-baseline="hanging"
+    text-anchor="middle"
+    font-size="12"
+    fill="#74838f"
+    font-weight="bold"
+  >
+  3.8
+  </text>
+
+  <path stroke="#74838f" stroke-width="2.0" d="M 540 350 L 540 360" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 540 50 L 540 350" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 260 L 750 260" />
   
     
 
@@ -255,87 +329,13 @@
     fill="#74838f"
     font-weight="bold"
     >
-    1
-    
-  </text>
-  <text
-    x="530"
-    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="460"
-    dominant-baseline="hanging"
-    text-anchor="middle"
-    font-size="12"
-    fill="#74838f"
-    font-weight="bold"
-  >
-  3.4
-  </text>
-
-  <path stroke="#74838f" stroke-width="2.0" d="M 530 450 L 530 460" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 530 50 L 530 450" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 290 L 850 290" />
-  
-    
-
-   
-
-  
-  
-  
-  <text
-    x="45"
-    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="330"
-    dominant-baseline="middle"
-    text-anchor="end"
-    font-size="12"
-    fill="#74838f"
-    font-weight="bold"
-    >
-    0.5
+    0
     
   </text>
   <text
     x="610"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="460"
-    dominant-baseline="hanging"
-    text-anchor="middle"
-    font-size="12"
-    fill="#74838f"
-    font-weight="bold"
-  >
-  3.8
-  </text>
-
-  <path stroke="#74838f" stroke-width="2.0" d="M 610 450 L 610 460" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 610 50 L 610 450" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 330 L 850 330" />
-  
-    
-
-   
-
-  
-  
-  
-  <text
-    x="45"
-    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="370"
-    dominant-baseline="middle"
-    text-anchor="end"
-    font-size="12"
-    fill="#74838f"
-    font-weight="bold"
-    >
-    0
-    
-  </text>
-  <text
-    x="690"
-    font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="460"
+    y="360"
     dominant-baseline="hanging"
     text-anchor="middle"
     font-size="12"
@@ -345,9 +345,9 @@
   4.2
   </text>
 
-  <path stroke="#74838f" stroke-width="2.0" d="M 690 450 L 690 460" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 690 50 L 690 450" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 370 L 850 370" />
+  <path stroke="#74838f" stroke-width="2.0" d="M 610 350 L 610 360" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 610 50 L 610 350" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 290 L 750 290" />
   
     
 
@@ -359,7 +359,7 @@
   <text
     x="45"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="410"
+    y="320"
     dominant-baseline="middle"
     text-anchor="end"
     font-size="12"
@@ -370,9 +370,9 @@
     
   </text>
   <text
-    x="770"
+    x="680"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="460"
+    y="360"
     dominant-baseline="hanging"
     text-anchor="middle"
     font-size="12"
@@ -382,9 +382,9 @@
   4.6
   </text>
 
-  <path stroke="#74838f" stroke-width="2.0" d="M 770 450 L 770 460" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 770 50 L 770 450" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 410 L 850 410" />
+  <path stroke="#74838f" stroke-width="2.0" d="M 680 350 L 680 360" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 680 50 L 680 350" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 320 L 750 320" />
   
     
 
@@ -396,7 +396,7 @@
   <text
     x="45"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="450"
+    y="350"
     dominant-baseline="middle"
     text-anchor="end"
     font-size="12"
@@ -407,9 +407,9 @@
     
   </text>
   <text
-    x="850"
+    x="750"
     font-family="-apple-system, system-ui, BlinkMacSystemFont, Roboto"
-    y="460"
+    y="360"
     dominant-baseline="hanging"
     text-anchor="middle"
     font-size="12"
@@ -419,12 +419,12 @@
   5
   </text>
 
-  <path stroke="#74838f" stroke-width="2.0" d="M 850 450 L 850 460" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 850 50 L 850 450" />
-  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 450 L 850 450" />
+  <path stroke="#74838f" stroke-width="2.0" d="M 750 350 L 750 360" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 750 50 L 750 350" />
+  <path stroke="#74838f" stroke-dasharray="10 6" stroke-width="0.5"  d="M 50 350 L 750 350" />
   
   
-  <path stroke="#74838f" stroke-width="2" fill="none"  d="M 50 450 L 850 450" />
+  <path stroke="#74838f" stroke-width="2" fill="none"  d="M 50 350 L 750 350" />
     
 
    
@@ -437,1210 +437,903 @@
   
   
   
-  
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="450" cy="354" r="2" />
+    <circle cx="400" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="490.00000000000006" cy="354" r="2" />
+    <circle cx="435.00000000000006" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="470" cy="354" r="2" />
+    <circle cx="417.5" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="570" cy="354" r="2" />
+    <circle cx="505" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="630" cy="338" r="2" />
+    <circle cx="557.5" cy="266" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="530" cy="346" r="2" />
+    <circle cx="470" cy="272" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="530" cy="354" r="2" />
+    <circle cx="470" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="430" cy="354" r="2" />
+    <circle cx="382.5" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="470" cy="362" r="2" />
+    <circle cx="417.5" cy="284" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="590" cy="354" r="2" />
+    <circle cx="522.5" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="530" cy="354" r="2" />
+    <circle cx="470" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="450" cy="362" r="2" />
+    <circle cx="400" cy="284" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="450" cy="362" r="2" />
+    <circle cx="400" cy="284" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="650" cy="354" r="2" />
+    <circle cx="575" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="730.0000000000001" cy="338" r="2" />
+    <circle cx="645.0000000000001" cy="266" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="630" cy="338" r="2" />
+    <circle cx="557.5" cy="266" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="550" cy="346" r="2" />
+    <circle cx="487.5" cy="272" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="610" cy="346" r="2" />
+    <circle cx="540" cy="272" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="610" cy="346" r="2" />
+    <circle cx="540" cy="272" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="530" cy="354" r="2" />
+    <circle cx="470" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="590" cy="338" r="2" />
+    <circle cx="522.5" cy="266" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="570" cy="354" r="2" />
+    <circle cx="505" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="509.99999999999994" cy="330" r="2" />
+    <circle cx="452.49999999999994" cy="260" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="530" cy="354" r="2" />
+    <circle cx="470" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="450" cy="354" r="2" />
+    <circle cx="400" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="530" cy="338" r="2" />
+    <circle cx="470" cy="266" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="550" cy="354" r="2" />
+    <circle cx="487.5" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="530" cy="354" r="2" />
+    <circle cx="470" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="490.00000000000006" cy="354" r="2" />
+    <circle cx="435.00000000000006" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="470" cy="354" r="2" />
+    <circle cx="417.5" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="530" cy="338" r="2" />
+    <circle cx="470" cy="266" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="669.9999999999999" cy="362" r="2" />
+    <circle cx="592.4999999999999" cy="284" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="690" cy="354" r="2" />
+    <circle cx="610" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="470" cy="362" r="2" />
+    <circle cx="417.5" cy="284" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="490.00000000000006" cy="354" r="2" />
+    <circle cx="435.00000000000006" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="550" cy="354" r="2" />
+    <circle cx="487.5" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="470" cy="362" r="2" />
+    <circle cx="417.5" cy="284" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="450" cy="354" r="2" />
+    <circle cx="400" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="530" cy="354" r="2" />
+    <circle cx="470" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="550" cy="346" r="2" />
+    <circle cx="487.5" cy="272" r="2" />
   </g>
-  
-  
-  
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="309.99999999999994" cy="346" r="2" />
-  </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="490.00000000000006" cy="354" r="2" />
+    <circle cx="277.5" cy="272" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="550" cy="322" r="2" />
+    <circle cx="435.00000000000006" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="610" cy="338" r="2" />
+    <circle cx="487.5" cy="254" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="450" cy="346" r="2" />
+    <circle cx="540" cy="266" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="610" cy="354" r="2" />
+    <circle cx="400" cy="272" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="490.00000000000006" cy="354" r="2" />
+    <circle cx="540" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="590" cy="354" r="2" />
+    <circle cx="435.00000000000006" cy="278" r="2" />
   </g>
-  
-  
   
   
   
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="509.99999999999994" cy="354" r="2" />
+    <circle cx="522.5" cy="278" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="490.00000000000006" cy="258" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="452.49999999999994" cy="278" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="490.00000000000006" cy="250" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="435.00000000000006" cy="206" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="470" cy="250" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="435.00000000000006" cy="200" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="309.99999999999994" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="417.5" cy="200" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="250" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="277.5" cy="212" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="200" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="509.99999999999994" cy="242" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="212" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="330" cy="290" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="452.49999999999994" cy="194" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="430" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="295" cy="230" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="390.00000000000006" cy="258" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="382.5" cy="212" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="250" cy="290" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="347.50000000000006" cy="206" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="250" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="225" cy="230" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="290" cy="290" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="200" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="430" cy="258" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="260" cy="230" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="430" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="382.5" cy="206" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="470" cy="258" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="382.5" cy="212" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="250" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="417.5" cy="206" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="390.00000000000006" cy="290" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="200" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="290" cy="250" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="347.50000000000006" cy="230" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="350" cy="282" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="260" cy="200" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="490.00000000000006" cy="226.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="312.5" cy="224" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="435.00000000000006" cy="182.00000000000003" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="350" cy="250" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="212" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="274" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="312.5" cy="200" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="430" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="217.99999999999997" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="258" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="382.5" cy="212" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="258" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="206" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="234" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="206" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="430" cy="250" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="188" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="370" cy="290" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="382.5" cy="200" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="330" cy="282" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="330" cy="230" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="330" cy="290" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="295" cy="224" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="390.00000000000006" cy="274" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="295" cy="230" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="390.00000000000006" cy="242" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="347.50000000000006" cy="217.99999999999997" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="250" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="347.50000000000006" cy="194" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="530" cy="242" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="200" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="470" cy="250" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="470" cy="194" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="309.99999999999994" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="417.5" cy="200" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="277.5" cy="212" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="350" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="212" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="370" cy="274" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="312.5" cy="212" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="258" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="330" cy="217.99999999999997" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="370" cy="274" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="206" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="309.99999999999994" cy="290" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="330" cy="217.99999999999997" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="390.00000000000006" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="277.5" cy="230" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="274" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="347.50000000000006" cy="212" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="430" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="217.99999999999997" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="430" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="382.5" cy="212" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="350" cy="282" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="382.5" cy="212" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="266" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="312.5" cy="224" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="509.99999999999994" cy="170" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="212" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="390.00000000000006" cy="218.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="452.49999999999994" cy="140" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="202" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="347.50000000000006" cy="176" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="430" cy="226.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="164" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="194" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="382.5" cy="182.00000000000003" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="202" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="158" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="350" cy="234" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="164" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="430" cy="226.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="312.5" cy="188" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="350" cy="226.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="382.5" cy="182.00000000000003" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="570" cy="170" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="312.5" cy="182.00000000000003" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="490.00000000000006" cy="210" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="505" cy="140" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="390.00000000000006" cy="218.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="435.00000000000006" cy="170" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="202" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="347.50000000000006" cy="176" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="350" cy="210" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="164" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="178" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="312.5" cy="170" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="490.00000000000006" cy="186.00000000000006" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="146.00000000000003" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="226.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="435.00000000000006" cy="152.00000000000003" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="610" cy="194" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="182.00000000000003" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="370" cy="186.00000000000006" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="540" cy="158" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="290" cy="250" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="330" cy="152.00000000000003" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="490.00000000000006" cy="186.00000000000006" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="260" cy="200" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="210" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="435.00000000000006" cy="152.00000000000003" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="210" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="170" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="390.00000000000006" cy="226.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="170" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="509.99999999999994" cy="202" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="347.50000000000006" cy="182.00000000000003" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="490.00000000000006" cy="226.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="452.49999999999994" cy="164" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="226.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="435.00000000000006" cy="182.00000000000003" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="226.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="182.00000000000003" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="202" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="182.00000000000003" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="242" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="164" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="218.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="194" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="610" cy="210" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="176" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="194" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="540" cy="170" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="409.99999999999994" cy="250" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="158" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="370" cy="258" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="364.99999999999994" cy="200" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="186.00000000000006" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="330" cy="206" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="530" cy="178" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="152.00000000000003" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="470" cy="226.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="470" cy="146.00000000000003" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="226.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="417.5" cy="182.00000000000003" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="470" cy="202" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="182.00000000000003" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="470" cy="178" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="417.5" cy="164" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="470" cy="186.00000000000006" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="417.5" cy="146.00000000000003" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="390.00000000000006" cy="218.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="417.5" cy="152.00000000000003" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="490.00000000000006" cy="186.00000000000006" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="347.50000000000006" cy="176" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="509.99999999999994" cy="170" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="435.00000000000006" cy="152.00000000000003" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="186.00000000000006" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="452.49999999999994" cy="140" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="350" cy="218.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="152.00000000000003" r="2" />
   </g>
-  
-  
   
   
   
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="210" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="312.5" cy="176" r="2" />
   </g>
   
   
   
-  
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="530" cy="186.00000000000006" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="170" r="2" />
   </g>
-  
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
-    <circle cx="450" cy="226.00000000000003" r="2" />
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="470" cy="152.00000000000003" r="2" />
   </g>
   
   
-
   
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="182.00000000000003" r="2" />
+  </g>
   
   
-  <g stroke="blue" stroke-width="2" fill="blue">
-    <polygon points="535.9166666666666, 348.5 539.9166666666666, 348.5, 537.9166666666666, 352.5"/>
-  </g>
   
   
   
-  <g stroke="blue" stroke-width="2" fill="blue">
-    <polygon points="422.40000000000026, 233.91999999999996 426.40000000000026, 233.91999999999996, 424.40000000000026, 237.91999999999996"/>
-  </g>
+  <path stroke="blue" stroke-width="2" fill="none"  d="M 50 141.87973089062197 L 750 289.7059101746183" />
   
-
     
 </svg>

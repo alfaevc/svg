@@ -421,16 +421,6 @@ dependencies = [
 
 [[package]]
 name = "rand"
-version = "0.3.23"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "64ac302d8f83c0c1974bf758f6b041c6c8ada916fbb44a609158ca8b064cc76c"
-dependencies = [
- "libc",
- "rand 0.4.6",
-]
-
-[[package]]
-name = "rand"
 version = "0.4.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "552840b97013b1a26992c11eac34bdd778e464601a4c2054b5f0bff7c6761293"
@@ -542,9 +532,8 @@ checksum = "26412eb97c6b088a6997e05f69403a802a92d520de2f8e63c2b65f9e0f47c4e8"
 
 [[package]]
 name = "rulinalg"
-version = "0.3.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5670ce3717deb2d4436bdb29f07c549b56595f1fd8af1ca4682f1c1b1ac57f86"
+version = "0.4.2"
+source = "git+https://github.com/AtheMathmo/rulinalg?rev=1ed8b937#1ed8b937d7b54d08a440f7db91994142bfe47388"
 dependencies = [
  "matrixmultiply",
  "num",
@@ -553,11 +542,9 @@ dependencies = [
 [[package]]
 name = "rusty-machine"
 version = "0.5.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dee5358236bbd0835aeee9a8b04c8b9b0aaea243a1a1a71253957b4606fb9171"
 dependencies = [
  "num",
- "rand 0.3.23",
+ "rand 0.4.6",
  "rulinalg",
 ]
 
@@ -634,7 +621,6 @@ version = "0.1.0"
 dependencies = [
  "csv",
  "nodejs-helper",
- "rand 0.7.3",
  "rusty-machine",
  "serde",
  "serde_json",
