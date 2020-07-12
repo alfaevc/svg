@@ -27,7 +27,7 @@ use rm::learning::naive_bayes::{NaiveBayes, Gaussian};
 use rm::learning::k_means::KMeansClassifier;
 
 use rm::learning::svm::SVM;
-use rm::learning::toolkit::kernel::Polynomial;
+use rm::learning::toolkit::kernel::Linear;
 
 use rm::learning::nnet::{NeuralNet, BCECriterion};
 use rm::learning::toolkit::activ_fn::Sigmoid;
@@ -267,7 +267,7 @@ impl Graph {
     let inputs = Matrix::new(self.size, 2, p_vec);
     let targets = Vector::new(svm_target_vec);
     // println!("Nothing yet!");
-    let mut svm_mod = SVM::new(Polynomial::default(), 0.3);
+    let mut svm_mod = SVM::new(Linear::default(), 0.2);
     println!("Model created!");
     svm_mod.train(&inputs, &targets).unwrap();
     println!("Model trained!");
