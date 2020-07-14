@@ -5,7 +5,7 @@ use wasm_bindgen::prelude::*;
 use tera::{Context, Tera};
 use std::str::FromStr;
 use std::iter::Iterator;
-use std::any::type_name;
+// use std::any::type_name;
 use std::string::String;
 use core::option::Option;
 
@@ -39,28 +39,10 @@ use rm::learning::dbscan::DBSCAN;
 use rm::learning::SupModel;
 use rm::learning::UnSupModel;
 
-/*extern crate console_error_panic_hook;
-use std::panic;
-
-fn my_init_function() {
-  panic::set_hook(Box::new(console_error_panic_hook::hook));
-
-  // ...
-}*/
-
-
-// use std::slice::sort_by;
-// use ndarray::{Array2};
-// use std::fs::File;
-// use std::io::Write;
-// use std::clone;
-// use std::os::raw::{c_char};
-// use std::ffi::{CString};
 
 #[derive(Clone, Debug)]
 pub struct Graph {
     pub name: String,
-    pub model: String,
     pub size: usize,
     pub points: Vec<Point>,
     pub colour: String,
@@ -71,6 +53,8 @@ pub struct Graph {
     pub width: usize,
     pub height: usize,
     pub padding: usize,
+    pub labels: Vec<f64>,
+    pub attributes: usize,
 }
 
 #[derive(Clone, Debug, Copy)]
@@ -80,10 +64,9 @@ pub struct Point {
 }
 
 impl Graph {
-  pub fn new(name: String, model: String, colour: String) -> Self {
+  pub fn new(name: String, colour: String) -> Self {
       Graph {
           name,
-          model,
           size: 0,
           points: Vec::new(),
           colour,
@@ -94,7 +77,8 @@ impl Graph {
           width: 0,
           height: 0,
           padding: 0,
-          
+          labels: Vec::new(),
+          attributes: 0,
       }
   }
 
@@ -108,7 +92,16 @@ impl Graph {
            (val.1-self.y_min) / self.y_range * (self.height as f64 * -1.0) + (self.padding + self.height) as f64)).collect()
   }
 
-  pub fn lin_reg_svg(&self, xs: Vec<f64>, ys: Vec<f64>, context: &mut Context) {
+  pub fn lin_reg_svg(&self) -> String {
+    let mut xs: Vec<f64> = Vec::new();
+    let mut ys: Vec<f64> = Vec::new();
+    for point in &self.points {
+      xs.push(point.x);
+      ys.push(point.y);
+    }
+
+    let mut context = self.create_svg_context();
+
     let inputs = Matrix::new(self.size, 1, xs);
     let targets = Vector::new(ys);
     let mut lin_mod = LinRegressor::default();
@@ -133,11 +126,21 @@ impl Graph {
     // println!("{:?}", p2);
     context.insert("point1", &(ps[0]));
     context.insert("point2", &(ps[1])); 
+
+    Tera::one_off(include_str!("lin_reg.svg"), &mut context, true).expect("Could not draw graph")
   }
 
-  pub fn log_reg_svg(&self, p_vec: Vec<f64>, target_vec: Vec<f64>, context: &mut Context) {
+  pub fn log_reg_svg(&self) -> String {
+    let mut p_vec: Vec<f64> = Vec::new();
+    for point in &self.points {
+      p_vec.push(point.x);
+      p_vec.push(point.y);
+    }
+
+    let mut context = self.create_svg_context();
+
     let inputs = Matrix::new(self.size, 2, p_vec);
-    let targets = Vector::new(target_vec);
+    let targets = Vector::new(self.labels.clone());
     let mut log_mod = LogisticRegressor::default();
     log_mod.train(&inputs, &targets).unwrap();
     
@@ -164,11 +167,21 @@ impl Graph {
     context.insert("point2", &(ps[1]));
     context.insert("n", &self.size);
     context.insert("preds", &preds);
+
+    Tera::one_off(include_str!("log_reg.svg"), &mut context, true).expect("Could not draw graph")
   }
 
-  pub fn glm_svg(&self, p_vec: Vec<f64>, target_vec: Vec<f64>, context: &mut Context) {
+  pub fn glm_svg(&self) -> String {
+    let mut p_vec: Vec<f64> = Vec::new();
+    for point in &self.points {
+      p_vec.push(point.x);
+      p_vec.push(point.y);
+    }
+
+    let mut context = self.create_svg_context();
+
     let inputs = Matrix::new(self.size, 2, p_vec);
-    let targets = Vector::new(target_vec);
+    let targets = Vector::new(self.labels.clone());
     let mut gl_mod = GenLinearModel::new(Bernoulli);
     gl_mod.train(&inputs, &targets).unwrap();
     
@@ -181,7 +194,6 @@ impl Graph {
       coefs.push(-params.unwrap()[0]/params.unwrap()[2]);
       coefs.push(-params.unwrap()[1]/params.unwrap()[2]);
     }
-
     if coefs.len() > 0 {
       p1 = (self.x_min, coefs[0] + coefs[1] * self.x_min);
       p2 = (self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range));
@@ -189,7 +201,6 @@ impl Graph {
                 (p1.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
       p2 = ((p2.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
                 (p2.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
-
     }*/
     let preds: Vec<f64> = gl_mod.predict(&inputs).unwrap().into_vec();
 
@@ -199,39 +210,52 @@ impl Graph {
     // context.insert("point2", &p2);
     context.insert("n", &self.size);
     context.insert("preds", &preds);
+
+    Tera::one_off(include_str!("glm.svg"), &mut context, true).expect("Could not draw graph")
   }
 
-  pub fn kmeans_svg(&self, p_vec: Vec<f64>, context: &mut Context) {
-    // println!("We are doing kmeans!");
-    let center_num : usize = 2;
+  pub fn kmeans_svg(&self, num_centers: usize) -> String {
+    let mut p_vec: Vec<f64> = Vec::new();
+    for point in &self.points {
+      p_vec.push(point.x);
+      p_vec.push(point.y);
+    }
+
+    let mut context = self.create_svg_context();
+
+    // let center_num : usize = 2;
     let inputs = Matrix::new(self.size, 2, p_vec);
-    // println!("{:?}", inputs);
-    let mut km = KMeansClassifier::new(center_num);
-    println!("We are doing kmeans!");
+    let mut km = KMeansClassifier::new(num_centers);
     km.train(&inputs).unwrap();
     println!("Kmean model trained!");
     let center_mat = km.centroids().as_ref().unwrap();
-    // println!("We are doing kmeans!");
     
     let center_vec: Vec<f64> = center_mat.data().to_vec();
-
     let mut centers: Vec<(f64, f64)> = Vec::new();
-
     for i in 0..center_vec.len() {
       if (i % 2) == 1 {
         centers.push((center_vec[i-1], center_vec[i]));
       } 
     }
     centers = self.graph_map(centers);
-    
+
     context.insert("centers", &centers);
+    Tera::one_off(include_str!("kmeans.svg"), &mut context, true).expect("Could not draw graph")
   }
 
-  pub fn nnet_svg(&self, p_vec: Vec<f64>, target_vec: Vec<f64>, context: &mut Context) {
+  pub fn nnet_svg(&self) -> String {
+    let mut p_vec: Vec<f64> = Vec::new();
+    for point in &self.points {
+      p_vec.push(point.x);
+      p_vec.push(point.y);
+    }
+
+    let mut context = self.create_svg_context();
+
     let inputs = Matrix::new(self.size, 2, p_vec);
     let mut target_class: Vec<f64> = Vec::new();
     for i in 0..self.size {
-      if target_vec[i] == 0. {
+      if self.labels[i] == 0. {
         target_class.push(1.);
         target_class.push(0.);
       } else {
@@ -239,7 +263,6 @@ impl Graph {
         target_class.push(1.);
       }
     }
-    // println!("Nothing done yet!");
     let targets = Matrix::new(self.size, 2, target_class);
     let layers = &[2,5,11,7,2];
     let criterion = BCECriterion::new(Regularization::L2(0.1));
@@ -259,10 +282,20 @@ impl Graph {
     context.insert("n", &self.size);
     context.insert("preds", &preds);
     // println!("{:?}", preds);
+
+    Tera::one_off(include_str!("nnet.svg"), &mut context, true).expect("Could not draw graph")
   }
 
-  pub fn svm_svg(&self, p_vec: Vec<f64>, target_vec: Vec<f64>, context: &mut Context) {
-    let svm_target_vec: Vec<f64> = target_vec.iter().map(|val| if *val == 1.0 as f64 {1. as f64} else {-1. as f64} ).collect();
+  pub fn svm_svg(&self) -> String {
+    let mut p_vec: Vec<f64> = Vec::new();
+    for point in &self.points {
+      p_vec.push(point.x);
+      p_vec.push(point.y);
+    }
+
+    let mut context = self.create_svg_context();
+
+    let svm_target_vec: Vec<f64> = self.labels.iter().map(|val| if *val == 1.0 as f64 {1. as f64} else {-1. as f64} ).collect();
     println!("{:?}", svm_target_vec);            
     let inputs = Matrix::new(self.size, 2, p_vec);
     let targets = Vector::new(svm_target_vec);
@@ -281,7 +314,6 @@ impl Graph {
       coefs.push(-params.unwrap()[0]/params.unwrap()[2]);
       coefs.push(-params.unwrap()[1]/params.unwrap()[2]);
     }
-
     if coefs.len() > 0 {
       p1 = (self.x_min, coefs[0] + coefs[1] * self.x_min);
       p2 = (self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range));
@@ -289,7 +321,6 @@ impl Graph {
                 (p1.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
       p2 = ((p2.0 - self.x_min) / self.x_range * width as f64 + padding as f64, 
                 (p2.1 - self.y_min) / self.y_range * (height as f64 * -1.0) + (padding + height) as f64);
-
     }*/
     // println!("{:?}", svm_mod.predict(&inputs).unwrap());
     let preds: Vec<f64> = svm_mod.predict(&inputs).unwrap().into_vec();
@@ -301,9 +332,19 @@ impl Graph {
     //context.insert("point2", &p2);
     context.insert("n", &self.size);
     context.insert("preds", &preds);
+
+    Tera::one_off(include_str!("svm.svg"), &mut context, true).expect("Could not draw graph")
   }
 
-  pub fn gmm_svg(&self, p_vec: Vec<f64>, context: &mut Context) {
+  pub fn gmm_svg(&self) -> String {
+    let mut p_vec: Vec<f64> = Vec::new();
+    for point in &self.points {
+      p_vec.push(point.x);
+      p_vec.push(point.y);
+    }
+
+    let mut context = self.create_svg_context();
+
     let class_num: usize = 2;
     let inputs = Matrix::new(self.size, 2, p_vec);
     // println!("{:?}", inputs);
@@ -330,13 +371,23 @@ impl Graph {
     mus = self.graph_map(mus);
     
     context.insert("means", &mus);
+
+    Tera::one_off(include_str!("gmm.svg"), &mut context, true).expect("Could not draw graph")
   }
 
-  pub fn nb_svg(&self, p_vec: Vec<f64>, target_vec: Vec<f64>, context: &mut Context) {
+  pub fn nb_svg(&self) -> String {
+    let mut p_vec: Vec<f64> = Vec::new();
+    for point in &self.points {
+      p_vec.push(point.x);
+      p_vec.push(point.y);
+    }
+
+    let mut context = self.create_svg_context();
+
     let inputs = Matrix::new(self.size, 2, p_vec);
     let mut target_class: Vec<f64> = Vec::new();
     for i in 0..self.size {
-      if target_vec[i] == 0. {
+      if self.labels[i] == 0. {
         target_class.push(1.);
         target_class.push(0.);
       } else {
@@ -362,26 +413,40 @@ impl Graph {
     // println!("{:?}", preds);
     context.insert("n", &self.size);
     context.insert("preds", &preds);
+
+    Tera::one_off(include_str!("nb.svg"), &mut context, true).expect("Could not draw graph")
   }
 
-  pub fn dbscan_svg(&self, xs: Vec<f64>, ys:Vec<f64>, p_vec: Vec<f64>, context: &mut Context) {
+  pub fn dbscan_svg(&self) -> String {
+    let mut xs: Vec<f64> = Vec::new();
+    let mut ys: Vec<f64> = Vec::new();
+    let mut p_vec: Vec<f64> = Vec::new();
+    for point in &self.points {
+      xs.push(point.x);
+      ys.push(point.y);
+      p_vec.push(point.x);
+      p_vec.push(point.y);
+    }
+
+    let mut context = self.create_svg_context();
+
     let inputs = Matrix::new(self.size, 2, p_vec);
     let mut db = DBSCAN::new(0.5, 2);
     db.train(&inputs).unwrap();
 
     let clustering = db.clusters().unwrap();
     // println!("{:?}", clustering);
-    let labels: Vec<f64> = clustering.data().to_vec().iter().map(|&val| match val {Some(x) => {x as f64}, _ => {-1.0}}).collect();
+    let classes: Vec<f64> = clustering.data().to_vec().iter().map(|&val| match val {Some(x) => {x as f64}, _ => {-1.0}}).collect();
     let mut clusters: Vec<(f64, f64, usize)> = Vec::new(); 
     
     for i in 0..self.size {
-      if labels[i] >= 0.0 {
-        if labels[i] >= clusters.len() as f64 {
-          for _ in 0..(labels[i] as usize - clusters.len()+1) {
+      if classes[i] >= 0.0 {
+        if classes[i] >= clusters.len() as f64 {
+          for _ in 0..(classes[i] as usize - clusters.len()+1) {
             clusters.push((0.0, 0.0, 0));
           }
         }
-        let c_index : usize = labels[i] as usize;
+        let c_index : usize = classes[i] as usize;
         clusters[c_index] = (clusters[c_index].0+xs[i], clusters[c_index].1+ys[i], clusters[c_index].2+1);
       }
     }
@@ -389,29 +454,14 @@ impl Graph {
     centers = self.graph_map(centers);
 
     context.insert("n", &self.size);
-    context.insert("labels", &labels);
+    context.insert("classes", &classes);
     context.insert("centers", &centers);
+
+    Tera::one_off(include_str!("dbscan.svg"), &mut context, true).expect("Could not draw graph")
   }
 
-
-  pub fn draw_svg(&self) -> String {
-
+  pub fn create_svg_context(&self) -> Context {
     let mut context = Context::new();
-    
-    // let mut p: Vec<(f64, f64)> = Vec::new();
-    let target_vec: Vec<f64> = get_label(self.size);
-    let mut xs: Vec<f64> = Vec::new();
-    let mut ys: Vec<f64> = Vec::new();
-    let mut p_vec: Vec<f64> = Vec::new();
-    
-
-    for point in &self.points {
-      xs.push(point.x);
-      ys.push(point.y);
-      p_vec.push(point.x);
-      p_vec.push(point.y);
-    }
-    
     let path: Vec<(f64, f64)> = self
                               .points
                               .iter()
@@ -422,9 +472,7 @@ impl Graph {
                                    ((val.y-self.y_min) / self.y_range * (self.height as f64 * -1.0)) + (self.padding + self.height) as f64)
                                     ).collect();
     
-
     context.insert("name", &self.name);
-    context.insert("model", &self.model);
     context.insert("width", &self.width);
     context.insert("height", &self.height);
     context.insert("padding", &self.padding);
@@ -434,116 +482,91 @@ impl Graph {
     context.insert("x_min", &self.x_min);
     context.insert("y_min", &self.y_min);
     context.insert("colour", &self.colour);
+    context.insert("labels", &self.labels);
     context.insert("lines", &10);
 
-    // println!("graph inputs done!");
-
-    if self.model == "Linear Regression".to_string() {
-      self.lin_reg_svg(xs, ys, &mut context);
-
-
-    } else if self.model == "Logistic Regression".to_string() {
-      self.log_reg_svg(p_vec, target_vec, &mut context);
-
-
-    } else if self.model == "Generalized Linear Models".to_string() {
-      self.glm_svg(p_vec, target_vec, &mut context);
-
-    } else if self.model == "K-Means Clustering".to_string() {
-      self.kmeans_svg(p_vec, &mut context);
-
-
-    } else if self.model == "Neural Networks".to_string() {
-      self.nnet_svg(p_vec, target_vec, &mut context);
-
-    } else if self.model == "Support Vector Machines".to_string() {
-      self.svm_svg(p_vec, target_vec, &mut context);
-
-    } else if self.model == "Gaussian Mixture Models".to_string() {
-      self.gmm_svg(p_vec, &mut context);
-
-    } else if self.model == "Naive Bayes Classifiers".to_string() {
-      self.nb_svg(p_vec, target_vec, &mut context);
-
-    } else if self.model == "DBSCAN".to_string() {
-      self.dbscan_svg(xs, ys, p_vec, &mut context);
-    }
-  
-    Tera::one_off(include_str!("graph.svg"), &mut context, true).expect("Could not draw graph")
-    
+    return context;
   }
 }
 
 
-pub fn generate_graph(xs: Vec<f64>, ys: Vec<f64>, title : &str, model : &str, 
-                      width: usize, height: usize, padding: usize) -> Graph {
-  let mut graph = Graph::new(title.into(), model.into(), "#8ff0a4".into());
-  graph.size = xs.len();
-  graph.width = width;
-  graph.height = height;
-  graph.padding = padding;
-  for i in 0..graph.size {
-    graph.add_point(xs[i], ys[i]);
-  }
-  return graph;
-} 
-
-
-
-
-/*pub fn vec2str(s: Vec<f64>) {
-  return serde_json::to_string(&s).unwrap();
-}*/
-
+#[wasm_bindgen]
+pub fn lin_reg (csv_content: &[u8]) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "Linear Regression");
+  graph.lin_reg_svg()
+}
 
 #[wasm_bindgen]
-pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, title: &str, model: &str) -> String {
+pub fn log_reg (csv_content: &[u8]) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "Logistic Regression");
+  graph.log_reg_svg()
+}
+
+#[wasm_bindgen]
+pub fn glm (csv_content: &[u8]) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "Generalized Linear Models");
+  graph.glm_svg()
+}
+
+#[wasm_bindgen]
+pub fn kmeans (csv_content: &[u8], num_centers: i32) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "K-Means Clustering");
+  graph.kmeans_svg(num_centers as usize)
+}
+
+#[wasm_bindgen]
+pub fn nnet (csv_content: &[u8]) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "Neural Networks");
+  graph.nnet_svg()
+}
+
+#[wasm_bindgen]
+pub fn svm (csv_content: &[u8]) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "Support Vector Machines");
+  graph.svm_svg()
+}
+
+#[wasm_bindgen]
+pub fn gmm (csv_content: &[u8]) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "Gaussian Mixture Models");
+  graph.gmm_svg()
+}
+
+#[wasm_bindgen]
+pub fn nb (csv_content: &[u8]) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "Naive Bayes Classifiers");
+  graph.nb_svg()
+}
+
+#[wasm_bindgen]
+pub fn dbscan (csv_content: &[u8]) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "DBSCAN");
+  graph.dbscan_svg()
+}
+
+pub fn prepare_graph (csv_content: &[u8], width: usize, height: usize, padding: usize, title: &str) -> Graph {
   let csv_info: (Vec<f64>, (usize, usize)) = read_data(csv_content);
   let data: Vec<f64> = csv_info.0;
   let dim: (usize, usize) = csv_info.1;
   let mut xs: Vec<f64> = Vec::new();
   let mut ys: Vec<f64> = Vec::new();
   let mut tuples: Vec<(f64, f64)> = Vec::new();
-  // let mut centers: Vec<(f64, f64)> = Vec::new();
-  // println!("Width is {}", dim.1);
-  // let center_vec: Vec<f64> = serde_json::from_str(&center_json).unwrap();
-
-  /* for i in 0..center_vec.len() {
-    if (i % 2) == 1 {
-      centers.push((center_vec[i-1], center_vec[i]));
-    } 
-  }*/
+  let mut labels: Vec<f64> = Vec::new();
 
   for i in 0..data.len() {
-    if (i % 2) == 1 {
-      tuples.push((data[i-1], data[i]));
+    if (i % 3) == 2 {
+      tuples.push((data[i-2], data[i-1]));
+      labels.push(data[i]);
+      xs.push(data[i-2]);
+      ys.push(data[i-1]);
     }
   }
-  // assert!(xs.len() == ys.len());
-  // tuples.sort_by(|a, b| a.0.partial_cmp(&b.0).unwrap());
-
-  for i in 0..tuples.len() {
-    xs.push(tuples[i].0);
-    ys.push(tuples[i].1);
-  }
-
-
-
-  // let permutation = permutation::sort(&xs[..]);
-  // let ys = permutation.apply_slice(&ys[..]);
-  // let xs = permutation.apply_slice(&xs[..]);
-  // println!("Graph is not done!");
-
   
-
-  // println!("Graph is done!");
-
   let width = width - padding * 2;
   let height = height - padding * 2;
 
-  let mut graph = generate_graph(xs, ys, title, model, width, height, padding);
+  let mut graph = generate_graph(xs, ys, title, width, height, padding, dim, labels);
 
-  //let min_x = graph.points.get(0).map(|val| val.x).unwrap_or(0.0);
   let x_max = graph.points.iter().map(|point| point.x).fold(0. / 0., f64::max);
   let x_min = graph.points.iter().map(|point| point.x).fold(0. / 0., f64::min);
   let y_max = graph.points.iter().map(|point| point.y).fold(0. / 0., f64::max);
@@ -555,12 +578,24 @@ pub fn get_svg(csv_content: &[u8], width: usize, height: usize, padding: usize, 
   graph.x_range = (x_max+1.0).round() - graph.x_min;
   graph.y_range = (y_max+1.0).round() - graph.y_min;
 
-
-  let out = graph.draw_svg();
-  // println!("{}", out);
-  return out;
+  return graph;
 }
 
+
+pub fn generate_graph(xs: Vec<f64>, ys: Vec<f64>, title : &str, width: usize, height: usize, 
+                      padding: usize, dim: (usize, usize), labels: Vec<f64>) -> Graph {
+  let mut graph = Graph::new(title.into(), "#8ff0a4".into());
+  graph.size = dim.0;
+  graph.attributes = dim.1;
+  graph.labels = labels;
+  graph.width = width;
+  graph.height = height;
+  graph.padding = padding;
+  for i in 0..graph.size {
+    graph.add_point(xs[i], ys[i]);
+  }
+  return graph;
+} 
 
 
 
@@ -589,45 +624,5 @@ fn read_data(csv_content: &[u8]) -> (Vec<f64>, (usize, usize)) {
       }
     }
   }
-  
   return (data, dim);
 }
-
-/* pub fn print_mat() -> {
-  // type: rulinalg::matrix::Matrix<f64>
-  return Matrix::new(2,3, vec![1.5,1.5,1.5,2.5,2.5,2.5]);
-}*/
-
-/*fn type_of<T>(_: T) -> &'static str {
-  type_name::<T>()
-}*/
-
-fn get_label(n : usize) -> Vec<f64> {
-  let mut target_vec: Vec<f64> = Vec::new();
-  for i in 0..n {
-    if i < n/2 {
-      target_vec.push(0.);
-    } else {
-      target_vec.push(1.);
-    }
-  }
-  target_vec
-}
-
-
-
-/*fn svm_label(val: f64) -> f64 {
-  if val == 1.0 {
-    return 1.0;
-  }
-  return -1.0;
-}
-
-fn normal_label(val: f64) -> f64 {
-  if val == 1.0 {
-    return 1.0;
-  }
-  return 0.0;
-}*/
-
-

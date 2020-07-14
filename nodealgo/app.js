@@ -1,32 +1,57 @@
-const { get_svg } = require('../pkg/svg_lib.js');
+const { lin_reg, log_reg, glm, nnet, svm, kmeans, nb, gmm, dbscan } = require('../pkg/svg_lib.js');
 const fs = require('fs');
 
 var http = require('http')
-// var x = [1., 2., 3., 4., 5., 6., 7., 8., 9., 10., 11., 12.];
-// var y = [10., 3., 17., 20., 25., 23., 30., 38.2, 32.5, 40.8, 35.7, 21.7];
-var width = 800;
-var height = 400;
-var p = 50;
-var title = "SVG";
+// var width = 800;
+// var height = 400;
+// var p = 50;
+// var title = "SVG";
 // Weird behavior for svm
-// var model = "Linear Regression";
-var model = "Logistic Regression";
-// var model = "Generalized Linear Models";
-// var model = "Neural Networks";
-// var model = "Support Vector Machines";
-// var model = "K-Means Clustering";
-// var model = "Naive Bayes Classifiers";
-// var model = "Gaussian Mixture Models";
-// var model = "DBSCAN";
+// var model = "lin_reg";
+// var model = "log_reg";
+// var model = "glm";
+var model = "nnet";
+// var model = "svm";
+// var model = "kmeans";
+// var model = "nb";
+// var model = "gmm";
+// var model = "dbscan";
 
 
-// var centers = [3.44, 0.24, 3.04, 2.05, 2.71, 1.31];
 var iris_csv = fs.readFileSync("nodealgo/iris.data.csv");
 // var out = get_svg(iris_csv, JSON.stringify(centers), width, height, p, title, model);
 // console.error(get_svg(iris_csv, width, height, p, title, model));
-var out = get_svg(iris_csv, width, height, p, title, model);
 
-fs.writeFile('src/out.svg', out, (err) => {
+if (model == "lin_reg") {
+    svg = lin_reg(iris_csv);
+}
+if (model == "log_reg") {
+    svg = log_reg(iris_csv);
+}
+if (model == "nnet") {
+    svg = nnet(iris_csv);
+}
+if (model == "nb") {
+    svg = nb(iris_csv);
+}
+if (model == "kmeans") {
+    svg = kmeans(iris_csv, 2);
+}
+if (model == "svm") {
+    svg = svm(iris_csv);
+}
+if (model == "glm") {
+    svg = glm(iris_csv);
+}
+if (model == "gmm") {
+    svg = gmm(iris_csv);
+}
+if (model == "dbscan") {
+    svg = dbscan(iris_csv);
+}
+
+
+fs.writeFile('src/out.svg', svg, (err) => {
     if (err) throw err;
     console.log('The file has been saved!');
 });
