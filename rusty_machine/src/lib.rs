@@ -110,6 +110,7 @@
 extern crate rulinalg;
 extern crate num as libnum;
 extern crate rand;
+extern crate serde;
 
 pub mod prelude;
 

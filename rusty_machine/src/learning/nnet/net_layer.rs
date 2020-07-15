@@ -1,4 +1,5 @@
 //! Neural Network Layers
+use serde::{Serialize, Deserialize};
 
 use linalg::{Matrix, MatrixSlice, BaseMatrix};
 
@@ -42,7 +43,7 @@ pub trait NetLayer : Debug {
 ///
 /// The parameters are a matrix of weights of size I x N
 /// where N is the dimensionality of the output and I the dimensionality of the input
-#[derive(Debug, Clone, Copy)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 pub struct Linear { 
     /// The number of dimensions of the input
     input_size: usize,
