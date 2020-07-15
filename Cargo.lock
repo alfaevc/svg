@@ -503,6 +503,7 @@ dependencies = [
  "num",
  "rand",
  "rulinalg",
+ "serde",
 ]
 
 [[package]]

@@ -103,7 +103,6 @@
 //!
 //! let _ = Matrix::new(2,2,vec![2.0;4]);
 //! ```
-
 #![deny(missing_docs)]
 #![warn(missing_debug_implementations)]
 

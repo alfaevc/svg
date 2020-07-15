@@ -24,7 +24,7 @@ rusty-machine = {path = "rusty_machine"}
 # rusty-machine = {path = "rusty_machine"}
 # console_error_panic_hook = "0.1.6"
 # num = { version = "0.1.41", default-features = false }
-# rand = "0.4.1"
+# rand = "0.7.3"
 # rulinalg = { git = "https://github.com/AtheMathmo/rulinalg", rev = "1ed8b937" }
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
