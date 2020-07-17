@@ -1,4 +1,5 @@
-const { plot_lin_reg, plot_log_reg, plot_glm, plot_nnet, plot_svm, plot_kmeans, plot_nb, plot_gmm, plot_dbscan, plot_pca } = require('../pkg/svg_lib.js');
+const { lin_reg, log_reg, glm, svm, kmeans, nb, gmm, dbscan, pca, 
+        plot_lin_reg, plot_log_reg, plot_glm, plot_nnet, plot_svm, plot_kmeans, plot_nb, plot_gmm, plot_dbscan, plot_pca } = require('../pkg/svg_lib.js');
 const fs = require('fs');
 
 var http = require('http')
@@ -15,44 +16,54 @@ var http = require('http')
 // var model = "kmeans";
 // var model = "nb";
 // var model = "gmm";
-// var model = "dbscan";
-var model = "pca";
+var model = "dbscan";
+// var model = "pca";
 
 
 var iris_csv = fs.readFileSync("nodealgo/iris.data.csv");
 // var out = get_svg(iris_csv, JSON.stringify(centers), width, height, p, title, model);
 // console.error(get_svg(iris_csv, width, height, p, title, model));
 
+
 if (model == "lin_reg") {
-    svg = plot_lin_reg(iris_csv);
+    lin_mod = lin_reg(iris_csv);
+    svg = plot_lin_reg(iris_csv, lin_mod, 1);
 }
 if (model == "log_reg") {
-    svg = plot_log_reg(iris_csv);
+    log_mod = log_reg(iris_csv);
+    svg = plot_log_reg(iris_csv, log_mod, 1);
 }
 if (model == "nnet") {
     svg = plot_nnet(iris_csv);
 }
 if (model == "nb") {
-    svg = plot_nb(iris_csv);
+    nb_mod = log_reg(iris_csv);
+    svg = plot_nb(iris_csv, nb_mod, 1);
 }
 if (model == "kmeans") {
-    svg = plot_kmeans(iris_csv, 2);
+    kmeans_mod = kmeans(iris_csv, 2);
+    svg = plot_kmeans(iris_csv, 2, kmeans_mod, 1);
 }
 if (model == "svm") {
-    svg = plot_svm(iris_csv);
+    svm_mod = svm(iris_csv);
+    svg = plot_svm(iris_csv, svm_mod, 1);
 }
 if (model == "glm") {
-    svg = plot_glm(iris_csv);
+    gl_mod = glm(iris_csv);
+    svg = plot_glm(iris_csv, gl_mod, 1);
 }
 if (model == "gmm") {
-    svg = plot_gmm(iris_csv);
+    gm = gmm(iris_csv, 2);
+    svg = plot_gmm(iris_csv, 2, gm, 1);
 }
 if (model == "dbscan") {
-    svg = plot_dbscan(iris_csv);
+    dbscan_mod = dbscan(iris_csv);
+    svg = plot_dbscan(iris_csv, dbscan_mod, 1);
 }
 
 if (model == "pca") {
-    svg = plot_pca(iris_csv);
+    pca_mod = pca(iris_csv);
+    svg = plot_pca(iris_csv, pca_mod, 1);
 }
 
 

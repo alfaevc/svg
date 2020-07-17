@@ -116,15 +116,17 @@ impl Graph {
     return lin_mod;
   }
 
-  pub fn lin_reg_svg(&self) -> String {
+  pub fn lin_reg_svg(&self, model: Option<&str>) -> String {
     /* let mut xs: Vec<f64> = Vec::new();
     let mut ys: Vec<f64> = Vec::new();
     for point in &self.points {
       xs.push(point.x);
       ys.push(point.y);
     }*/
-
-    let lin_mod = self.train_lin_reg();
+    let mut lin_mod: LinRegressor = serde_json::from_str(model.unwrap()).unwrap();
+    if !model.is_some() {
+      lin_mod = self.train_lin_reg();
+    }
 
     let params : Option<&Vector<f64>> = lin_mod.parameters();
     let mut coefs : Vec<f64> = Vec::new();
@@ -171,8 +173,11 @@ impl Graph {
     return log_mod;
   }
 
-  pub fn log_reg_svg(&self) -> String {
-    let log_mod = self.train_log_reg();
+  pub fn log_reg_svg(&self, model: Option<&str>) -> String {
+    let mut log_mod: LogisticRegressor<GradientDesc> = serde_json::from_str(model.unwrap()).unwrap();
+    if !model.is_some() {
+      log_mod = self.train_log_reg();
+    }
 
     let mut p_vec: Vec<f64> = Vec::new();
     for point in &self.points {
@@ -232,8 +237,11 @@ impl Graph {
     return gl_mod;
   }
 
-  pub fn glm_svg(&self) -> String {
-    let gl_mod = self.train_glm();
+  pub fn glm_svg(&self, model: Option<&str>) -> String {
+    let mut gl_mod: GenLinearModel<Bernoulli> = serde_json::from_str(model.unwrap()).unwrap();
+    if !model.is_some() {
+      gl_mod = self.train_glm();
+    }
 
     let mut p_vec: Vec<f64> = Vec::new();
     for point in &self.points {
@@ -291,8 +299,11 @@ impl Graph {
   }
 
 
-  pub fn kmeans_svg(&self, num_centers: usize) -> String {
-    let km = self.train_kmeans(num_centers);
+  pub fn kmeans_svg(&self, num_centers: usize, model: Option<&str>) -> String {
+    let mut km: KMeansClassifier<KPlusPlus> = serde_json::from_str(model.unwrap()).unwrap();
+    if !model.is_some() {
+      km = self.train_kmeans(num_centers);
+    }
     // let center_num : usize = 2;
     let center_mat = km.centroids().as_ref().unwrap();
     
@@ -381,8 +392,11 @@ impl Graph {
     return svm_mod;
   }
 
-  pub fn svm_svg(&self) -> String {
-    let svm_mod = self.train_svm();
+  pub fn svm_svg(&self, model: Option<&str>) -> String {
+    let mut svm_mod: SVM<Linear> = serde_json::from_str(model.unwrap()).unwrap();
+    if !model.is_some() {
+      svm_mod = self.train_svm();
+    }
 
     let mut p_vec: Vec<f64> = Vec::new();
     for point in &self.points {
@@ -441,8 +455,11 @@ impl Graph {
     return gm;
   }
 
-  pub fn gmm_svg(&self, class_num: usize) -> String {
-    let gm = self.train_gmm(class_num);
+  pub fn gmm_svg(&self, class_num: usize, model: Option<&str>) -> String {
+    let mut gm: GaussianMixtureModel = serde_json::from_str(model.unwrap()).unwrap();
+    if !model.is_some() {
+      gm = self.train_gmm(class_num);
+    }
 
     let mean_mat: Option<&Matrix<f64>> = gm.means();
     if mean_mat.is_some() {
@@ -491,8 +508,11 @@ impl Graph {
     return nb;
   }
 
-  pub fn nb_svg(&self) -> String {
-    let nb = self.train_nb();
+  pub fn nb_svg(&self, model: Option<&str>) -> String {
+    let mut nb: NaiveBayes<Gaussian> = serde_json::from_str(model.unwrap()).unwrap();
+    if !model.is_some() {
+      nb = self.train_nb();
+    }
 
     let mut p_vec: Vec<f64> = Vec::new();
     for point in &self.points {
@@ -533,8 +553,11 @@ impl Graph {
     return db;
   }
 
-  pub fn dbscan_svg(&self) -> String {
-    let db = self.train_dbscan();
+  pub fn dbscan_svg(&self, model: Option<&str>) -> String {
+    let mut db: DBSCAN = serde_json::from_str(model.unwrap()).unwrap();
+    if !model.is_some() {
+      db = self.train_dbscan();
+    }
 
     let mut xs: Vec<f64> = Vec::new();
     let mut ys: Vec<f64> = Vec::new();
@@ -585,15 +608,17 @@ impl Graph {
     return pca;
   }
 
-  pub fn pca_svg(&self) -> String {
+  pub fn pca_svg(&self, model: Option<&str>) -> String {
     /* let mut xs: Vec<f64> = Vec::new();
     let mut ys: Vec<f64> = Vec::new();
     for point in &self.points {
       xs.push(point.x);
       ys.push(point.y);
     }*/
-
-    let pca = self.train_pca();
+    let mut pca: PCA = serde_json::from_str(model.unwrap()).unwrap();
+    if !model.is_some() {
+      pca = self.train_pca();
+    }
 
     let graph_center: (f64, f64) = (self.x_min + self.x_range/2.0, self.y_min + self.y_range/2.0);
 
@@ -666,9 +691,13 @@ pub fn lin_reg (csv_content: &[u8]) -> String {
 }
 
 #[wasm_bindgen]
-pub fn plot_lin_reg (csv_content: &[u8]) -> String {
+pub fn plot_lin_reg (csv_content: &[u8], lin_mod: String, trained: i32) -> String {
   let graph = prepare_graph (csv_content, 800, 400, 20, "Linear Regression");
-  graph.lin_reg_svg()
+  if trained != 0 {
+    graph.lin_reg_svg(Some(lin_mod.as_str()))
+  } else {
+    graph.lin_reg_svg(None)
+  }
 }
 
 
@@ -681,9 +710,13 @@ pub fn log_reg (csv_content: &[u8]) -> String {
 }
 
 #[wasm_bindgen]
-pub fn plot_log_reg (csv_content: &[u8]) -> String {
+pub fn plot_log_reg (csv_content: &[u8], log_mod: String, trained: i32) -> String {
   let graph = prepare_graph (csv_content, 800, 400, 20, "Logistic Regression");
-  graph.log_reg_svg()
+  if trained != 0 {
+    graph.log_reg_svg(Some(log_mod.as_str()))
+  } else {
+    graph.log_reg_svg(None)
+  }
 }
 
 
@@ -696,9 +729,13 @@ pub fn glm (csv_content: &[u8]) -> String {
 }
 
 #[wasm_bindgen]
-pub fn plot_glm (csv_content: &[u8]) -> String {
+pub fn plot_glm (csv_content: &[u8], gl_mod: String, trained: i32) -> String {
   let graph = prepare_graph (csv_content, 800, 400, 20, "Generalized Linear Models");
-  graph.glm_svg()
+  if trained != 0 {
+    graph.glm_svg(Some(gl_mod.as_str()))
+  } else {
+    graph.glm_svg(None)
+  }
 }
 
 #[wasm_bindgen]
@@ -710,9 +747,13 @@ pub fn kmeans (csv_content: &[u8], num_centers: i32) -> String {
 }
 
 #[wasm_bindgen]
-pub fn plot_kmeans (csv_content: &[u8], num_centers: i32) -> String {
+pub fn plot_kmeans (csv_content: &[u8], num_centers: i32, km: String, trained: i32) -> String {
   let graph = prepare_graph (csv_content, 800, 400, 20, "K-Means Clustering");
-  graph.kmeans_svg(num_centers as usize)
+  if trained != 0 {
+    graph.kmeans_svg(num_centers as usize, Some(km.as_str()))
+  } else {
+    graph.kmeans_svg(num_centers as usize, None)
+  }
 }
 
 /*
@@ -740,9 +781,13 @@ pub fn svm (csv_content: &[u8]) -> String {
 }
 
 #[wasm_bindgen]
-pub fn plot_svm (csv_content: &[u8]) -> String {
+pub fn plot_svm (csv_content: &[u8], svm: String, trained: i32) -> String {
   let graph = prepare_graph (csv_content, 800, 400, 20, "Support Vector Machines");
-  graph.svm_svg()
+  if trained != 0 {
+    graph.svm_svg(Some(svm.as_str()))
+  } else {
+    graph.svm_svg(None)
+  }
 }
 
 #[wasm_bindgen]
@@ -754,9 +799,13 @@ pub fn gmm (csv_content: &[u8], class_num: i32) -> String {
 }
 
 #[wasm_bindgen]
-pub fn plot_gmm (csv_content: &[u8], class_num: i32) -> String {
+pub fn plot_gmm (csv_content: &[u8], class_num: i32, gm: String, trained: i32) -> String {
   let graph = prepare_graph (csv_content, 800, 400, 20, "Gaussian Mixture Models");
-  graph.gmm_svg(class_num as usize)
+  if trained != 0 {
+    graph.gmm_svg(class_num as usize, Some(gm.as_str()))
+  } else {
+    graph.gmm_svg(class_num as usize, None)
+  }
 }
 
 #[wasm_bindgen]
@@ -768,9 +817,13 @@ pub fn nb (csv_content: &[u8]) -> String {
 }
 
 #[wasm_bindgen]
-pub fn plot_nb (csv_content: &[u8]) -> String {
+pub fn plot_nb (csv_content: &[u8], nb: String, trained: i32) -> String {
   let graph = prepare_graph (csv_content, 800, 400, 20, "Naive Bayes Classifiers");
-  graph.nb_svg()
+  if trained != 0 {
+    graph.nb_svg(Some(nb.as_str()))
+  } else {
+    graph.nb_svg(None)
+  }
 }
 
 #[wasm_bindgen]
@@ -782,9 +835,13 @@ pub fn dbscan (csv_content: &[u8]) -> String {
 }
 
 #[wasm_bindgen]
-pub fn plot_dbscan (csv_content: &[u8]) -> String {
+pub fn plot_dbscan (csv_content: &[u8], dbscan: String, trained: i32) -> String {
   let graph = prepare_graph (csv_content, 800, 400, 20, "DBSCAN");
-  graph.dbscan_svg()
+  if trained != 0 {
+    graph.dbscan_svg(Some(dbscan.as_str()))
+  } else {
+    graph.dbscan_svg(None)
+  }
 }
 
 #[wasm_bindgen]
@@ -796,9 +853,13 @@ pub fn pca (csv_content: &[u8]) -> String {
 }
 
 #[wasm_bindgen]
-pub fn plot_pca (csv_content: &[u8]) -> String {
+pub fn plot_pca (csv_content: &[u8], pca: String, trained: i32) -> String {
   let graph = prepare_graph (csv_content, 800, 400, 20, "PCA");
-  graph.pca_svg()
+  if trained != 0 {
+    graph.pca_svg(Some(pca.as_str()))
+  } else {
+    graph.pca_svg(None)
+  }
 }
 
 
