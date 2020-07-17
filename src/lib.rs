@@ -41,6 +41,8 @@ use rm::learning::optim::grad_desc::StochasticGD;
 
 use rm::learning::dbscan::DBSCAN;
 
+use rm::learning::pca::PCA;
+
 use rm::learning::SupModel;
 use rm::learning::UnSupModel;
 
@@ -136,8 +138,13 @@ impl Graph {
       }
     }
     if coefs.len() > 0 {
-      ps.push((self.x_min, coefs[0] + coefs[1] * self.x_min));
-      ps.push((self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range)));
+      if (coefs[1] < 1.0) && (coefs[1] > -1.0) {
+        ps.push((self.x_min, coefs[0] + coefs[1] * self.x_min));
+        ps.push((self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range)));
+      } else {
+        ps.push(((self.y_min-coefs[0]) / coefs[1], self.y_min));
+        ps.push(((self.y_min+self.y_range-coefs[0]) / coefs[1], self.y_min+self.y_range));
+      }
       ps = self.graph_map(ps);
     }
     // println!("{:?}", type_of(p1));
@@ -186,8 +193,13 @@ impl Graph {
     }
 
     if coefs.len() > 0 {
-      ps.push((self.x_min, coefs[0] + coefs[1] * self.x_min));
-      ps.push((self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range)));
+      if (coefs[1] < 1.0) && (coefs[1] > -1.0) {
+        ps.push((self.x_min, coefs[0] + coefs[1] * self.x_min));
+        ps.push((self.x_min + self.x_range, coefs[0] + coefs[1] * (self.x_min + self.x_range)));
+      } else {
+        ps.push(((self.y_min-coefs[0]) / coefs[1], self.y_min));
+        ps.push(((self.y_min+self.y_range-coefs[0]) / coefs[1], self.y_min+self.y_range));
+      }
       ps = self.graph_map(ps);
     }
 
@@ -281,18 +293,7 @@ impl Graph {
 
   pub fn kmeans_svg(&self, num_centers: usize) -> String {
     let km = self.train_kmeans(num_centers);
-
-    let mut p_vec: Vec<f64> = Vec::new();
-    for point in &self.points {
-      p_vec.push(point.x);
-      p_vec.push(point.y);
-    }
-
     // let center_num : usize = 2;
-    let inputs = Matrix::new(self.size, 2, p_vec);
-    let mut km = KMeansClassifier::new(num_centers);
-    km.train(&inputs).unwrap();
-
     let center_mat = km.centroids().as_ref().unwrap();
     
     let center_vec: Vec<f64> = center_mat.data().to_vec();
@@ -442,13 +443,6 @@ impl Graph {
 
   pub fn gmm_svg(&self, class_num: usize) -> String {
     let gm = self.train_gmm(class_num);
-    
-    let mut p_vec: Vec<f64> = Vec::new();
-    for point in &self.points {
-      p_vec.push(point.x);
-      p_vec.push(point.y);
-    }
-    let inputs = Matrix::new(self.size, 2, p_vec);
 
     let mean_mat: Option<&Matrix<f64>> = gm.means();
     if mean_mat.is_some() {
@@ -578,6 +572,62 @@ impl Graph {
     Tera::one_off(include_str!("dbscan.svg"), &mut context, true).expect("Could not draw graph")
   }
 
+  pub fn train_pca(&self) -> PCA {
+    let mut p_vec: Vec<f64> = Vec::new();
+    for point in &self.points {
+      p_vec.push(point.x);
+      p_vec.push(point.y);
+    }
+    let inputs = Matrix::new(self.size, 2, p_vec);
+    let mut pca = PCA::default();
+    pca.train(&inputs).unwrap();
+
+    return pca;
+  }
+
+  pub fn pca_svg(&self) -> String {
+    /* let mut xs: Vec<f64> = Vec::new();
+    let mut ys: Vec<f64> = Vec::new();
+    for point in &self.points {
+      xs.push(point.x);
+      ys.push(point.y);
+    }*/
+
+    let pca = self.train_pca();
+
+    let graph_center: (f64, f64) = (self.x_min + self.x_range/2.0, self.y_min + self.y_range/2.0);
+
+    let eig_mat = pca.components().unwrap();
+    // println!("{:?}", eigvecs);
+    let eig_vecs: Vec<f64> = eig_mat.data().to_vec();
+    let mut eig_vecs_coefs: Vec<(f64, f64)> = Vec::new();
+    for i in 0..(eig_vecs.len()/2) {
+      eig_vecs_coefs.push((graph_center.1 - eig_vecs[2*i+1]/eig_vecs[2*i]*graph_center.0, eig_vecs[2*i+1]/eig_vecs[2*i]));
+    }
+
+    println!("{:?}", eig_vecs_coefs);
+
+    let mut eig_vecs_points : Vec<(f64, f64)> = Vec::new();
+    for i in 0..eig_vecs_coefs.len() {
+      if (eig_vecs_coefs[i].1 < 1.0) && (eig_vecs_coefs[i].1 > -1.0) {
+        eig_vecs_points.push((self.x_min, eig_vecs_coefs[i].0 + eig_vecs_coefs[i].1 * self.x_min));
+        eig_vecs_points.push((self.x_min + self.x_range, eig_vecs_coefs[i].0 + eig_vecs_coefs[i].1 * (self.x_min + self.x_range)));
+      } else {
+        eig_vecs_points.push(((self.y_min-eig_vecs_coefs[i].0) / eig_vecs_coefs[i].1, self.y_min));
+        eig_vecs_points.push(((self.y_min+self.y_range-eig_vecs_coefs[i].0) / eig_vecs_coefs[i].1, self.y_min+self.y_range));
+      }
+    }
+    eig_vecs_points = self.graph_map(eig_vecs_points);
+
+    let mut context = self.create_svg_context();
+    context.insert("eig_vector1_point1", &(eig_vecs_points[0]));
+    context.insert("eig_vector1_point2", &(eig_vecs_points[1]));
+    context.insert("eig_vector2_point1", &(eig_vecs_points[2]));
+    context.insert("eig_vector2_point2", &(eig_vecs_points[3]));
+
+    Tera::one_off(include_str!("pca.svg"), &mut context, true).expect("Could not draw graph")
+  }
+
   pub fn create_svg_context(&self) -> Context {
     let mut context = Context::new();
     let path: Vec<(f64, f64)> = self
@@ -665,6 +715,7 @@ pub fn plot_kmeans (csv_content: &[u8], num_centers: i32) -> String {
   graph.kmeans_svg(num_centers as usize)
 }
 
+/*
 #[wasm_bindgen]
 pub fn nnet (csv_content: &[u8]) -> String {
   let graph = prepare_graph (csv_content, 800, 400, 20, "Neural Networks");
@@ -672,7 +723,7 @@ pub fn nnet (csv_content: &[u8]) -> String {
   let nn = graph.train_nnet();
 
   return serde_json::to_string(&nn).unwrap();
-}
+}*/
 
 #[wasm_bindgen]
 pub fn plot_nnet (csv_content: &[u8]) -> String {
@@ -735,6 +786,21 @@ pub fn plot_dbscan (csv_content: &[u8]) -> String {
   let graph = prepare_graph (csv_content, 800, 400, 20, "DBSCAN");
   graph.dbscan_svg()
 }
+
+#[wasm_bindgen]
+pub fn pca (csv_content: &[u8]) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "PCA");
+  let pca = graph.train_pca();
+
+  return serde_json::to_string(&pca).unwrap();
+}
+
+#[wasm_bindgen]
+pub fn plot_pca (csv_content: &[u8]) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "PCA");
+  graph.pca_svg()
+}
+
 
 pub fn prepare_graph (csv_content: &[u8], width: usize, height: usize, padding: usize, title: &str) -> Graph {
   let csv_info: (Vec<f64>, (usize, usize)) = read_data(csv_content);

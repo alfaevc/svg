@@ -32,7 +32,7 @@ pub use self::base::{BaseMatrix, BaseMatrixMut};
 pub use self::permutation_matrix::{PermutationMatrix, Parity};
 
 /// Matrix dimensions
-#[derive(Debug, Clone, Copy)]
+#[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 pub enum Axes {
     /// The row axis.
     Row,

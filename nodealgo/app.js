@@ -1,4 +1,4 @@
-const { lin_reg, log_reg, glm, nnet, svm, kmeans, nb, gmm, dbscan } = require('../pkg/svg_lib.js');
+const { plot_lin_reg, plot_log_reg, plot_glm, plot_nnet, plot_svm, plot_kmeans, plot_nb, plot_gmm, plot_dbscan, plot_pca } = require('../pkg/svg_lib.js');
 const fs = require('fs');
 
 var http = require('http')
@@ -10,12 +10,13 @@ var http = require('http')
 // var model = "lin_reg";
 // var model = "log_reg";
 // var model = "glm";
-var model = "nnet";
+// var model = "nnet";
 // var model = "svm";
 // var model = "kmeans";
 // var model = "nb";
 // var model = "gmm";
 // var model = "dbscan";
+var model = "pca";
 
 
 var iris_csv = fs.readFileSync("nodealgo/iris.data.csv");
@@ -23,31 +24,35 @@ var iris_csv = fs.readFileSync("nodealgo/iris.data.csv");
 // console.error(get_svg(iris_csv, width, height, p, title, model));
 
 if (model == "lin_reg") {
-    svg = lin_reg(iris_csv);
+    svg = plot_lin_reg(iris_csv);
 }
 if (model == "log_reg") {
-    svg = log_reg(iris_csv);
+    svg = plot_log_reg(iris_csv);
 }
 if (model == "nnet") {
-    svg = nnet(iris_csv);
+    svg = plot_nnet(iris_csv);
 }
 if (model == "nb") {
-    svg = nb(iris_csv);
+    svg = plot_nb(iris_csv);
 }
 if (model == "kmeans") {
-    svg = kmeans(iris_csv, 2);
+    svg = plot_kmeans(iris_csv, 2);
 }
 if (model == "svm") {
-    svg = svm(iris_csv);
+    svg = plot_svm(iris_csv);
 }
 if (model == "glm") {
-    svg = glm(iris_csv);
+    svg = plot_glm(iris_csv);
 }
 if (model == "gmm") {
-    svg = gmm(iris_csv);
+    svg = plot_gmm(iris_csv);
 }
 if (model == "dbscan") {
-    svg = dbscan(iris_csv);
+    svg = plot_dbscan(iris_csv);
+}
+
+if (model == "pca") {
+    svg = plot_pca(iris_csv);
 }
 
 
