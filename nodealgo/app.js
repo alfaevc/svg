@@ -1,5 +1,5 @@
-const { lin_reg, log_reg, glm, svm, kmeans, nb, gmm, dbscan, pca, 
-        plot_lin_reg, plot_log_reg, plot_glm, plot_nnet, plot_svm, plot_kmeans, plot_nb, plot_gmm, plot_dbscan, plot_pca } = require('../pkg/svg_lib.js');
+const { lin_reg, log_reg, glm, svm, kmeans, nb, gmm, dbscan, pca, gp,
+        plot_lin_reg, plot_log_reg, plot_glm, plot_nnet, plot_svm, plot_kmeans, plot_nb, plot_gmm, plot_dbscan, plot_pca, plot_gp} = require('../pkg/svg_lib.js');
 const fs = require('fs');
 
 var http = require('http')
@@ -16,54 +16,61 @@ var http = require('http')
 // var model = "kmeans";
 // var model = "nb";
 // var model = "gmm";
-var model = "dbscan";
-// var model = "pca";
+// var model = "dbscan";
+var model = "pca";
+// var model = "gp";
 
 
-var iris_csv = fs.readFileSync("nodealgo/iris.data.csv");
+var train_csv = fs.readFileSync("nodealgo/iris.data.csv");
+var test_csv = fs.readFileSync("nodealgo/iris.data.csv");
 // var out = get_svg(iris_csv, JSON.stringify(centers), width, height, p, title, model);
 // console.error(get_svg(iris_csv, width, height, p, title, model));
 
 
 if (model == "lin_reg") {
-    lin_mod = lin_reg(iris_csv);
-    svg = plot_lin_reg(iris_csv, lin_mod, 1);
+    lin_mod = lin_reg(train_csv);
+    svg = plot_lin_reg(test_csv, lin_mod, 1);
 }
 if (model == "log_reg") {
-    log_mod = log_reg(iris_csv);
-    svg = plot_log_reg(iris_csv, log_mod, 1);
+    log_mod = log_reg(train_csv);
+    svg = plot_log_reg(test_csv, log_mod, 1);
 }
 if (model == "nnet") {
-    svg = plot_nnet(iris_csv);
+    svg = plot_nnet(test_csv);
 }
 if (model == "nb") {
-    nb_mod = log_reg(iris_csv);
-    svg = plot_nb(iris_csv, nb_mod, 1);
+    nb_mod = nb(train_csv);
+    svg = plot_nb(test_csv, nb_mod, 1);
 }
 if (model == "kmeans") {
-    kmeans_mod = kmeans(iris_csv, 2);
-    svg = plot_kmeans(iris_csv, 2, kmeans_mod, 1);
+    kmeans_mod = kmeans(train_csv, 2);
+    svg = plot_kmeans(test_csv, 2, kmeans_mod, 1);
 }
 if (model == "svm") {
-    svm_mod = svm(iris_csv);
-    svg = plot_svm(iris_csv, svm_mod, 1);
+    svm_mod = svm(train_csv);
+    svg = plot_svm(test_csv, svm_mod, 1);
 }
 if (model == "glm") {
-    gl_mod = glm(iris_csv);
-    svg = plot_glm(iris_csv, gl_mod, 1);
+    gl_mod = glm(train_csv);
+    svg = plot_glm(test_csv, gl_mod, 1);
 }
 if (model == "gmm") {
-    gm = gmm(iris_csv, 2);
-    svg = plot_gmm(iris_csv, 2, gm, 1);
+    gm = gmm(train_csv, 2);
+    svg = plot_gmm(test_csv, 2, gm, 1);
 }
 if (model == "dbscan") {
-    dbscan_mod = dbscan(iris_csv);
-    svg = plot_dbscan(iris_csv, dbscan_mod, 1);
+    dbscan_mod = dbscan(train_csv);
+    svg = plot_dbscan(train_csv, dbscan_mod, 1);
 }
 
 if (model == "pca") {
-    pca_mod = pca(iris_csv);
-    svg = plot_pca(iris_csv, pca_mod, 1);
+    pca_mod = pca(train_csv);
+    svg = plot_pca(test_csv, pca_mod, 1);
+}
+
+if (model == "gp") {
+    gaussp = gp(train_csv);
+    svg = plot_gp(test_csv, gaussp, 1);
 }
 
 

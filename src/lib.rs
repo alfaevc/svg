@@ -43,6 +43,11 @@ use rm::learning::dbscan::DBSCAN;
 
 use rm::learning::pca::PCA;
 
+use rm::learning::gp;
+use rm::learning::gp::GaussianProcess;
+use rm::learning::toolkit::kernel::SquaredExp;
+use rm::learning::gp::ConstMean;
+
 use rm::learning::SupModel;
 use rm::learning::UnSupModel;
 
@@ -231,6 +236,7 @@ impl Graph {
 
     let inputs = Matrix::new(self.size, 2, p_vec);
     let targets = Vector::new(self.labels.clone());
+
     let mut gl_mod = GenLinearModel::new(Bernoulli);
     gl_mod.train(&inputs, &targets).unwrap();
 
@@ -527,7 +533,7 @@ impl Graph {
       if pred_class[2*i] == 0. {
         preds.push(1.);
       } else {
-        preds.push(0.)
+        preds.push(0.);
       }
     }
 
@@ -653,6 +659,46 @@ impl Graph {
     Tera::one_off(include_str!("pca.svg"), &mut context, true).expect("Could not draw graph")
   }
 
+  pub fn train_gp(&self) -> GaussianProcess<SquaredExp, ConstMean> {
+    let mut p_vec: Vec<f64> = Vec::new();
+    for point in &self.points {
+      p_vec.push(point.x);
+      p_vec.push(point.y);
+    }
+
+    let inputs = Matrix::new(self.size, 2, p_vec);
+    let targets = Vector::new(self.labels.clone());
+    println!("{:?}", targets);
+
+    let mut gaussp = gp::GaussianProcess::default();
+    gaussp.train(&inputs, &targets).unwrap();
+
+    return gaussp;
+  }
+
+  pub fn gp_svg(&self, model: Option<&str>) -> String {
+    let mut p_vec: Vec<f64> = Vec::new();
+    for point in &self.points {
+      p_vec.push(point.x);
+      p_vec.push(point.y);
+    }
+
+    let inputs = Matrix::new(self.size, 2, p_vec);
+
+    let mut gaussp: GaussianProcess<SquaredExp, ConstMean> = serde_json::from_str(model.unwrap()).unwrap();
+    if !model.is_some() {
+      gaussp = self.train_gp();
+    }
+
+    let preds = gaussp.predict(&inputs).unwrap().data().to_vec();
+
+    let mut context = self.create_svg_context();
+    context.insert("preds", &preds);
+
+    Tera::one_off(include_str!("gp.svg"), &mut context, true).expect("Could not draw graph")
+  }
+
+
   pub fn create_svg_context(&self) -> Context {
     let mut context = Context::new();
     let path: Vec<(f64, f64)> = self
@@ -675,7 +721,7 @@ impl Graph {
     context.insert("x_min", &self.x_min);
     context.insert("y_min", &self.y_min);
     context.insert("colour", &self.colour);
-    context.insert("labels", &self.labels);
+    // context.insert("labels", &self.labels);
     context.insert("lines", &10);
 
     return context;
@@ -859,6 +905,24 @@ pub fn plot_pca (csv_content: &[u8], pca: String, trained: i32) -> String {
     graph.pca_svg(Some(pca.as_str()))
   } else {
     graph.pca_svg(None)
+  }
+}
+
+#[wasm_bindgen]
+pub fn gp (csv_content: &[u8]) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "gp");
+  let gaussp = graph.train_gp();
+
+  return serde_json::to_string(&gaussp).unwrap();
+}
+
+#[wasm_bindgen]
+pub fn plot_gp (csv_content: &[u8], gaussp: String, trained: i32) -> String {
+  let graph = prepare_graph (csv_content, 800, 400, 20, "gp");
+  if trained != 0 {
+    graph.gp_svg(Some(gaussp.as_str()))
+  } else {
+    graph.gp_svg(None)
   }
 }
 
