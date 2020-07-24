@@ -576,12 +576,12 @@ impl Graph {
     
     let clustering = db.clusters().unwrap();
     // println!("{:?}", clustering);
-    let classes: Vec<f64> = clustering.data().to_vec().iter().map(|&val| match val {Some(x) => {x as f64}, _ => {-1.0}}).collect();
+    let classes: Vec<i32> = clustering.data().to_vec().iter().map(|&val| match val {Some(x) => {x as i32}, _ => {-1}}).collect();
     let mut clusters: Vec<(f64, f64, usize)> = Vec::new(); 
     
     for i in 0..self.size {
-      if classes[i] >= 0.0 {
-        if classes[i] >= clusters.len() as f64 {
+      if classes[i] >= 0 {
+        if classes[i] >= clusters.len() as i32 {
           for _ in 0..(classes[i] as usize - clusters.len()+1) {
             clusters.push((0.0, 0.0, 0));
           }
