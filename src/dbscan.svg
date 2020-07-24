@@ -69,6 +69,37 @@
   <g stroke="{{colour}}" stroke-width="2" fill="{{colour}}">
     <circle cx="{{x}}" cy="{{y}}" r="2" />
   </g>
+  {% elif classes[loop.index0] == 1.0 %}
+  {% set extra_color1 = extra_colors[0] %}
+  <g stroke="{{extra_color1}}" stroke-width="2" fill="{{extra_color1}}">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+
+  {% elif classes[loop.index0] == 1.0 %}
+  {% set cluster_color = extra_colors[0] %}
+  <g stroke="{{cluster_color}}" stroke-width="2" fill="{{cluster_color}}">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+
+  {% elif classes[loop.index0] == 2.0 %}
+  {% set cluster_color = extra_colors[1] %}
+  <g stroke="{{cluster_color}}" stroke-width="2" fill="{{cluster_color}}">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+
+  {% elif classes[loop.index0] == 3.0 %}
+  {% set cluster_color = extra_colors[2] %}
+  <g stroke="{{cluster_color}}" stroke-width="2" fill="{{cluster_color}}">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+
+  {% elif classes[loop.index0] == 4.0 %}
+  {% set cluster_color = extra_colors[3] %}
+  <g stroke="{{cluster_color}}" stroke-width="2" fill="{{cluster_color}}">
+    <circle cx="{{x}}" cy="{{y}}" r="2" />
+  </g>
+
+  {# red points are the outliers #}
   {% else %}
   <g stroke="red" stroke-width="2" fill="red">
     <circle cx="{{x}}" cy="{{y}}" r="2" />

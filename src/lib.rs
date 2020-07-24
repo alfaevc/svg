@@ -594,9 +594,14 @@ impl Graph {
     centers = self.graph_map(centers);
     
     let mut context = self.create_svg_context();
+    //assure no more than 5 clusters
+    let extra_colors = &["yellow", "purple", "orange", "pink"];
+
     context.insert("n", &self.size);
     context.insert("classes", &classes);
     context.insert("centers", &centers);
+    context.insert("num_cluster", &centers.len());
+    context.insert("extra_colors", &extra_colors);
 
     Tera::one_off(include_str!("dbscan.svg"), &mut context, true).expect("Could not draw graph")
   }

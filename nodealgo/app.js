@@ -16,8 +16,8 @@ var http = require('http')
 // var model = "kmeans";
 // var model = "nb";
 // var model = "gmm";
-// var model = "dbscan";
-var model = "pca";
+var model = "dbscan";
+// var model = "pca";
 // var model = "gp";
 
 
