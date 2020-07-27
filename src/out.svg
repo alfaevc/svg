@@ -16,7 +16,7 @@
     fill="#74838f"
     font-weight="700"
     >
-    DBSCAN
+    Logistic Regression
   </text>
   
   
@@ -56,7 +56,7 @@
   
   <path stroke="#74838f" stroke-width="2" fill="none"  d="M 20 20 L 20 380" />
    
-
+  
   
   
   
@@ -93,7 +93,7 @@
     
 
    
-
+  
   
   
   
@@ -130,7 +130,7 @@
     
 
    
-
+  
   
   
   
@@ -167,7 +167,7 @@
     
 
    
-
+  
   
   
   
@@ -204,7 +204,7 @@
     
 
    
-
+  
   
   
   
@@ -241,7 +241,7 @@
     
 
    
-
+  
   
   
   
@@ -278,7 +278,7 @@
     
 
    
-
+  
   
   
   
@@ -315,7 +315,7 @@
     
 
    
-
+  
   
   
   
@@ -352,7 +352,7 @@
     
 
    
-
+  
   
   
   
@@ -389,7 +389,7 @@
     
 
    
-
+  
   
   
   
@@ -428,8 +428,9 @@
     
 
    
-
   
+  
+
 
 
   
@@ -439,8 +440,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="400" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -449,8 +448,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="438.00000000000006" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -459,8 +456,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="419" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -469,8 +464,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="514" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -479,8 +472,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="571" cy="279.20000000000005" r="2" />
   </g>
-
-  
   
   
   
@@ -489,8 +480,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="476" cy="286.4" r="2" />
   </g>
-
-  
   
   
   
@@ -499,8 +488,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="476" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -509,8 +496,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="381" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -519,8 +504,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="419" cy="300.79999999999995" r="2" />
   </g>
-
-  
   
   
   
@@ -529,8 +512,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="533" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -539,18 +520,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="476" cy="293.6" r="2" />
   </g>
-
-  
-  
-  
-  
-  
-  
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="400" cy="300.79999999999995" r="2" />
-  </g>
-
-  
   
   
   
@@ -559,8 +528,14 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="400" cy="300.79999999999995" r="2" />
   </g>
-
   
+  
+  
+  
+  
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="400" cy="300.79999999999995" r="2" />
+  </g>
   
   
   
@@ -569,8 +544,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="590" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -579,8 +552,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="666.0000000000001" cy="279.20000000000005" r="2" />
   </g>
-
-  
   
   
   
@@ -589,8 +560,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="571" cy="279.20000000000005" r="2" />
   </g>
-
-  
   
   
   
@@ -599,18 +568,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="495" cy="286.4" r="2" />
   </g>
-
-  
-  
-  
-  
-  
-  
-  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
-    <circle cx="552" cy="286.4" r="2" />
-  </g>
-
-  
   
   
   
@@ -619,8 +576,14 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="552" cy="286.4" r="2" />
   </g>
-
   
+  
+  
+  
+  
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
+    <circle cx="552" cy="286.4" r="2" />
+  </g>
   
   
   
@@ -629,8 +592,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="476" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -639,8 +600,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="533" cy="279.20000000000005" r="2" />
   </g>
-
-  
   
   
   
@@ -649,8 +608,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="514" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -659,8 +616,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="456.99999999999994" cy="272" r="2" />
   </g>
-
-  
   
   
   
@@ -669,8 +624,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="476" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -679,8 +632,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="400" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -689,8 +640,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="476" cy="279.20000000000005" r="2" />
   </g>
-
-  
   
   
   
@@ -699,8 +648,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="495" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -709,8 +656,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="476" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -719,8 +664,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="438.00000000000006" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -729,8 +672,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="419" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -739,8 +680,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="476" cy="279.20000000000005" r="2" />
   </g>
-
-  
   
   
   
@@ -749,8 +688,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="608.9999999999999" cy="300.79999999999995" r="2" />
   </g>
-
-  
   
   
   
@@ -759,8 +696,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="628" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -769,8 +704,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="419" cy="300.79999999999995" r="2" />
   </g>
-
-  
   
   
   
@@ -779,8 +712,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="438.00000000000006" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -789,8 +720,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="495" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -799,8 +728,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="419" cy="300.79999999999995" r="2" />
   </g>
-
-  
   
   
   
@@ -809,8 +736,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="400" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -819,8 +744,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="476" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -829,17 +752,14 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="495" cy="286.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  <g stroke="red" stroke-width="2" fill="red">
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="267" cy="286.4" r="2" />
   </g>
-
   
   
   
@@ -848,8 +768,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="438.00000000000006" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -858,8 +776,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="495" cy="264.8" r="2" />
   </g>
-
-  
   
   
   
@@ -868,8 +784,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="552" cy="279.20000000000005" r="2" />
   </g>
-
-  
   
   
   
@@ -878,8 +792,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="400" cy="286.4" r="2" />
   </g>
-
-  
   
   
   
@@ -888,8 +800,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="552" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -898,8 +808,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="438.00000000000006" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -908,8 +816,6 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="533" cy="293.6" r="2" />
   </g>
-
-  
   
   
   
@@ -918,1122 +824,812 @@
   <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="456.99999999999994" cy="293.6" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="438.00000000000006" cy="207.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="438.00000000000006" cy="200" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="419" cy="200" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="267" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="200" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="456.99999999999994" cy="192.79999999999998" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="286" cy="236" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="381" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="343.00000000000006" cy="207.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="210" cy="236" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="200" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="248.00000000000003" cy="236" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="381" cy="207.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="381" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="419" cy="207.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="200" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="343.00000000000006" cy="236" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="248.00000000000003" cy="200" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="305" cy="228.79999999999998" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="438.00000000000006" cy="178.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="305" cy="200" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="221.59999999999997" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="381" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="207.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="207.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="185.6" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="381" cy="200" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="324" cy="236" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="286" cy="228.79999999999998" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="286" cy="236" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="343.00000000000006" cy="221.59999999999997" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="343.00000000000006" cy="192.79999999999998" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="200" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="476" cy="192.79999999999998" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="419" cy="200" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="267" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="305" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="324" cy="221.59999999999997" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="207.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="324" cy="221.59999999999997" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="267" cy="236" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="343.00000000000006" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="#8ff0a4" stroke-width="2" fill="#8ff0a4">
     <circle cx="400" cy="221.59999999999997" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="381" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="381" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="305" cy="228.79999999999998" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="214.4" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="456.99999999999994" cy="128.00000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="343.00000000000006" cy="171.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="156.8" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="381" cy="178.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="149.6" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="156.8" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="305" cy="185.6" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="381" cy="178.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="305" cy="178.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="514" cy="128.00000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="438.00000000000006" cy="164" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="343.00000000000006" cy="171.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="156.8" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="305" cy="164" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="135.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="438.00000000000006" cy="142.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="178.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="552" cy="149.6" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="324" cy="142.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="248.00000000000003" cy="200" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="438.00000000000006" cy="142.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="164" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="164" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="343.00000000000006" cy="178.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="456.99999999999994" cy="156.8" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="438.00000000000006" cy="178.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="178.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="178.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="156.8" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="192.79999999999998" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="171.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="552" cy="164" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="149.6" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="361.99999999999994" cy="200" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="324" cy="207.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="142.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="476" cy="135.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="419" cy="178.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="178.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="419" cy="156.8" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="419" cy="135.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="419" cy="142.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="343.00000000000006" cy="171.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="438.00000000000006" cy="142.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="456.99999999999994" cy="128.00000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="142.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="305" cy="171.20000000000002" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="164" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="476" cy="142.40000000000003" r="2" />
   </g>
-
   
   
   
   
   
-  
-  
-  <g stroke="yellow" stroke-width="2" fill="yellow">
+  <g stroke="red" stroke-width="2" fill="red">
     <circle cx="400" cy="178.40000000000003" r="2" />
   </g>
-
   
   
 
   
   
   
-  <g stroke="blue" stroke-width="2" fill="blue">
-    <polygon points="481.5208333333333, 288.45000000000005 485.5208333333333, 288.45000000000005, 483.5208333333333, 292.45000000000005"/>
-  </g>
   
-  
-  
-  <g stroke="blue" stroke-width="2" fill="blue">
-    <polygon points="373.68000000000023, 185.32799999999995 377.68000000000023, 185.32799999999995, 375.68000000000023, 189.32799999999995"/>
-  </g>
-  
+  <path stroke="blue" stroke-width="2" fill="none"  d="M 20 279.3633763768666 L 780 155.0103283241034" />
 </svg>

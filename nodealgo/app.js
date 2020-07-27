@@ -9,14 +9,14 @@ var http = require('http')
 // var title = "SVG";
 // Weird behavior for svm
 // var model = "lin_reg";
-// var model = "log_reg";
+var model = "log_reg";
 // var model = "glm";
 // var model = "nnet";
 // var model = "svm";
 // var model = "kmeans";
 // var model = "nb";
 // var model = "gmm";
-var model = "dbscan";
+// var model = "dbscan";
 // var model = "pca";
 // var model = "gp";
 
