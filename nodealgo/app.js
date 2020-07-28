@@ -7,12 +7,13 @@ var http = require('http')
 // var height = 400;
 // var p = 50;
 // var title = "SVG";
+
 // Weird behavior for svm
 // var model = "lin_reg";
-var model = "log_reg";
+// var model = "log_reg";
 // var model = "glm";
 // var model = "nnet";
-// var model = "svm";
+var model = "svm";
 // var model = "kmeans";
 // var model = "nb";
 // var model = "gmm";
@@ -21,7 +22,8 @@ var model = "log_reg";
 // var model = "gp";
 
 
-var train_csv = fs.readFileSync("nodealgo/iris.data.csv");
+// var train_csv = fs.readFileSync("nodealgo/iris.data.csv");
+var train_csv = fs.readFileSync("nodealgo/svm.data.csv");
 var test_csv = fs.readFileSync("nodealgo/iris.data.csv");
 // var out = get_svg(iris_csv, JSON.stringify(centers), width, height, p, title, model);
 // console.error(get_svg(iris_csv, width, height, p, title, model));

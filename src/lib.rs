@@ -32,7 +32,7 @@ use rm::learning::k_means::KMeansClassifier;
 use rm::learning::k_means::KPlusPlus;
 
 use rm::learning::svm::SVM;
-use rm::learning::toolkit::kernel::Linear;
+// use rm::learning::toolkit::kernel::Linear;
 
 use rm::learning::nnet::{NeuralNet, BCECriterion};
 use rm::learning::toolkit::activ_fn::Sigmoid;
@@ -382,24 +382,25 @@ impl Graph {
     Tera::one_off(include_str!("nnet.svg"), &mut context, true).expect("Could not draw graph")
   }
 
-  pub fn train_svm(&self) -> SVM<Linear> {
+  pub fn train_svm(&self) -> SVM<SquaredExp> {
     let mut p_vec: Vec<f64> = Vec::new();
     for point in &self.points {
       p_vec.push(point.x);
       p_vec.push(point.y);
     }
 
-    let svm_target_vec: Vec<f64> = self.labels.iter().map(|val| if *val == 1.0 as f64 {1. as f64} else {-1. as f64} ).collect();     
+    let svm_target_vec: Vec<f64> = self.labels.iter().map(|val| if *val == 1.0 as f64 {1. as f64} else {-1. as f64} ).collect(); 
+    println!("{:?}", svm_target_vec);    
     let inputs = Matrix::new(self.size, 2, p_vec);
     let targets = Vector::new(svm_target_vec);
     // println!("Nothing yet!");
-    let mut svm_mod = SVM::new(Linear::default(), 0.2);
+    let mut svm_mod = SVM::new(SquaredExp::default(), 0.3);
     svm_mod.train(&inputs, &targets).unwrap();
     return svm_mod;
   }
 
   pub fn svm_svg(&self, model: Option<&str>) -> String {
-    let mut svm_mod: SVM<Linear> = serde_json::from_str(model.unwrap()).unwrap();
+    let mut svm_mod: SVM<SquaredExp> = serde_json::from_str(model.unwrap()).unwrap();
     if !model.is_some() {
       svm_mod = self.train_svm();
     }
